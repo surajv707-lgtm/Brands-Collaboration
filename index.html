@@ -4,104 +4,103 @@
     <meta charset="UTF-8">
     <title>Brand Collaboration</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">BrandCollab</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact Us</a>
-            <a href="#login">Login</a>
-            <a href="#register">Register</a>
-        </nav>
-    </header>
+<header>
+    <div class="logo">BrandCollab</div>
+    <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+        <a href="#" onclick="showPage('login')">Login</a>
+        <a href="#" onclick="showPage('register')">Register</a>
+    </nav>
+</header>
 
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <h1>Welcome to Brand Collaboration</h1>
-        <p>Connecting brands with powerful partnerships and digital growth opportunities.</p>
+<!-- HOME PAGE -->
+<section id="home" class="page active">
+    <h1>Welcome to Brand Collaboration</h1>
+    <p>Connecting brands with powerful partnerships and digital growth opportunities.</p>
 
-        <div class="btn-group">
-            <button onclick="scrollToSection('login')">Login</button>
-            <button onclick="scrollToSection('register')" class="secondary">Register</button>
-        </div>
-
-        <!-- About Preview -->
-        <div class="preview">
-            <h2>About Us</h2>
-            <p>We help influencers and businesses connect for impactful collaborations that drive growth and visibility.</p>
-            <button onclick="scrollToSection('about')" class="view-btn">View All</button>
-        </div>
-
-        <!-- Contact Preview -->
-        <div class="preview">
-            <h2>Contact Us</h2>
-            <p>Have questions? Reach out to us for partnership inquiries and support.</p>
-            <button onclick="scrollToSection('contact')" class="view-btn">View All</button>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section light">
-        <h1>About Brand Collaboration</h1>
-        <p>
-            Brand Collaboration is a professional digital platform designed to connect brands,
-            influencers, startups, and entrepreneurs for powerful marketing partnerships.
-            Our mission is to simplify collaboration, increase brand visibility, and build
-            long-term strategic relationships.
-        </p>
-        <p>
-            We provide a structured environment where brands can find the right creators,
-            negotiate partnerships, and track campaign performance efficiently.
-            Our system ensures trust, transparency, and measurable success.
-        </p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h1>Contact Us</h1>
-        <p><strong>Phone:</strong> 9172660105</p>
-        <p><strong>Email:</strong> abhinavvishwakarma36@gmail.com</p>
-        <p>We are available Monday to Saturday, 9 AM – 6 PM.</p>
-    </section>
-
-    <!-- Login Section -->
-    <section id="login" class="section light">
-        <h1>Login</h1>
-        <form>
-            <input type="email" placeholder="Enter Email" required>
-            <input type="password" placeholder="Enter Password" required>
-            <button type="submit">Login</button>
-        </form>
-    </section>
-
-    <!-- Register Section -->
-    <section id="register" class="section">
-        <h1>Register</h1>
-        <form>
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="password" placeholder="Create Password" required>
-            <button type="submit">Register</button>
-        </form>
-    </section>
-
-    <!-- Floating Buttons -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/9172660105" target="_blank" class="whatsapp">WhatsApp</a>
-        <a href="tel:9172660105" class="call">Call Now</a>
+    <div class="btn-group">
+        <button onclick="showPage('login')">Login</button>
+        <button onclick="showPage('register')" class="secondary">Register</button>
     </div>
 
-    <!-- JavaScript -->
-    <script>
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+    <!-- About Preview -->
+    <div class="preview">
+        <h2>About Us</h2>
+        <p>We help influencers and businesses connect for impactful collaborations that drive growth and visibility.</p>
+        <button class="view-btn" onclick="showPage('about')">View All</button>
+    </div>
+
+    <!-- Contact Preview -->
+    <div class="preview">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us for partnership inquiries and support.</p>
+        <button class="view-btn" onclick="showPage('contact')">View All</button>
+    </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about" class="page">
+    <h1>About Brand Collaboration</h1>
+    <p>
+        Brand Collaboration is a professional digital platform designed to connect brands,
+        influencers, startups, and entrepreneurs for powerful marketing partnerships.
+    </p>
+    <p>
+        Our mission is to simplify collaboration, increase brand visibility,
+        and build long-term strategic relationships.
+    </p>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact" class="page">
+    <h1>Contact Us</h1>
+    <p><strong>Phone:</strong> 9172660105</p>
+    <p><strong>Email:</strong> abhinavvishwakarma36@gmail.com</p>
+</section>
+
+<!-- LOGIN PAGE -->
+<section id="login" class="page">
+    <h1>Login</h1>
+    <form>
+        <input type="email" placeholder="Enter Email" required>
+        <input type="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+<!-- REGISTER PAGE -->
+<section id="register" class="page">
+    <h1>Register</h1>
+    <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Create Password" required>
+        <button type="submit">Register</button>
+    </form>
+</section>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+    <a href="https://wa.me/9172660105" target="_blank" class="whatsapp">WhatsApp</a>
+    <a href="tel:9172660105" class="call">Call Now</a>
+</div>
+
+<script>
+    function showPage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+</script>
 
 </body>
 </html>
