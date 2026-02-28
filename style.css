@@ -10,6 +10,10 @@ header{
     padding:20px 60px;
     display:flex;
     justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
@@ -18,15 +22,21 @@ header{
     color:#3b82f6;
 }
 
+nav{
+    display:flex;
+    align-items:center;
+}
+
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:25px;
+    margin-left:30px;
     font-size:18px;
+    font-weight:500;
 }
 
-.dashboard-buttons{
-    margin-top:20px;
+nav a:hover{
+    color:#3b82f6;
 }
 .hero{
     background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
