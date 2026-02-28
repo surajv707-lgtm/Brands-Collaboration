@@ -12,10 +12,9 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact Us</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="#" id="creatorLink" style="display:none;">Creator</a>
-        <a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
+        <a href="login.html" id="loginLink">Login</a>
+<a href="register.html" id="registerLink">Register</a>
+<a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
     </nav>
 </header>
 
@@ -40,9 +39,14 @@
     <p>Creating Long-Term Success With Trust And Transparency.</p>
 
     <div class="auth-buttons" id="authButtons">
-        <a href="login.html" class="btn">Login</a>
-        <a href="register.html" class="btn secondary">Register</a>
-    </div>
+    <a href="login.html" class="btn">Login</a>
+    <a href="register.html" class="btn secondary">Register</a>
+</div>
+
+<div class="dashboard-buttons" id="dashboardButtons" style="display:none;">
+    <a href="#" class="btn">Add Creator</a>
+    <a href="#" class="btn secondary">Manage Brand</a>
+</div>
 </section>
 
 <section class="preview">
