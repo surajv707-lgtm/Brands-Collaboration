@@ -6,7 +6,7 @@
 }
 
 body {
-    line-height: 1.6;
+    background: #f9fafb;
 }
 
 header {
@@ -16,9 +16,6 @@ header {
     justify-content: space-between;
     padding: 15px 50px;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 .logo {
@@ -38,22 +35,20 @@ nav a:hover {
     color: #3b82f6;
 }
 
-.section {
+.page {
+    display: none;
     padding: 80px 50px;
     text-align: center;
+    min-height: 90vh;
 }
 
-.light {
-    background: #f3f4f6;
+.page.active {
+    display: block;
 }
 
 h1 {
     margin-bottom: 20px;
     font-size: 36px;
-}
-
-h2 {
-    margin-top: 40px;
 }
 
 .btn-group {
@@ -88,7 +83,6 @@ button:hover {
 }
 
 .view-btn {
-    margin-top: 15px;
     background: #10b981;
 }
 
