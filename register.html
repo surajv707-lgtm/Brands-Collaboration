@@ -18,12 +18,21 @@
 </section>
 
     <script>
-function register(e){
-    e.preventDefault();
-    localStorage.setItem("isLoggedIn","true");
+function updateNavbar(){
+    if(localStorage.getItem("isLoggedIn")==="true"){
+        document.getElementById("loginLink").style.display="none";
+        document.getElementById("registerLink").style.display="none";
+        document.getElementById("logoutLink").style.display="inline";
+    }
+}
+
+function logout(){
+    localStorage.removeItem("isLoggedIn");
     window.location.href="index.html";
 }
-    </script>
+
+window.onload = updateNavbar;
+</script>
 
 </body>
 </html>
