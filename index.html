@@ -11,7 +11,7 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Contact</a>
         <a href="login.html" id="loginLink">Login</a>
         <a href="register.html" id="registerLink">Register</a>
         <a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
@@ -95,23 +95,26 @@ function logout(){
 window.onload = updateUI;
 </script>
 
-    <script>
-function updateNavbar(){
-    if(localStorage.getItem("isLoggedIn")==="true"){
-        document.getElementById("loginLink").style.display="none";
-        document.getElementById("registerLink").style.display="none";
-        document.getElementById("logoutLink").style.display="inline";
+<script>
+function updateNavbar() {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        document.getElementById("loginLink").style.display = "none";
+        document.getElementById("registerLink").style.display = "none";
+        document.getElementById("logoutLink").style.display = "inline";
+    } else {
+        document.getElementById("loginLink").style.display = "inline";
+        document.getElementById("registerLink").style.display = "inline";
+        document.getElementById("logoutLink").style.display = "none";
     }
 }
 
-function logout(){
+function logout() {
     localStorage.removeItem("isLoggedIn");
-    window.location.href="index.html";
+    window.location.href = "index.html";
 }
 
 window.onload = updateNavbar;
-    </script>
-
+</script>
     
     <script>
 function updateHomeUI(){
