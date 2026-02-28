@@ -10,10 +10,10 @@ body {
 }
 
 header {
-    width: 50%;
+    width: 100%;
     background: #111827;
     color: white;
-    padding: 15px 50px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
