@@ -65,18 +65,30 @@
 </div>
 
 <script>
-if(localStorage.getItem("isLoggedIn") === "true"){
-    document.getElementById("loginLink").style.display="none";
-    document.getElementById("registerLink").style.display="none";
-    document.getElementById("authButtons").style.display="none";
-    document.getElementById("creatorLink").style.display="inline";
-    document.getElementById("logoutLink").style.display="inline";
+function updateUI() {
+    if(localStorage.getItem("isLoggedIn") === "true"){
+
+        // Hide login/register links
+        document.getElementById("loginLink").style.display="none";
+        document.getElementById("registerLink").style.display="none";
+
+        // Hide login/register buttons on home
+        document.getElementById("authButtons").style.display="none";
+
+        // Show creator + manage brand buttons
+        document.getElementById("dashboardButtons").style.display="block";
+
+        // Show logout
+        document.getElementById("logoutLink").style.display="inline";
+    }
 }
 
 function logout(){
     localStorage.removeItem("isLoggedIn");
     location.reload();
 }
+
+window.onload = updateUI;
 </script>
 
 </body>
