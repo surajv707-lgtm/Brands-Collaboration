@@ -6,7 +6,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    padding-top: 8px; /* space for sticky header */
+    padding-top: 80px; /* space for sticky header */
 }
 
 header {
@@ -35,7 +35,7 @@ nav a {
     font-size: 18px;
     font-weight: 15;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 nav a:hover {
