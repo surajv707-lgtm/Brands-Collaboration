@@ -30,19 +30,14 @@
 </section>
     
 <script>
-function updateNavbar() {
-    if (localStorage.getItem("isLoggedIn") === "true") {
-        document.getElementById("loginLink").style.display = "none";
-        document.getElementById("registerLink").style.display = "none";
-        document.getElementById("logoutLink").style.display = "inline";
-    } else {
-        document.getElementById("loginLink").style.display = "inline";
-        document.getElementById("registerLink").style.display = "inline";
-        document.getElementById("logoutLink").style.display = "none";
-    }
+function updateNavbar(){
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    document.getElementById("loginLink").style.display = loggedIn ? "none" : "inline";
+    document.getElementById("registerLink").style.display = loggedIn ? "none" : "inline";
+    document.getElementById("logoutLink").style.display = loggedIn ? "inline" : "none";
 }
 
-function logout() {
+function logout(){
     localStorage.removeItem("isLoggedIn");
     window.location.href = "index.html";
 }
