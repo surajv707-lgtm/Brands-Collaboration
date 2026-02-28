@@ -21,38 +21,25 @@
 <!-- HOME PAGE -->
 <section id="home" class="page active">
     <h1>Welcome to Brand Collaboration</h1>
-    <p>Connecting brands with powerful partnerships and digital growth opportunities.</p>
-
-    <div class="btn-group">
-        <button onclick="showPage('login')">Login</button>
-        <button onclick="showPage('register')" class="secondary">Register</button>
-    </div>
-
-    <!-- About Preview -->
-    <div class="preview">
-        <h2>About Us</h2>
-        <p>We help influencers and businesses connect for impactful collaborations that drive growth and visibility.</p>
-        <button class="view-btn" onclick="showPage('about')">View All</button>
-    </div>
-
-    <!-- Contact Preview -->
-    <div class="preview">
-        <h2>Contact Us</h2>
-        <p>Have questions? Reach out to us for partnership inquiries and support.</p>
-        <button class="view-btn" onclick="showPage('contact')">View All</button>
-    </div>
+    <p>Connecting Brands with Powerful Digital Partnerships.</p>
+    <p>Grow your business with trusted collaboration and strategic marketing solutions.</p>
+    <p>We build long-term relationships that deliver measurable success.</p>
 </section>
 
 <!-- ABOUT PAGE -->
 <section id="about" class="page">
-    <h1>About Brand Collaboration</h1>
+    <h1>About Us</h1>
     <p>
-        Brand Collaboration is a professional digital platform designed to connect brands,
-        influencers, startups, and entrepreneurs for powerful marketing partnerships.
+        Brand Collaboration is a professional platform designed to connect brands,
+        influencers, startups, and entrepreneurs for strategic partnerships.
     </p>
     <p>
-        Our mission is to simplify collaboration, increase brand visibility,
-        and build long-term strategic relationships.
+        Our mission is to simplify collaboration, increase visibility,
+        and help businesses scale faster with digital marketing strategies.
+    </p>
+    <p>
+        We focus on trust, transparency, performance tracking,
+        and long-term growth partnerships.
     </p>
 </section>
 
@@ -61,6 +48,7 @@
     <h1>Contact Us</h1>
     <p><strong>Phone:</strong> 9172660105</p>
     <p><strong>Email:</strong> abhinavvishwakarma36@gmail.com</p>
+    <p>Available Monday – Saturday (9:00 AM – 6:00 PM)</p>
 </section>
 
 <!-- LOGIN PAGE -->
@@ -96,7 +84,6 @@
         pages.forEach(page => {
             page.classList.remove('active');
         });
-
         document.getElementById(pageId).classList.add('active');
         window.scrollTo(0, 0);
     }
