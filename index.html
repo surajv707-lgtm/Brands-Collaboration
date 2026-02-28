@@ -95,5 +95,22 @@ function logout(){
 window.onload = updateUI;
 </script>
 
+    <script>
+function updateNavbar(){
+    if(localStorage.getItem("isLoggedIn")==="true"){
+        document.getElementById("loginLink").style.display="none";
+        document.getElementById("registerLink").style.display="none";
+        document.getElementById("logoutLink").style.display="inline";
+    }
+}
+
+function logout(){
+    localStorage.removeItem("isLoggedIn");
+    window.location.href="index.html";
+}
+
+window.onload = updateNavbar;
+</script>
+
 </body>
 </html>
