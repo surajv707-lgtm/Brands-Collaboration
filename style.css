@@ -26,18 +26,30 @@ nav a{
 }
 
 .hero{
-    text-align:center;
-    padding:100px 40px;
+    background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.overlay{
+    background: rgba(0,0,0,0.6);
+    padding: 60px;
+    border-radius: 10px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin-bottom:20px;
+    font-size: 55px;
+    margin-bottom: 20px;
 }
 
 .hero p{
-    font-size:22px;
-    margin-bottom:10px;
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .btn{
