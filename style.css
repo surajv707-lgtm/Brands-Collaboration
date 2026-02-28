@@ -6,15 +6,13 @@ body{
 
 header {
     background: #111827;
-    color: white;
     padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 999;
 }
 
 .logo {
@@ -25,25 +23,23 @@ header {
 
 nav {
     display: flex;
-    align-items: center;
+    gap: 25px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 30px;
     font-size: 18px;
     font-weight: 500;
-    padding: 5px 10px;
-    transition: color 0.3s, background 0.3s;
-    border-radius: 5px;
+    padding: 6px 12px;
+    transition: 0.3s;
 }
 
 nav a:hover {
     color: #3b82f6;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
-
 
 .hero{
     background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
