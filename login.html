@@ -9,18 +9,28 @@
 <section class="form-section">
     <h1>LOGIN</h1>
     <form onsubmit="login(event)">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-        <form onsubmit="login(event)">
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button type="submit">Login</button>
     </form>
 </section>
 
     <script>
 function login(e){
     e.preventDefault();
-    localStorage.setItem("isLoggedIn","true");
-    window.location.href="index.html";
+
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const savedEmail = localStorage.getItem("registeredEmail");
+    const savedPassword = localStorage.getItem("registeredPassword");
+
+    if(email === savedEmail && password === savedPassword){
+        localStorage.setItem("isLoggedIn","true");
+        window.location.href="index.html";
+    } else {
+        alert("Invalid credentials! Please register first.");
+    }
 }
     </script>
 
