@@ -111,6 +111,21 @@ function logout(){
 
 window.onload = updateNavbar;
 </script>
+    <script>
+function updateHomeUI(){
+    if(localStorage.getItem("isLoggedIn")==="true"){
+        document.getElementById("guestButtons").style.display="none";
+        document.getElementById("userButtons").style.display="block";
+    }
+}
+
+function logout(){
+    localStorage.removeItem("isLoggedIn");
+    window.location.href="index.html";
+}
+
+window.onload = updateHomeUI;
+    </script>
 
 </body>
 </html>
