@@ -6,20 +6,20 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    padding-top: 80px; /* space for sticky header */
+    padding-top: 8px; /* space for sticky header */
 }
 
 header {
     width: 100%;
     background: #111827;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
@@ -33,7 +33,7 @@ nav a {
     text-decoration: none;
     margin-left: 30px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 15;
     padding: 5px 10px;
     border-radius: 5px;
 }
