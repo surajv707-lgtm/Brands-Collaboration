@@ -16,7 +16,16 @@
         <form onsubmit="register(event)">
     </form>
 </section>
+    
+<script>
+function register(e){
+    e.preventDefault();
+    alert("Registration Successful! Please Login.");
+    window.location.href="login.html";
+}
+</script>
 
+    
     <script>
 function updateNavbar(){
     if(localStorage.getItem("isLoggedIn")==="true"){
