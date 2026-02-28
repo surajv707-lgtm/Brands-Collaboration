@@ -6,16 +6,17 @@
 }
 
 body {
-    background: #f9fafb;
+    background: #f3f4f6;
 }
 
+/* Header */
 header {
     background: #111827;
-    color: #fff;
+    color: white;
     display: flex;
     justify-content: space-between;
-    padding: 15px 50px;
     align-items: center;
+    padding: 15px 50px;
 }
 
 .logo {
@@ -27,7 +28,7 @@ header {
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 25px;
     font-weight: 500;
 }
 
@@ -35,9 +36,10 @@ nav a:hover {
     color: #3b82f6;
 }
 
+/* Page System */
 .page {
     display: none;
-    padding: 80px 50px;
+    padding: 100px 50px;
     text-align: center;
     min-height: 90vh;
 }
@@ -46,46 +48,19 @@ nav a:hover {
     display: block;
 }
 
+/* Typography */
 h1 {
     margin-bottom: 20px;
     font-size: 36px;
 }
 
-.btn-group {
-    margin: 30px 0;
+p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #374151;
 }
 
-button {
-    padding: 12px 25px;
-    margin: 10px;
-    border: none;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-button.secondary {
-    background: #111827;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-.preview {
-    margin-top: 40px;
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.view-btn {
-    background: #10b981;
-}
-
+/* Forms */
 form {
     max-width: 400px;
     margin: auto;
@@ -99,17 +74,33 @@ form input {
     border: 1px solid #ccc;
 }
 
+button {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* Floating Buttons */
 .floating-buttons {
     position: fixed;
-    right: 20px;
     bottom: 20px;
+    right: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .floating-buttons a {
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 12px 18px;
     margin-top: 10px;
     border-radius: 30px;
     color: white;
