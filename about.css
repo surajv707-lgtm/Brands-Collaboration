@@ -1,0 +1,8 @@
+body{margin:0;font-family:Segoe UI;background:#f9fafb;}
+header{background:#111827;color:white;padding:20px 60px;display:flex;justify-content:space-between;}
+.logo{font-size:28px;color:#3b82f6;font-weight:bold;}
+.big-section{text-align:center;padding:120px 80px;}
+.big-section h1{font-size:50px;margin-bottom:30px;}
+.big-section p{font-size:24px;margin-bottom:20px;}
+.floating{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;}
+.floating a{font-size:25px;margin-top:10px;text-decoration:none;}
