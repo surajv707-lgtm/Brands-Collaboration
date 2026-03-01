@@ -14,34 +14,59 @@ body {
 /* HEADER */
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 20px; 
     background: rgba(0,0,0,0.9);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* LOGO */
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
+/* MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    margin-left: auto; /* move to right side */
+}
+
+/* NAV LINKS */
 nav ul {
     display: flex;
     list-style: none;
     gap: 25px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
+/* Show toggle on mobile */
+@media (max-width: 768px) {
 
-nav ul li a:hover {
-    color: orange;
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
 }
 
 .logout-btn {
@@ -49,11 +74,7 @@ nav ul li a:hover {
     font-weight: bold;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
+
 
 /* CONTACT SECTION */
 .contact-section {
