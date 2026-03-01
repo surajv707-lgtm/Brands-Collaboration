@@ -1,13 +1,14 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    overflow-x: hidden;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') no-repeat center center/cover;
+    color: white;
 }
 
 /* HEADER */
@@ -28,7 +29,6 @@ header {
     color: white;
 }
 
-/* NAVIGATION */
 nav ul {
     display: flex;
     list-style: none;
@@ -45,7 +45,12 @@ nav ul li a:hover {
     color: orange;
 }
 
-/* THREE LINE BUTTON */
+.logout-btn {
+    color: red !important;
+    font-weight: bold;
+}
+
+/* THREE LINE */
 .menu-toggle {
     display: none;
     font-size: 28px;
@@ -53,11 +58,45 @@ nav ul li a:hover {
     color: white;
 }
 
-/* MOBILE DESIGN */
+/* CONTENT */
+.about-bg {
+    padding: 100px 20px;
+}
+
+.content {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(0,0,0,0.8);
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.content h1 {
+    margin-bottom: 20px;
+}
+
+.content h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
 
     nav ul {
-        display: none; /* hidden by default */
+        display: none;
         flex-direction: column;
         background: black;
         position: absolute;
@@ -69,66 +108,10 @@ nav ul li a:hover {
     }
 
     nav ul.active {
-        display: flex; /* show when clicked */
+        display: flex;
     }
 
     .menu-toggle {
         display: block;
     }
-}
-
-.logout-btn {
-    color: red !important;
-    font-weight: bold;
-}
-
-
-
-/* BACKGROUND SECTION */
-.about-bg {
-    min-height: 100vh;
-    padding: 150px 10% 80px 10%;
-    color: #fff;
-    position: relative;
-
-    /* WORKING BACKGROUND IMAGE */
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-                      url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* CONTENT */
-.content {
-    max-width: 1000px;
-}
-
-/* HEADINGS */
-.content h1 {
-    font-size: 48px;
-    margin-bottom: 30px;
-}
-
-.content h2 {
-    font-size: 30px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: #ff4b2b;
-}
-
-/* PARAGRAPHS */
-.content p {
-    font-size: 18px;
-    line-height: 1.9;
-    margin-bottom: 25px;
-}
-
-/* FOOTER */
-footer {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
 }
