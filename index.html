@@ -2,97 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Brand Collaboration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>For Collab | Creator & Brand Collaboration Platform</title>
+    <meta name="description" content="For Collab is a professional platform connecting brands and creators for paid promotions and collaborations. Grow your brand and influence today.">
+    <meta name="keywords" content="For Collab, brand collaboration, influencer marketing, creator platform, paid promotion">
+    <meta name="author" content="For Collab">
+    <meta name="robots" content="index, follow">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <header>
-    <div class="logo">BrandCollab</div>
+    <div class="logo">For Collab</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="login.html" id="loginNav">Login</a>
-        <a href="register.html" id="registerNav">Register</a>
-        <a href="#" id="logoutNav" style="display:none;">Logout</a>
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li id="loginNav"><a href="login.html">Login</a></li>
+            <li id="registerNav"><a href="register.html">Register</a></li>
+            <li id="addCreatorNav" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+            <li id="logoutNav" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
     </nav>
 </header>
 
 <!-- HERO SECTION -->
 <section class="hero">
+    <h1>Welcome to For Collab</h1>
+    <p>
+        For Collab is India’s fast-growing digital collaboration platform that connects brands and content creators 
+        for powerful marketing partnerships. We help influencers monetize their audience and brands increase their reach.
+    </p>
+    <p>
+        Whether you are a YouTuber, Instagram influencer, gaming creator, or business brand, 
+        our platform helps you grow professionally with secure and trusted collaborations.
+    </p>
 
-    <!-- Background Slider -->
-    <div class="slider">
-        <div class="slide active"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-    </div>
-
-    <div class="hero-content">
-        <h1>Connect Brands With Top Creators</h1>
-        <p>Grow your brand through powerful influencer collaborations and strategic promotions.</p>
-
-        <div class="hero-buttons">
-            <button onclick="window.location.href='login.html'" id="loginBtn">Login</button>
-            <button onclick="window.location.href='register.html'" id="registerBtn">Register</button>
-            <button onclick="window.location.href='add-creator.html'" 
-                    id="addCreatorBtn" 
-                    style="display:none;">
-                Add Creator
-            </button>
-        </div>
+    <div class="hero-buttons" id="heroButtons">
+        <button onclick="location.href='login.html'">Login</button>
+        <button onclick="location.href='register.html'">Register</button>
     </div>
 </section>
 
 <!-- ABOUT PREVIEW -->
 <section class="section">
-    <h2>About Us</h2>
-    <p>We help brands connect with influencers and creators for powerful marketing campaigns.</p>
-    <button onclick="window.location.href='about.html'">View All</button>
+    <h2>About For Collab</h2>
+    <p>
+        For Collab was built with a vision to simplify brand promotions. 
+        We provide a professional environment where brands and creators can connect directly, 
+        negotiate partnerships, and build long-term collaborations.
+    </p>
+    <button onclick="location.href='about.html'">View All</button>
 </section>
 
 <!-- CONTACT PREVIEW -->
 <section class="section">
-    <h2>Contact Us</h2>
-    <p>Have questions about collaborations? Reach out to our team.</p>
-    <button onclick="window.location.href='contact.html'">View All</button>
+    <h2>Contact Information</h2>
+    <p>Email: support@forcollab.com</p>
+    <p>Phone: +91 9876543210</p>
+    <p>Location: Mumbai, India</p>
+    <button onclick="location.href='contact.html'">View All</button>
 </section>
 
+<footer>
+    <p>© 2026 For Collab. All Rights Reserved.</p>
+</footer>
+
 <script>
-
-// Fake login system
-const logoutNav = document.getElementById("logoutNav");
-const addCreatorBtn = document.getElementById("addCreatorBtn");
-
-function fakeLogin() {
-    addCreatorBtn.style.display = "inline-block";
-    logoutNav.style.display = "inline-block";
+function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
 }
 
-function logoutUser() {
-    addCreatorBtn.style.display = "none";
-    logoutNav.style.display = "none";
+function checkLogin() {
+    if(localStorage.getItem("userLoggedIn")) {
+        document.getElementById("loginNav").style.display = "none";
+        document.getElementById("registerNav").style.display = "none";
+        document.getElementById("logoutNav").style.display = "block";
+        document.getElementById("addCreatorNav").style.display = "block";
+        document.getElementById("heroButtons").style.display = "none";
+    }
 }
 
-logoutNav.onclick = logoutUser;
-
-// Background slider
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-
-function changeSlide() {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
+function logout() {
+    localStorage.removeItem("userLoggedIn");
+    location.reload();
 }
 
-setInterval(changeSlide, 4000);
-
+checkLogin();
 </script>
 
 </body>
