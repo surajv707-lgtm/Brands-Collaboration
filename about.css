@@ -69,6 +69,16 @@ nav ul {
     }
 }
 
+/* Make all menu options white */
+nav ul li a {
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Optional hover effect */
+nav ul li a:hover {
+    color: #ffcc00;
+}
 
 /* CONTENT */
 .about-bg {
