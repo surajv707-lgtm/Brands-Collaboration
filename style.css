@@ -14,39 +14,42 @@ body {
 /* HEADER */
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;   /* reduced side padding */
+    padding: 15px 20px; 
     background: rgba(0,0,0,0.9);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
 /* MENU TOGGLE */
 .menu-toggle {
     display: none;
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
     color: white;
+    margin-left: auto; /* move to right side */
 }
 
-/* MOBILE FIX */
-@media (max-width: 768px) {
+/* NAV LINKS */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
 
-    header {
-        padding: 15px; /* smaller padding for mobile */
-    }
+/* Show toggle on mobile */
+@media (max-width: 768px) {
 
     .menu-toggle {
         display: block;
-        margin-left: auto; /* push fully right */
     }
 
     nav ul {
