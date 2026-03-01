@@ -14,7 +14,6 @@
 
 <header>
     <div class="logo">For Collab</div>
-
     <div class="back-btn" onclick="goBack()">&#8592;</div>
 </header>
 
@@ -23,21 +22,19 @@
 
         <h1>Create Your Account</h1>
 
-        <form onsubmit="return verifyOTP()">
+        <form onsubmit="return validateCaptcha()">
 
             <label>Full Name</label>
-            <input type="text" id="name" required>
+            <input type="text" required>
 
             <label>Email Address</label>
-            <input type="email" id="email" required>
+            <input type="email" required>
 
             <label>Phone Number</label>
-            <input type="tel" id="phone" required>
+            <input type="tel" required>
 
-            <button type="button" onclick="sendOTP()" class="otp-btn">Send OTP</button>
-
-            <label>Enter OTP</label>
-            <input type="text" id="otp" required>
+            <label id="captchaQuestion"></label>
+            <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
 
             <button type="submit" class="register-btn">Register</button>
 
@@ -53,31 +50,37 @@
 </footer>
 
 <script>
-let generatedOTP;
+let num1, num2, correctAnswer;
 
 function goBack() {
     window.location.href = "index.html";
 }
 
-function sendOTP() {
-    generatedOTP = Math.floor(100000 + Math.random() * 900000);
-    alert("Demo OTP: " + generatedOTP); 
-    document.getElementById("message").innerText = "OTP sent successfully (Demo Mode)";
+function generateCaptcha() {
+    num1 = Math.floor(Math.random() * 10) + 1;
+    num2 = Math.floor(Math.random() * 10) + 1;
+    correctAnswer = num1 + num2;
+
+    document.getElementById("captchaQuestion").innerText =
+        "CAPTCHA: What is " + num1 + " + " + num2 + " ?";
 }
 
-function verifyOTP() {
-    let enteredOTP = document.getElementById("otp").value;
+function validateCaptcha() {
+    let userAnswer = document.getElementById("captchaInput").value;
 
-    if(enteredOTP == generatedOTP) {
+    if(userAnswer == correctAnswer) {
         localStorage.setItem("userLoggedIn", "true");
         alert("Registration Successful!");
         window.location.href = "index.html";
         return false;
     } else {
-        alert("Invalid OTP. Please try again.");
+        alert("Incorrect CAPTCHA. Try again.");
+        generateCaptcha();
         return false;
     }
 }
+
+generateCaptcha();
 </script>
 
 </body>
