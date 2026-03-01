@@ -2,135 +2,139 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-    url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
-    color: white;
+    background: #f4f6f9;
+    color: #333;
 }
 
 /* HEADER */
 header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 20px; 
-    background: rgba(0,0,0,0.9);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 8%;
+    background: #111;
+    color: white;
 }
 
-/* LOGO */
 .logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    color: white;
 }
 
-/* MENU TOGGLE */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-    margin-left: auto; /* move to right side */
-}
-
-/* NAV LINKS */
 nav ul {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: 25px;
 }
 
-/* Show toggle on mobile */
-@media (max-width: 768px) {
-
-    .menu-toggle {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        background: black;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 220px;
-        padding: 20px;
-        border-radius: 5px;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-}
-
-    /* Make all menu options white */
 nav ul li a {
-    color: white !important;
+    color: white;
     text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
-/* Optional hover effect */
 nav ul li a:hover {
-    color: #ffcc00;
+    color: #00c6ff;
 }
 
-.logout-btn {
-    color: red !important;
-    font-weight: bold;
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
 }
-
-
 
 /* HERO */
 .hero {
-    padding: 120px 20px;
     text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
 .hero p {
-    max-width: 800px;
-    margin: 15px auto;
-    line-height: 1.8;
-    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
 }
 
-.hero-buttons {
-    margin-top: 30px;
+.auth-buttons {
+    margin-top: 25px;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background: orange;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px;
+/* BUTTONS */
+.btn {
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
     transition: 0.3s;
+    display: inline-block;
+    margin: 8px;
 }
 
-button:hover {
-    background: darkorange;
+/* Login */
+.btn-login {
+    background: #28a745;
+    color: white;
 }
 
-/* SECTIONS */
+.btn-login:hover {
+    background: #1e7e34;
+    transform: translateY(-3px);
+}
+
+/* Register */
+.btn-register {
+    background: #007bff;
+    color: white;
+}
+
+.btn-register:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Add Creator */
+.btn-creator {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-creator:hover {
+    background: #e65100;
+    transform: translateY(-3px);
+}
+
+/* Small Button */
+.btn-small {
+    padding: 8px 18px;
+    border: none;
+    background: #111;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background: #333;
+}
+
+/* SECTION */
 .section {
-    padding: 60px 20px;
-    background: rgba(0,0,0,0.85);
-    margin: 20px;
-    border-radius: 10px;
+    padding: 60px 10%;
     text-align: center;
+    background: white;
+    margin: 20px 0;
 }
 
 .section h2 {
@@ -141,26 +145,27 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background: black;
+    background: #111;
+    color: white;
+    margin-top: 20px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* RESPONSIVE */
+@media(max-width: 768px) {
 
     nav ul {
-        display: none;   /* Hide menu by default */
         flex-direction: column;
-        background: black;
         position: absolute;
-        top: 60px;
         right: 0;
-        width: 220px;
+        top: 60px;
+        background: #111;
+        width: 200px;
+        display: none;
         padding: 20px;
-        border-radius: 5px;
     }
 
     nav ul.active {
-        display: flex;  /* Show only when clicked */
+        display: block;
     }
 
     .menu-toggle {
