@@ -36,7 +36,7 @@
             <label id="captchaQuestion"></label>
             <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button onclick="loginSuccess()">Login</button>
 
         </form>
 
@@ -94,5 +94,12 @@ function validateLogin() {
 generateCaptcha();
 </script>
 
+<script>
+function loginSuccess() {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "index.html";
+}
+</script>
+    
 </body>
 </html>
