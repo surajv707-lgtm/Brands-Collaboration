@@ -1,66 +1,147 @@
-body{
-    margin:0;
-    font-family:Segoe UI;
-    background:#f4f6f9;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url('https://images.unsplash.com/photo-1521791136064-7986c2920216') no-repeat center center/cover;
+    color: white;
+}
+
+/* HEADER */
 header {
-    background: #111827;
-    padding: 15px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 40px;
+    background: rgba(0,0,0,0.9);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
-    color: #3b82f6;
 }
 
-nav {
+nav ul {
     display: flex;
+    list-style: none;
     gap: 25px;
 }
 
-nav a {
+nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 6px 12px;
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #3b82f6;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+nav ul li a:hover {
+    color: orange;
 }
 
+.logout-btn {
+    color: red !important;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* CONTACT SECTION */
 .contact-section {
-    text-align:center;
-    padding:80px 40px;
+    padding: 100px 20px;
 }
 
-.contact-section input,
-.contact-section textarea {
-    width: 80%;
-    margin: 15px auto;
-    padding: 15px;
-    border:1px solid #ccc;
-    border-radius: 6px;
-    font-size:16px;
+.contact-content {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(0,0,0,0.85);
+    padding: 40px;
+    border-radius: 10px;
 }
 
-.contact-section button {
-    padding: 14px 28px;
-    background:#3b82f6;
-    color:white;
-    border:none;
-    font-size:18px;
-    border-radius:6px;
+.contact-content h1 {
+    margin-bottom: 20px;
+}
+
+.contact-content h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.contact-content p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* BUTTONS */
+.contact-buttons {
+    margin-top: 25px;
+}
+
+.call-btn, .whatsapp-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.call-btn {
+    background: orange;
+    color: white;
+}
+
+.call-btn:hover {
+    background: darkorange;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
