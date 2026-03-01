@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
     </nav>
 </header>
 
-<!-- HOME SECTION -->
+<!-- HERO -->
 <section id="home" class="hero">
     <div class="hero-content">
         <h1>Connect Brands With Top Creators</h1>
@@ -67,7 +67,7 @@
     <p>Location: Mumbai, India</p>
 </section>
 
-<!-- ADD CREATOR SECTION -->
+<!-- ADD CREATOR -->
 <section id="creator" class="section">
     <h2>Add Creator</h2>
     <p>Submit creator details for collaboration opportunities.</p>
@@ -79,8 +79,7 @@ function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-// Fake Login/Register system (UI only)
-
+// Select elements
 const loginBtn = document.getElementById("loginBtn");
 const registerBtn = document.getElementById("registerBtn");
 const addCreatorBtn = document.getElementById("addCreatorBtn");
@@ -89,7 +88,10 @@ const loginNav = document.getElementById("loginNav");
 const registerNav = document.getElementById("registerNav");
 const logoutNav = document.getElementById("logoutNav");
 
-function loginUser() {
+// Fake Login
+function loginUser(e) {
+    if (e) e.preventDefault();
+
     loginBtn.style.display = "none";
     registerBtn.style.display = "none";
     loginNav.style.display = "none";
@@ -99,7 +101,10 @@ function loginUser() {
     logoutNav.style.display = "inline-block";
 }
 
-function logoutUser() {
+// Fake Logout
+function logoutUser(e) {
+    if (e) e.preventDefault();
+
     loginBtn.style.display = "inline-block";
     registerBtn.style.display = "inline-block";
     loginNav.style.display = "inline-block";
