@@ -1,150 +1,135 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    scroll-behavior: smooth;
+    background: #f4f4f4;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
 header {
-    background: #111;
-    color: white;
-    padding: 15px 40px;
+    width: 100%;
+    padding: 15px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    background: #111;
+    color: #fff;
+    position: fixed;
     top: 0;
     z-index: 1000;
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
+    color: #ff4b2b;
 }
 
 nav a {
-    color: white;
-    margin-left: 20px;
+    color: #fff;
     text-decoration: none;
-    font-weight: 500;
+    margin-left: 20px;
+    font-size: 15px;
     transition: 0.3s;
 }
 
 nav a:hover {
-    color: #00c3ff;
-}
-
-#logoutNav:hover {
-    color: #ff4d4d;
+    color: #ff4b2b;
 }
 
 /* HERO */
 .hero {
-    height: 90vh;
-    background: url("https://images.unsplash.com/photo-1556761175-4b46a572b786") no-repeat center center/cover;
+    height: 100vh;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: white;
+    justify-content: center;
+    color: #fff;
     text-align: center;
+    margin-top: 70px;
+    overflow: hidden;
 }
 
-.hero-content {
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 600px;
+/* SLIDER */
+.slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-.hero h1 {
-    font-size: 40px;
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 110%;  /* little zoomed */
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide:nth-child(1) { background-image: url('images/1.jpg'); }
+.slide:nth-child(2) { background-image: url('images/2.jpg'); }
+.slide:nth-child(3) { background-image: url('images/3.jpg'); }
+.slide:nth-child(4) { background-image: url('images/4.jpg'); }
+.slide:nth-child(5) { background-image: url('images/5.jpg'); }
+
+.slide.active {
+    opacity: 1;
+}
+
+/* HERO CONTENT */
+.hero-content h1 {
+    font-size: 48px;
     margin-bottom: 15px;
 }
 
-.hero p {
-    margin-bottom: 20px;
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
 }
 
-.hero-buttons button {
-    padding: 10px 20px;
-    margin: 5px;
+/* BUTTONS */
+.hero-buttons button,
+.section button {
+    padding: 10px 25px;
     border: none;
+    background: #ff4b2b;
+    color: #fff;
+    font-size: 14px;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
+    border-radius: 30px;
+    margin: 5px;
     transition: 0.3s;
 }
 
-#loginBtn, #registerBtn {
-    background: #00c3ff;
-    color: white;
-}
-
-#loginBtn:hover, #registerBtn:hover {
-    background: #0099cc;
-}
-
-#addCreatorBtn {
-    background: #28a745;
-    color: white;
-}
-
-#addCreatorBtn:hover {
-    background: #1e7e34;
+.hero-buttons button:hover,
+.section button:hover {
+    background: #ff1e00;
+    transform: scale(1.05);
 }
 
 /* SECTIONS */
 .section {
-    padding: 60px 40px;
+    padding: 80px 8%;
     text-align: center;
-}
-
-.section.dark {
-    background: #f4f4f4;
+    background: #fff;
 }
 
 .section h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.section p {
+    font-size: 16px;
     margin-bottom: 20px;
-    font-size: 28px;
-}
-
-.section button {
-    margin-top: 20px;
-    padding: 8px 18px;
-    border: none;
-    background: #111;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.section button:hover {
-    background: #00c3ff;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav {
-        margin-top: 10px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 10px;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-    }
+    color: #555;
 }
