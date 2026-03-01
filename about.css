@@ -7,7 +7,6 @@
 }
 
 body {
-    background: #f4f4f4;
     overflow-x: hidden;
 }
 
@@ -43,61 +42,49 @@ nav a.active {
     color: #ff4b2b;
 }
 
-/* HERO SECTION */
-.about-hero {
-    height: 100vh;
-    background: url('https://source.unsplash.com/1600x900/?office,teamwork') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* FULL BACKGROUND SECTION */
+.about-section {
+    min-height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?business,marketing') center/cover no-repeat fixed;
     position: relative;
-    margin-top: 70px;
-    text-align: center;
+    padding: 150px 10% 80px 10%;
     color: #fff;
 }
 
+/* DARK OVERLAY */
 .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.65);
+    background: rgba(0,0,0,0.75);
     top: 0;
     left: 0;
 }
 
-.hero-content {
+/* CONTENT CONTAINER */
+.about-container {
     position: relative;
-    max-width: 900px;
-    padding: 20px;
+    max-width: 1000px;
 }
 
-.hero-content h1 {
+/* HEADINGS */
+.about-container h1 {
     font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.about-container h2 {
+    font-size: 32px;
+    margin-top: 50px;
     margin-bottom: 20px;
+    color: #ff4b2b;
 }
 
-.hero-content p {
-    font-size: 20px;
-    line-height: 1.6;
-}
-
-/* ABOUT CONTENT */
-.about-content {
-    padding: 100px 10%;
-    background: #fff;
-}
-
-.about-content h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #222;
-}
-
-.about-content p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 50px;
-    color: #555;
+/* PARAGRAPHS */
+.about-container p {
+    font-size: 19px;
+    line-height: 1.9;
+    margin-bottom: 30px;
 }
 
 /* FOOTER */
