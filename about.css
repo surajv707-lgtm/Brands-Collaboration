@@ -16,46 +16,54 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 20px;   /* reduced side padding */
     background: rgba(0,0,0,0.9);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* Logo */
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: white;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: orange;
-}
-
-.logout-btn {
-    color: red !important;
-    font-weight: bold;
-}
-
-/* THREE LINE */
+/* MENU TOGGLE */
 .menu-toggle {
     display: none;
-    font-size: 28px;
+    font-size: 30px;
     cursor: pointer;
     color: white;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px; /* smaller padding for mobile */
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto; /* push fully right */
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
 }
 
 /* CONTENT */
