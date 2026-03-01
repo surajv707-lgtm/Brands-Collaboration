@@ -67,6 +67,7 @@ nav ul {
     nav ul.active {
         display: flex;
     }
+}
 
     /* Make all menu options white */
 nav ul li a {
