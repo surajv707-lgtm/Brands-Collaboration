@@ -22,21 +22,29 @@
 
         <h1>Create Your Account</h1>
 
-        <form onsubmit="return validateCaptcha()">
+        <form onsubmit="return validateForm()">
 
-            <label>Full Name</label>
-            <input type="text" required>
+    <label>Full Name</label>
+    <input type="text" required>
 
-            <label>Email Address</label>
-            <input type="email" required>
+    <label>Email Address</label>
+    <input type="email" required>
 
-            <label>Phone Number</label>
-            <input type="tel" required>
+    <label>Phone Number</label>
+    <input type="tel" required>
 
-            <label id="captchaQuestion"></label>
-            <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
+    <label>Password</label>
+    <input type="password" id="password" required minlength="6">
+    <input type="checkbox" onclick="togglePassword()"> Show Password
+   
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPassword" required minlength="6">
+    <input type="checkbox" onclick="togglePassword()"> Show Password
+            
+    <label id="captchaQuestion"></label>
+    <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
 
-            <button type="submit" class="register-btn">Register</button>
+    <button type="submit" class="register-btn">Register</button>
 
         </form>
 
@@ -53,7 +61,8 @@
 let num1, num2, correctAnswer;
 
 function goBack() {
-    window.location.href = "index.html";
+    window.location.href 
+        = "index.html";
 }
 
 function generateCaptcha() {
@@ -65,19 +74,50 @@ function generateCaptcha() {
         "CAPTCHA: What is " + num1 + " + " + num2 + " ?";
 }
 
-function validateCaptcha() {
+function validateForm() {
+
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
     let userAnswer = document.getElementById("captchaInput").value;
 
-    if(userAnswer == correctAnswer) {
-        localStorage.setItem("userLoggedIn", "true");
-        alert("Registration Successful!");
-        window.location.href = "index.html";
+    if(password.length < 6) {
+        alert("Password must be at least 6 characters.");
         return false;
+    }
+
+    if(password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+
+
+function togglePassword() {
+    let pass = document.getElementById("password");
+    let confirmPass = document.getElementById("confirmPassword");
+
+    if(pass.type === "password") {
+        pass.type = "text";
+        confirmPass.type = "text";
     } else {
+        pass.type = "password";
+        confirmPass.type = "password";
+    }
+}
+
+
+    
+
+    if(userAnswer != correctAnswer) {
         alert("Incorrect CAPTCHA. Try again.");
         generateCaptcha();
         return false;
     }
+
+    localStorage.setItem("userLoggedIn", "true");
+    alert("Registration Successful!");
+    window.location.href = "index.html";
+    return false;
 }
 
 generateCaptcha();
