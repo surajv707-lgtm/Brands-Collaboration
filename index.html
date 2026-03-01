@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,24 +13,38 @@
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.htmp">About</a>
+        <a href="about.html">About</a>
         <a href="contact.html">Contact Us</a>
         <a href="login.html" id="loginNav">Login</a>
-        <a href="registet.html" id="registerNav">Register</a>
+        <a href="register.html" id="registerNav">Register</a>
         <a href="#" id="logoutNav" style="display:none;">Logout</a>
     </nav>
 </header>
 
-<!-- HERO -->
-<section id="home" class="hero">
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <!-- Background Slider -->
+    <div class="slider">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+
     <div class="hero-content">
         <h1>Connect Brands With Top Creators</h1>
         <p>Grow your brand through powerful influencer collaborations and strategic promotions.</p>
 
         <div class="hero-buttons">
-            <button id="loginBtn">Login</button>
-            <button id="registerBtn">Register</button>
-            <button id="addCreatorBtn" style="display:none;">Add Creator</button>
+            <button onclick="window.location.href='login.html'" id="loginBtn">Login</button>
+            <button onclick="window.location.href='register.html'" id="registerBtn">Register</button>
+            <button onclick="window.location.href='add-creator.html'" 
+                    id="addCreatorBtn" 
+                    style="display:none;">
+                Add Creator
+            </button>
         </div>
     </div>
 </section>
@@ -39,68 +53,45 @@
 <section class="section">
     <h2>About Us</h2>
     <p>We help brands connect with influencers and creators for powerful marketing campaigns.</p>
-    <button onclick="scrollToSection('about')">View All</button>
+    <button onclick="window.location.href='about.html'">View All</button>
 </section>
-
 
 <!-- CONTACT PREVIEW -->
 <section class="section">
     <h2>Contact Us</h2>
     <p>Have questions about collaborations? Reach out to our team.</p>
-    <button onclick="contact.html">View All</button>
+    <button onclick="window.location.href='contact.html'">View All</button>
 </section>
-
 
 <script>
 
-function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
-
-// Select elements
-const loginBtn = document.getElementById("loginBtn");
-const registerBtn = document.getElementById("registerBtn");
+// Fake login system
+const logoutNav = document.getElementById("logoutNav");
 const addCreatorBtn = document.getElementById("addCreatorBtn");
 
-const loginNav = document.getElementById("loginNav");
-const registerNav = document.getElementById("registerNav");
-const logoutNav = document.getElementById("logoutNav");
-
-// Fake Login
-function loginUser(e) {
-    if (e) e.preventDefault();
-
-    loginBtn.style.display = "none";
-    registerBtn.style.display = "none";
-    loginNav.style.display = "none";
-    registerNav.style.display = "none";
-
+function fakeLogin() {
     addCreatorBtn.style.display = "inline-block";
     logoutNav.style.display = "inline-block";
 }
 
-// Fake Logout
-function logoutUser(e) {
-    if (e) e.preventDefault();
-
-    loginBtn.style.display = "inline-block";
-    registerBtn.style.display = "inline-block";
-    loginNav.style.display = "inline-block";
-    registerNav.style.display = "inline-block";
-
+function logoutUser() {
     addCreatorBtn.style.display = "none";
     logoutNav.style.display = "none";
 }
 
-loginBtn.onclick = loginUser;
-registerBtn.onclick = loginUser;
-loginNav.onclick = loginUser;
-registerNav.onclick = loginUser;
 logoutNav.onclick = logoutUser;
 
-addCreatorBtn.onclick = function(){
-    scrollToSection('creator');
+// Background slider
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function changeSlide() {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
 }
+
+setInterval(changeSlide, 4000);
 
 </script>
 
