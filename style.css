@@ -17,6 +17,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 nav a {
@@ -24,13 +32,18 @@ nav a {
     margin-left: 20px;
     text-decoration: none;
     font-weight: 500;
+    transition: 0.3s;
 }
 
 nav a:hover {
     color: #00c3ff;
 }
 
-/* HERO SECTION */
+#logoutNav:hover {
+    color: #ff4d4d;
+}
+
+/* HERO */
 .hero {
     height: 90vh;
     background: url("https://images.unsplash.com/photo-1556761175-4b46a572b786") no-repeat center center/cover;
@@ -45,6 +58,7 @@ nav a:hover {
     background: rgba(0,0,0,0.6);
     padding: 40px;
     border-radius: 10px;
+    max-width: 600px;
 }
 
 .hero h1 {
@@ -63,6 +77,7 @@ nav a:hover {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    transition: 0.3s;
 }
 
 #loginBtn, #registerBtn {
@@ -70,13 +85,17 @@ nav a:hover {
     color: white;
 }
 
+#loginBtn:hover, #registerBtn:hover {
+    background: #0099cc;
+}
+
 #addCreatorBtn {
     background: #28a745;
     color: white;
 }
 
-#logoutNav {
-    color: red;
+#addCreatorBtn:hover {
+    background: #1e7e34;
 }
 
 /* SECTIONS */
@@ -91,6 +110,7 @@ nav a:hover {
 
 .section h2 {
     margin-bottom: 20px;
+    font-size: 28px;
 }
 
 .section button {
@@ -101,8 +121,30 @@ nav a:hover {
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    transition: 0.3s;
 }
 
 .section button:hover {
     background: #00c3ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
 }
