@@ -1,51 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Contact - Brand Collaboration</title>
+    <meta charset="UTF-8">
+    <title>Contact For Collab | Brand & Influencer Collaboration Platform</title>
+
+    <meta name="description" content="Contact For Collab for brand partnerships, influencer collaborations, and business inquiries. Connect with India's growing digital collaboration platform.">
+    <meta name="keywords" content="For Collab contact, influencer marketing contact, brand collaboration India">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="contact.css">
 </head>
 <body>
 
 <header>
-  <div class="logo">BrandCollab</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html" id="loginLink">Login</a>
-    <a href="register.html" id="registerLink">Register</a>
-    <a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
-  </nav>
+    <div class="logo">For Collab</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav>
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li id="loginNav"><a href="login.html">Login</a></li>
+            <li id="registerNav"><a href="register.html">Register</a></li>
+            <li id="logoutNav" style="display:none;">
+                <a href="#" class="logout-btn" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
 </header>
 
 <section class="contact-section">
-<section class="contact-section">
-  <h1>CONTACT US</h1>
-<form action="https://formsubmit.co/abhinavvishwakarma36@email.com" method="POST">
-     <input type="text" placeholder="Name" name="name" required>
-     <input type="email" placeholder="Email"name="email" required>
-    <textarea name="Message" id="Message" cols="3" rows="3" placeholder="Your Message"></textarea>
-    <br>
-    <button type="submit">Send</button>
-    
-</form>
+    <div class="contact-content">
+
+        <h1>Contact For Collab</h1>
+
+        <p>
+            At For Collab, we believe that powerful brand growth begins with meaningful
+            communication. Whether you are a brand looking to scale your digital presence
+            through influencer marketing or a content creator seeking professional
+            collaboration opportunities, we are here to support you at every step.
+        </p>
+
+        <p>
+            Our platform is designed to simplify brand partnerships, ensure transparent
+            communication, and create long-term growth opportunities. If you have
+            business inquiries, partnership proposals, collaboration requests,
+            or technical support questions, feel free to reach out to us directly.
+        </p>
+
+        <p>
+            We are committed to responding quickly and helping you build
+            strong, result-driven collaborations in today’s competitive digital market.
+        </p>
+
+        <h2>Get In Touch</h2>
+
+        <p><strong>Phone:</strong> +91 9172660105</p>
+        <p><strong>Email:</strong> abhinavvishwakarma36@gmail.com</p>
+
+        <div class="contact-buttons">
+            <a href="tel:+919172660105" class="call-btn">Call Now</a>
+            <a href="https://wa.me/919172660105" target="_blank" class="whatsapp-btn">WhatsApp</a>
+        </div>
+
+    </div>
 </section>
-    
+
+<footer>
+    <p>© 2026 For Collab. All Rights Reserved.</p>
+</footer>
+
 <script>
-function updateNavbar(){
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
-    document.getElementById("loginLink").style.display = loggedIn ? "none" : "inline";
-    document.getElementById("registerLink").style.display = loggedIn ? "none" : "inline";
-    document.getElementById("logoutLink").style.display = loggedIn ? "inline" : "none";
+function toggleMenu() {
+    document.getElementById("nav-links").classList.toggle("active");
 }
 
-function logout(){
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "index.html";
+function checkLogin() {
+    if(localStorage.getItem("userLoggedIn")) {
+        document.getElementById("loginNav").style.display = "none";
+        document.getElementById("registerNav").style.display = "none";
+        document.getElementById("logoutNav").style.display = "block";
+    }
 }
 
-window.onload = updateNavbar;
+function logout() {
+    localStorage.removeItem("userLoggedIn");
+    location.reload();
+}
+
+checkLogin();
 </script>
-    
+
 </body>
 </html>
