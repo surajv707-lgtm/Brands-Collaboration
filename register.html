@@ -57,12 +57,14 @@
     <p>© 2026 For Collab. All Rights Reserved.</p>
 </footer>
 
+
+
+
 <script>
 let num1, num2, correctAnswer;
 
 function goBack() {
-    window.location.href 
-        = "index.html";
+    window.location.href = "index.html";
 }
 
 function generateCaptcha() {
@@ -76,31 +78,31 @@ function generateCaptcha() {
 
 function validateForm() {
 
+    let name = document.querySelector("input[type='text']").value;
+    let email = document.querySelector("input[type='email']").value;
+    let phone = document.querySelector("input[type='tel']").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     let userAnswer = document.getElementById("captchaInput").value;
-
-    if(password.length < 6) {
-        alert("Password must be at least 6 characters.");
-        return false;
-    }
 
     if(password !== confirmPassword) {
         alert("Passwords do not match.");
         return false;
     }
 
-
-
-    
-
     if(userAnswer != correctAnswer) {
-        alert("Incorrect CAPTCHA. Try again.");
+        alert("Incorrect CAPTCHA.");
         generateCaptcha();
         return false;
     }
 
+    // Save user data
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPhone", phone);
+    localStorage.setItem("userPassword", password);
     localStorage.setItem("userLoggedIn", "true");
+
     alert("Registration Successful!");
     window.location.href = "index.html";
     return false;
@@ -108,6 +110,8 @@ function validateForm() {
 
 generateCaptcha();
 </script>
+    
+    
 
 </body>
 </html>
