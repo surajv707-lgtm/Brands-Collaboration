@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About BrandCollab | Influencer Marketing Platform</title>
+    <title>About For Collab | India’s Brand & Influencer Collaboration Platform</title>
 
     <!-- SEO -->
-    <meta name="description" content="BrandCollab connects brands with top influencers and creators for strategic digital marketing partnerships and business growth.">
+    <meta name="description" content="Learn about For Collab – India's fast-growing brand and influencer collaboration platform connecting creators and businesses for powerful digital marketing partnerships.">
     <meta name="keywords" content="brand collaboration, influencer marketing, creator platform, digital marketing">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,10 +75,27 @@
 <footer>
     <p>© 2026 BrandCollab. All Rights Reserved.</p>
 </footer>
-<script>
+
+    <script>
 function toggleMenu() {
     document.getElementById("nav-links").classList.toggle("active");
 }
+
+function checkLogin() {
+    if(localStorage.getItem("userLoggedIn")) {
+        document.getElementById("loginNav").style.display = "none";
+        document.getElementById("registerNav").style.display = "none";
+        document.getElementById("logoutNav").style.display = "block";
+        document.getElementById("addCreatorNav").style.display = "block";
+    }
+}
+
+function logout() {
+    localStorage.removeItem("userLoggedIn");
+    location.reload();
+}
+
+checkLogin();
 </script>
     
 
