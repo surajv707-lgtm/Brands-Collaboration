@@ -106,5 +106,19 @@ function logout() {
 checkLogin();
 </script>
 
+    <script>
+window.onload = function() {
+    if(localStorage.getItem("loggedIn") === "true") {
+
+        // Hide Login & Register
+        document.getElementById("loginBtn").style.display = "none";
+        document.getElementById("registerBtn").style.display = "none";
+
+        // Show Add Creator
+        document.getElementById("creatorBtn").style.display = "inline-block";
+    }
+}
+</script>
+
 </body>
 </html>
