@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <title>For Collab | Creator & Brand Collaboration Platform</title>
-    <meta name="description" content="For Collab is a professional platform connecting brands and creators for paid promotions and collaborations. Grow your brand and influence today.">
-    <meta name="keywords" content="For Collab, brand collaboration, influencer marketing, creator platform, paid promotion">
-    <meta name="author" content="For Collab">
-    <meta name="robots" content="index, follow">
+<title>For Collab | Creator & Brand Collaboration Platform</title>
+<meta name="description" content="For Collab is a professional platform connecting brands and creators for paid promotions and collaborations.">
+<meta name="keywords" content="For Collab, brand collaboration, influencer marketing">
+<meta name="author" content="For Collab">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
     <div class="logo">For Collab</div>
-
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
     <nav>
@@ -28,7 +25,9 @@
             <li><a href="contact.html">Contact Us</a></li>
             <li id="loginNav"><a href="login.html">Login</a></li>
             <li id="registerNav"><a href="register.html">Register</a></li>
-            <li id="addCreatorNav" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+            <li id="addCreatorNav" style="display:none;">
+                <a href="add-creator.html">Add Creator</a>
+            </li>
             <li id="logoutNav" style="display:none;">
                 <a href="#" class="logout-btn" onclick="logout()">Logout</a>
             </li>
@@ -36,47 +35,37 @@
     </nav>
 </header>
 
-<!-- HERO SECTION -->
 <section class="hero">
     <h1>Welcome to For Collab</h1>
     <p>
-        For Collab is India’s fast-growing digital collaboration platform that connects brands and content creators 
-        for powerful marketing partnerships. We help influencers monetize their audience and brands increase their reach.
-    </p>
-    <p>
-        Whether you are a YouTuber, Instagram influencer, gaming creator, or business brand, 
-        our platform helps you grow professionally with secure and trusted collaborations.
+        India's fast-growing collaboration platform connecting brands and creators 
+        for powerful marketing partnerships.
     </p>
 
     <div class="auth-buttons">
-    <a href="login.html" id="loginBtn" class="btn">Login</a>
-    <a href="register.html" id="registerBtn" class="btn">Register</a>
-
-    <!-- Add Creator Button (Hidden by default) -->
-    <a href="add-creator.html" id="creatorBtn" class="btn" style="display:none;">
-        Add Creator
-    </a>
+        <a href="login.html" id="loginBtn" class="btn btn-login">Login</a>
+        <a href="register.html" id="registerBtn" class="btn btn-register">Register</a>
+        <a href="add-creator.html" id="creatorBtn" class="btn btn-creator" style="display:none;">
+            Add Creator
+        </a>
     </div>
 </section>
 
-<!-- ABOUT PREVIEW -->
 <section class="section">
     <h2>About For Collab</h2>
     <p>
-        For Collab was built with a vision to simplify brand promotions. 
-        We provide a professional environment where brands and creators can connect directly, 
-        negotiate partnerships, and build long-term collaborations.
+        We provide a professional environment where brands and creators connect 
+        and build long-term collaborations.
     </p>
-    <button onclick="location.href='about.html'">View All</button>
+    <button onclick="location.href='about.html'" class="btn-small">View All</button>
 </section>
 
-<!-- CONTACT PREVIEW -->
 <section class="section">
     <h2>Contact Information</h2>
     <p>Email: abhinavvishwakarma36@gmail.com</p>
     <p>Phone: +91 9172660105</p>
     <p>Location: Mumbai, India</p>
-    <button onclick="location.href='contact.html'">View All</button>
+    <button onclick="location.href='contact.html'" class="btn-small">View All</button>
 </section>
 
 <footer>
@@ -89,12 +78,18 @@ function toggleMenu() {
 }
 
 function checkLogin() {
-    if(localStorage.getItem("userLoggedIn")) {
+    if(localStorage.getItem("userLoggedIn") === "true") {
+
+        // Navbar
         document.getElementById("loginNav").style.display = "none";
         document.getElementById("registerNav").style.display = "none";
         document.getElementById("logoutNav").style.display = "block";
         document.getElementById("addCreatorNav").style.display = "block";
-        document.getElementById("heroButtons").style.display = "none";
+
+        // Hero Buttons
+        document.getElementById("loginBtn").style.display = "none";
+        document.getElementById("registerBtn").style.display = "none";
+        document.getElementById("creatorBtn").style.display = "inline-block";
     }
 }
 
@@ -104,20 +99,6 @@ function logout() {
 }
 
 checkLogin();
-</script>
-
-    <script>
-window.onload = function() {
-    if(localStorage.getItem("loggedIn") === "true") {
-
-        // Hide Login & Register
-        document.getElementById("loginBtn").style.display = "none";
-        document.getElementById("registerBtn").style.display = "none";
-
-        // Show Add Creator
-        document.getElementById("creatorBtn").style.display = "inline-block";
-    }
-}
 </script>
 
 </body>
