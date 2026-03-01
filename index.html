@@ -1,77 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Brand Collaboration</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Brand Collaboration</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- NAVBAR -->
 <header>
-  <div class="logo">BrandCollab</div>
-  <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html" id="loginLink">Login</a>
-      <a href="register.html" id="registerLink">Register</a>
-      <a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
-  </nav>
+    <div class="logo">BrandCollab</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact Us</a>
+        <a href="#" id="loginNav">Login</a>
+        <a href="#" id="registerNav">Register</a>
+        <a href="#" id="logoutNav" style="display:none;">Logout</a>
+    </nav>
 </header>
 
-<section class="hero">
-  <div class="overlay">
-      <h1>WELCOME TO BRAND COLLABORATION</h1>
-      <p>Building Powerful Partnerships Between Brands And Creators.</p>
-      <p>Driving Growth Through Strategic Digital Marketing Solutions.</p>
-      <p>Creating Long‑Term Success With Trust And Transparency.</p>
-    <br>
-  
-  
-  <div class="homeButtons">
-  <!-- These show only if NOT logged in -->
-  <div id="guestButtons">
-      <a href="login.html" class="btn">Login</a>
-    <br>
-    <br>
-      <a href="register.html" class="btn secondary">Register</a>
-  </div>
-    
-  <!-- These show only after login -->
-  <div id="userButtons" style="display:none;">
-      <a href="#" class="btn">Add Creator</a>
-    
-  </div>
+<!-- HOME SECTION -->
+<section class="home">
+    <div class="overlay">
+        <h1>Connect Brands With Top Creators</h1>
+        <p>
+            Grow your brand through powerful influencer collaborations, 
+            strategic campaigns, and trusted creator partnerships.
+        </p>
+
+        <div class="buttons">
+            <button id="loginBtn">Login</button>
+            <button id="registerBtn">Register</button>
+            <button id="addCreatorBtn" style="display:none;">Add Creator</button>
+        </div>
+    </div>
 </section>
 
-
-<section class="preview">
-  <h2>ABOUT US</h2>
-  <p>We connect influencers, creators and businesses for impactful collaborations.</p>
-  <a href="about.html" class="view-btn">View All</a>
-</section>
-
-<section class="preview">
-  <h2>CONTACT US</h2>
-  <p>Phone: 9172660105</p>
-  <p>Email: abhinavvishwakarma36@gmail.com</p>
-  <a href="contact.html" class="view-btn">View All</a>
-</section>
+<!-- Creator Section Anchor -->
+<section id="creator"></section>
 
 <script>
-function updateHomeUI() {
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
-    if (loggedIn) {
-        document.getElementById("guestButtons").style.display = "none";
-        document.getElementById("userButtons").style.display = "block";
-    }
+
+const loginBtn = document.getElementById("loginBtn");
+const registerBtn = document.getElementById("registerBtn");
+const addCreatorBtn = document.getElementById("addCreatorBtn");
+
+const loginNav = document.getElementById("loginNav");
+const registerNav = document.getElementById("registerNav");
+const logoutNav = document.getElementById("logoutNav");
+
+function loginUser() {
+    loginBtn.style.display = "none";
+    registerBtn.style.display = "none";
+    loginNav.style.display = "none";
+    registerNav.style.display = "none";
+
+    addCreatorBtn.style.display = "inline-block";
+    logoutNav.style.display = "inline-block";
 }
 
-function logout() {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "index.html";
+function logoutUser() {
+    loginBtn.style.display = "inline-block";
+    registerBtn.style.display = "inline-block";
+    loginNav.style.display = "inline-block";
+    registerNav.style.display = "inline-block";
+
+    addCreatorBtn.style.display = "none";
+    logoutNav.style.display = "none";
 }
 
-window.onload = updateHomeUI;
+loginBtn.onclick = loginUser;
+registerBtn.onclick = loginUser;
+loginNav.onclick = loginUser;
+registerNav.onclick = loginUser;
+logoutNav.onclick = logoutUser;
+
+addCreatorBtn.onclick = function() {
+    document.getElementById("creator").scrollIntoView({behavior: "smooth"});
+}
+
 </script>
 
 </body>
