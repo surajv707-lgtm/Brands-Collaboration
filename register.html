@@ -35,11 +35,11 @@
 
     <label>Password</label>
     <input type="password" id="password" required minlength="6">
-    <input type="checkbox" onclick="togglePassword()"> Show Password
+    
    
     <label>Confirm Password</label>
     <input type="password" id="confirmPassword" required minlength="6">
-    <input type="checkbox" onclick="togglePassword()"> Show Password
+    
             
     <label id="captchaQuestion"></label>
     <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
@@ -90,20 +90,6 @@ function validateForm() {
         return false;
     }
 
-
-
-function togglePassword() {
-    let pass = document.getElementById("password");
-    let confirmPass = document.getElementById("confirmPassword");
-
-    if(pass.type === "password") {
-        pass.type = "text";
-        confirmPass.type = "text";
-    } else {
-        pass.type = "password";
-        confirmPass.type = "password";
-    }
-}
 
 
     
