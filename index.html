@@ -26,11 +26,12 @@
 
     <!-- Background Slider -->
     <div class="slider">
-        <div class="slide active"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
-        <div class="slide"></div>
+    <div class="slider">
+    <div class="slide active" style="background-image:url('https://source.unsplash.com/1600x900/?business');"></div>
+    <div class="slide" style="background-image:url('https://source.unsplash.com/1600x900/?marketing');"></div>
+    <div class="slide" style="background-image:url('https://source.unsplash.com/1600x900/?startup');"></div>
+    <div class="slide" style="background-image:url('https://source.unsplash.com/1600x900/?office');"></div>
+    <div class="slide" style="background-image:url('https://source.unsplash.com/1600x900/?technology');"></div>
     </div>
 
     <div class="hero-content">
@@ -81,18 +82,19 @@ function logoutUser() {
 
 logoutNav.onclick = logoutUser;
 
-// Background slider
-let slides = document.querySelectorAll(".slide");
-let index = 0;
+</script>
 
-function changeSlide() {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
+        <script>
+let slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function nextSlide() {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
 }
 
-setInterval(changeSlide, 4000);
-
+setInterval(nextSlide, 3000);
 </script>
 
 </body>
