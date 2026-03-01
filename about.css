@@ -3,37 +3,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', sans-serif;
     overflow-x: hidden;
 }
 
-/* HEADER */
+/* NAVBAR */
 header {
     width: 100%;
-    padding: 15px 8%;
+    padding: 18px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #111;
-    color: #fff;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
 }
 
 .logo {
+    color: #ff4b2b;
     font-size: 24px;
     font-weight: bold;
-    color: #ff4b2b;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    margin-left: 20px;
+    margin-left: 25px;
+    font-size: 15px;
     transition: 0.3s;
 }
 
@@ -42,49 +43,45 @@ nav a.active {
     color: #ff4b2b;
 }
 
-/* FULL BACKGROUND SECTION */
-.about-section {
+/* BACKGROUND SECTION */
+.about-bg {
     min-height: 100vh;
-    background: url('https://source.unsplash.com/1600x900/?business,marketing') center/cover no-repeat fixed;
-    position: relative;
     padding: 150px 10% 80px 10%;
     color: #fff;
-}
-
-/* DARK OVERLAY */
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    top: 0;
-    left: 0;
-}
-
-/* CONTENT CONTAINER */
-.about-container {
     position: relative;
+
+    /* WORKING BACKGROUND IMAGE */
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                      url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* CONTENT */
+.content {
     max-width: 1000px;
 }
 
 /* HEADINGS */
-.about-container h1 {
+.content h1 {
     font-size: 48px;
     margin-bottom: 30px;
 }
 
-.about-container h2 {
-    font-size: 32px;
-    margin-top: 50px;
+.content h2 {
+    font-size: 30px;
+    margin-top: 40px;
     margin-bottom: 20px;
     color: #ff4b2b;
 }
 
 /* PARAGRAPHS */
-.about-container p {
-    font-size: 19px;
+.content p {
+    font-size: 18px;
     line-height: 1.9;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 /* FOOTER */
