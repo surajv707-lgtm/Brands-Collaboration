@@ -1,52 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>About - Brand Collaboration</title>
+    <meta charset="UTF-8">
+    <title>About Us - BrandCollab</title>
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
-
 <header>
-  <div class="logo">BrandCollab</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html" id="loginLink">Login</a>
-    <a href="register.html" id="registerLink">Register</a>
-    <a href="#" id="logoutLink" style="display:none;" onclick="logout()">Logout</a>
-  </nav>
+    <div class="logo">BrandCollab</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+    </nav>
 </header>
 
-<section class="about-section">
-    <div class="about-overlay">
-        <h1>ABOUT BRAND COLLABORATION</h1>
-        <p>Brand Collaboration is a premium digital partnership platform empowering brands and creators.</p>
-        <p>We build strategic marketing partnerships that deliver measurable growth and long-term success.</p>
+<!-- HERO SECTION -->
+<section class="about-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>We Build Powerful Brand & Creator Partnerships</h1>
+        <p>
+            Connecting innovative brands with talented creators to build impactful,
+            engaging, and performance-driven marketing collaborations across digital platforms.
+        </p>
     </div>
 </section>
 
-<div class="floating">
-    <a href="https://wa.me/9172660105" target="_blank">🟢</a>
-    <a href="tel:9172660105">📞</a>
-</div>
-    
-    <script>
-function updateNavbar(){
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
-    document.getElementById("loginLink").style.display = loggedIn ? "none" : "inline";
-    document.getElementById("registerLink").style.display = loggedIn ? "none" : "inline";
-    document.getElementById("logoutLink").style.display = loggedIn ? "inline" : "none";
-}
+<!-- MAIN ABOUT SECTION -->
+<section class="about-content">
 
-function logout(){
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "index.html";
-}
+    <h2>Who We Are</h2>
+    <p>
+        BrandCollab is a next-generation collaboration platform built to bridge the gap 
+        between ambitious brands and high-performing digital creators. In today’s fast-paced 
+        digital ecosystem, businesses need more than traditional marketing strategies — 
+        they need authentic voices, strong storytelling, and real audience engagement. 
+        Our platform is designed to empower brands with access to trusted influencers 
+        while giving creators meaningful opportunities to grow, monetize, and expand their reach.
+    </p>
 
-window.onload = updateNavbar;
-    </script>
+    <h2>Our Mission</h2>
+    <p>
+        Our mission is to transform the way influencer marketing works by making collaborations 
+        transparent, data-driven, and highly result-oriented. We believe that every brand 
+        deserves visibility and every creator deserves recognition. By combining strategy, 
+        technology, and creativity, we create partnerships that deliver measurable impact 
+        and long-term brand growth.
+    </p>
+
+    <h2>What We Do</h2>
+    <p>
+        We provide a streamlined ecosystem where brands can discover creators based on niche, 
+        audience demographics, engagement rates, and content style. From campaign planning 
+        and creator selection to performance tracking and analytics, BrandCollab simplifies 
+        the entire collaboration journey. Our advanced tools ensure smooth communication, 
+        secure agreements, and efficient campaign execution for both parties.
+    </p>
+
+    <h2>Why Choose BrandCollab?</h2>
+    <p>
+        Choosing BrandCollab means choosing innovation, reliability, and performance. 
+        We focus on delivering campaigns that not only look good but also generate real 
+        business outcomes. With a strong emphasis on quality partnerships, strategic 
+        marketing planning, and creative storytelling, we help brands achieve higher 
+        engagement, stronger brand loyalty, and sustainable growth in competitive markets.
+    </p>
+
+</section>
+
+<footer>
+    <p>© 2026 BrandCollab. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
