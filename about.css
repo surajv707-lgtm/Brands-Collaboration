@@ -25,6 +25,7 @@ header {
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
 /* NAVIGATION */
@@ -44,16 +45,44 @@ nav ul li a:hover {
     color: orange;
 }
 
+/* THREE LINE BUTTON */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* MOBILE DESIGN */
+@media (max-width: 768px) {
+
+    nav ul {
+        display: none; /* hidden by default */
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 220px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex; /* show when clicked */
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
 .logout-btn {
     color: red !important;
     font-weight: bold;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
+
 
 /* BACKGROUND SECTION */
 .about-bg {
