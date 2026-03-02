@@ -80,7 +80,7 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
         margin: 15px 0;
         margin-left: 0; 
         text-align: left;
-        width: 100%;
+        width: 500;
     }
 
     /* Adjust Hero for Mobile to prevent overlap */
