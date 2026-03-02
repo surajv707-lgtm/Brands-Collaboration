@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Collab | Premium Brand Collaboration Platform</title>
-    <meta name="description" content="For Collab is a premium brand collaboration platform connecting creators and brands.">
+    <title>For Collab | Premium Brand & Creator Platform</title>
+    <meta name="description" content="The ultimate luxury ecosystem for brand collaborations and elite creators.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,49 +13,48 @@
     <nav class="navbar">
         <div class="logo">For Collab</div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            
-            <li class="guest-only"><a href="login.html">Login</a></li>
-            <li class="guest-only"><a href="register.html">Register</a></li>
-            
-            <li class="auth-only" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
-            <li class="auth-only" style="display:none;"><a href="#" onclick="logout()" class="logout-link">Logout</a></li>
+            <li class="guest-item"><a href="login.html">Login</a></li>
+            <li class="guest-item"><a href="register.html">Register</a></li>
+            <li class="auth-item" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+            <li class="auth-item" style="display:none;"><a href="#" onclick="logout()" style="color: #ff4d4d;">Logout</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero">
-    <div class="hero-content">
+    <div class="hero-overlay">
         <h1>Premium Brand & Creator Collaboration</h1>
-        <p>For Collab connects powerful brands with talented creators in a secure, professional and luxury digital ecosystem.</p>
-        
-        <div class="hero-buttons">
-            <a href="login.html" class="btn guest-only">Login</a>
-            <a href="register.html" class="btn btn-outline guest-only">Register</a>
-            
-            <a href="add-creator.html" class="btn auth-only" style="display:none;">Add Creator</a>
+        <p>Connecting elite brands with visionary creators in a secure, professional ecosystem.</p>
+        <div class="hero-buttons" id="heroButtons">
+            <a href="login.html" class="btn guest-item">Login</a>
+            <a href="register.html" class="btn btn-outline guest-item">Register</a>
+            <a href="add-creator.html" class="btn auth-item" style="display:none;">Add Creator</a>
         </div>
     </div>
 </section>
 
 <section class="preview">
-    <h2>About Our Network</h2>
-    <p>We provide transparency, professional communication and premium partnership tools.</p>
-    <a href="about.html" class="view-btn">View All</a>
+    <div class="container">
+        <h2>About Preview</h2>
+        <p>For Collab is designed to build strong partnerships through transparency and luxury digital tools.</p>
+        <a href="about.html" class="view-all-btn">View All</a>
+    </div>
 </section>
 
 <section class="preview dark">
-    <h2>Contact Support</h2>
-    <p>Reach our team quickly for brand deals, sponsorship inquiries and creator partnerships.</p>
-    <a href="contact.html" class="view-btn">View All</a>
+    <div class="container">
+        <h2>Contact Preview</h2>
+        <p>Need support? Reach our specialized team for brand deals and high-tier sponsorships.</p>
+        <a href="contact.html" class="view-all-btn">View All</a>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 For Collab | All Rights Reserved</p>
+    <p>© 2026 For Collab | Luxury Professional Network</p>
 </footer>
 
 <script>
@@ -65,16 +64,11 @@
 
     function updateUI() {
         const isLoggedIn = localStorage.getItem("userLoggedIn") === "true";
-        const guestElements = document.querySelectorAll('.guest-only');
-        const authElements = document.querySelectorAll('.auth-only');
+        const guests = document.querySelectorAll('.guest-item');
+        const auths = document.querySelectorAll('.auth-item');
 
-        if (isLoggedIn) {
-            guestElements.forEach(el => el.style.display = 'none');
-            authElements.forEach(el => el.style.display = 'inline-block');
-        } else {
-            guestElements.forEach(el => el.style.display = 'inline-block');
-            authElements.forEach(el => el.style.display = 'none');
-        }
+        guests.forEach(el => el.style.display = isLoggedIn ? 'none' : 'inline-block');
+        auths.forEach(el => el.style.display = isLoggedIn ? 'inline-block' : 'none');
     }
 
     function logout() {
@@ -82,10 +76,9 @@
         window.location.reload();
     }
 
-    // Run on load
-    updateUI();
+    window.onload = updateUI;
 </script>
-
 </body>
 </html>
+
 
