@@ -4,52 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
 <title>Contact For Collab | Premium Brand & Creator Support</title>
-<meta name="description" content="Contact For Collab premium support for brand collaboration, sponsorship, and creator partnerships. Luxury professional platform for brands and influencers.">
+
+<meta name="description" content="Contact For Collab premium support for brand collaborations, sponsorships and creator partnerships. Luxury professional platform for brands and influencers.">
 <meta name="keywords" content="For Collab Contact, Brand Collaboration Support, Creator Support, Premium Platform">
 <meta name="author" content="For Collab">
 <meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="contact.css">
 </head>
-
 <body>
 
 <!-- NAVBAR -->
 <header>
 <div class="navbar">
 
-    <!-- LEFT SIDE LOGO -->
-    <div class="logo">For Collab</div>
+<div class="logo">For Collab</div>
 
-    <!-- RIGHT SIDE MENU TOGGLE -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <!-- MENU ITEMS -->
-    <ul class="nav-links" id="navLinks">
+<ul class="nav-links" id="navLinks">
 
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html" class="active">Contact</a></li>
 
-        <li id="loginOption"><a href="login.html">Login</a></li>
-        <li id="registerOption"><a href="register.html">Register</a></li>
+<li id="loginOption"><a href="login.html">Login</a></li>
+<li id="registerOption"><a href="register.html">Register</a></li>
 
-        <li id="addCreatorOption" style="display:none;">
-            <a href="add-creator.html">Add Creator</a>
-        </li>
+<li id="addCreatorOption" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+<li id="logoutOption" style="display:none;"><a href="#" onclick="logout()" class="logout-btn">Logout</a></li>
 
-        <li id="logoutOption" style="display:none;">
-            <a href="#" onclick="logout()" class="logout-btn">Logout</a>
-        </li>
-
-    </ul>
-
+</ul>
 </div>
 </header>
 
-<!-- CONTACT CONTENT -->
+<!-- MAIN CONTENT -->
 <section class="contact-section">
 
 <div class="contact-box">
@@ -57,29 +47,35 @@
 <h1>Contact For Collab</h1>
 
 <p>
-For Collab is a premium brand collaboration platform built to connect creators and brands in a structured and professional environment. 
-We provide high-quality partnership opportunities, secure communication, and transparent collaboration management.
+For Collab is a premium brand collaboration platform designed to connect creators and brands
+in a professional and structured digital ecosystem. We provide secure communication,
+transparent partnership management, and high-quality collaboration opportunities.
 </p>
 
 <p>
-If you are a brand searching for authentic influencers or a creator looking for paid sponsorship opportunities,
-our team is ready to guide you through every step. We focus on building long-term professional relationships
-instead of short-term promotions.
+Our platform helps brands find authentic creators and helps creators get paid sponsorships,
+brand deals, and long-term partnership opportunities. We focus on trust, professionalism,
+and growth-oriented collaborations.
 </p>
 
-<p>
-Our support team responds quickly to collaboration inquiries, partnership requests, and technical support questions.
-We believe in maintaining premium service standards for every user who joins our platform.
-</p>
+<!-- CONTACT DETAILS -->
+<div class="contact-details">
+<h2>Contact Details</h2>
 
-<!-- TWO PREMIUM BUTTONS -->
+<p><strong>📞 Phone:</strong> +91 9172660105</p>
+
+<p><strong>📧 Email:</strong> abhinavvishwakarma36@gmail.com</p>
+
+</div>
+
+<!-- BUTTONS -->
 <div class="button-group">
 
-<a href="tel:+91XXXXXXXXXX" class="btn call-btn">
+<a href="tel:+919172660105" class="btn call-btn">
 📞 Call Now
 </a>
 
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn whatsapp-btn">
+<a href="https://wa.me/919172660105" target="_blank" class="btn whatsapp-btn">
 💬 WhatsApp
 </a>
 
@@ -92,13 +88,14 @@ We believe in maintaining premium service standards for every user who joins our
 <p>© 2026 For Collab. All Rights Reserved.</p>
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
 
+/* Toggle Menu */
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("show");
 }
 
+/* Login Check */
 function checkLogin(){
 if(localStorage.getItem("userLoggedIn") === "true"){
 
@@ -110,6 +107,7 @@ document.getElementById("logoutOption").style.display="block";
 }
 }
 
+/* Logout */
 function logout(){
 localStorage.removeItem("userLoggedIn");
 window.location.href="index.html";
