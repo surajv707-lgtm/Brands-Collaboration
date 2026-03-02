@@ -58,7 +58,8 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
 
     .nav-links {
         position: absolute;
-        top: 80px; 
+        /* Changed top from 80px to 100% to remove the gap */
+        top: 100%; 
         right: 0;
         background: black;
         flex-direction: column;
@@ -66,7 +67,9 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
         padding: 20px;
         display: none; 
         z-index: 1000;
-        /* Border golden color lines removed from here */
+        /* Borders removed as per previous request */
+        border-left: none;
+        border-bottom: none;
     }
 
     .nav-links.show {
@@ -79,9 +82,8 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
         text-align: left;
     }
 
+    /* Adjust Hero for Mobile */
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
 }
-
-
 
