@@ -19,26 +19,27 @@
                 <p>Fill out the form below to join our premium network.</p>
             </header>
 
-            <form id="addCreatorForm" class="professional-form">
+            <form action="https://formspree.io/f/abhinavvishwakarma36@gmail.com" method="POST" id="addCreatorForm" class="professional-form">
+                
                 <div class="form-section">
                     <h3>Personal Details</h3>
-                    <input type="text" id="cName" placeholder="Full Name" required>
-                    <input type="email" id="cEmail" placeholder="Email Address" required>
-                    <input type="tel" id="cPhone" placeholder="Phone Number" required>
+                    <input type="text" name="Name" placeholder="Full Name" required>
+                    <input type="email" name="Email" placeholder="Email Address" required>
+                    <input type="tel" name="Phone" placeholder="Phone Number" required>
                 </div>
 
                 <div class="form-section">
                     <h3>Social Profiles</h3>
-                    <input type="text" id="cInsta" placeholder="Instagram ID (e.g., @username)" required>
-                    <input type="url" id="cYoutube" placeholder="YouTube Channel Link">
+                    <input type="text" name="Instagram" placeholder="Instagram ID (e.g., @username)" required>
+                    <input type="url" name="YouTube" placeholder="YouTube Channel Link">
                 </div>
 
                 <div class="form-section">
                     <h3>Collaboration Details</h3>
-                    <input type="text" id="cType" placeholder="Content Type (e.g., Fashion, Travel)" required>
-                    <input type="text" id="cExpect" placeholder="Expected Money for Promotion (INR)" required>
+                    <input type="text" name="ContentType" placeholder="Content Type (e.g., Fashion, Travel)" required>
+                    <input type="text" name="ExpectedPay" placeholder="Expected Money for Promotion (INR)" required>
                     
-                    <select id="collabType" required>
+                    <select name="CollaborationType" required>
                         <option value="" disabled selected>Select Collaboration Type</option>
                         <option value="Brands">Brands</option>
                         <option value="Stores">Stores</option>
@@ -48,6 +49,8 @@
                     </select>
                 </div>
 
+                <input type="hidden" name="_next" value="https://surajv707-lgtm.github.io/Brands-Collaboration/thank-you.html">
+
                 <div class="button-group">
                     <a href="index.html" class="back-btn-low">Back to Home</a>
                     <button type="submit" class="submit-btn">Submit Application</button>
@@ -55,44 +58,8 @@
             </form>
         </div>
     </main>
-
-    <script>
-        document.getElementById('addCreatorForm').onsubmit = function(e) {
-            e.preventDefault();
-            
-            // Collect Values
-            const name = document.getElementById('cName').value;
-            const email = document.getElementById('cEmail').value;
-            const phone = document.getElementById('cPhone').value;
-            const insta = document.getElementById('cInsta').value;
-            const yt = document.getElementById('cYoutube').value;
-            const type = document.getElementById('cType').value;
-            const expect = document.getElementById('cExpect').value;
-            const collab = document.getElementById('collabType').value;
-
-            // Format WhatsApp Message
-            const msg = `*New Creator Application*%0A` +
-                        `---------------------%0A` +
-                        `*Name:* ${name}%0A` +
-                        `*Email:* ${email}%0A` +
-                        `*Phone:* ${phone}%0A` +
-                        `*Instagram:* ${insta}%0A` +
-                        `*YouTube:* ${yt}%0A` +
-                        `*Content Type:* ${type}%0A` +
-                        `*Expected Pay:* ${expect}%0A` +
-                        `*Collab Type:* ${collab}%0A` +
-                        `---------------------`;
-
-            const wpUrl = `https://wa.me/9172660105?text=${msg}`;
-
-            // 1. Open WhatsApp in new tab
-            window.open(wpUrl, '_blank');
-
-            // 2. Redirect to Thank You Page
-            window.location.href = "thank-you.html";
-        };
-    </script>
 </body>
 </html>
+
 
 
