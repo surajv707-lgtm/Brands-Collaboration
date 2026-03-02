@@ -1,103 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>About For Collab | India’s Brand & Influencer Collaboration Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <meta name="description" content="Learn about For Collab – India's fast-growing brand and influencer collaboration platform connecting creators and businesses for powerful digital marketing partnerships.">
-    <meta name="keywords" content="brand collaboration, influencer marketing, creator platform, digital marketing">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO -->
+<meta name="description" content="About Fir Collab - A premium luxury brand collaboration platform connecting creators and brands.">
+<meta name="keywords" content="Fir Collab, Brand Collaboration Platform, Influencer Marketing, Premium Creator Network">
+<meta name="author" content="Fir Collab">
 
-    <link rel="stylesheet" href="about.css">
+<title>About Us - For Collab</title>
+<link rel="stylesheet" href="about.css">
 </head>
+
 <body>
 
-<header>
-    <div class="logo">For Collab</div>
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Fir Collab</div>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <nav>
-        <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li id="loginNav"><a href="login.html">Login</a></li>
-            <li id="registerNav"><a href="register.html">Register</a></li>
-            <li id="addCreatorNav" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
-            <li id="logoutNav" style="display:none;">
-                <a href="#" class="logout-btn" onclick="logout()">Logout</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
 
-<section class="about-bg">
-    <div class="content">
+        <!-- Dynamic Items -->
+        <li id="loginItem"><a href="login.html">Login</a></li>
+        <li id="registerItem"><a href="register.html">Register</a></li>
 
-        <h1>Empowering Digital Brand & Creator Partnerships</h1>
+        <li id="addCreatorItem" style="display:none;">
+            <a href="add-creator.html">Add Creator</a>
+        </li>
 
+        <li id="logoutItem" style="display:none;">
+            <a href="#" onclick="logout()" class="logout-btn">Logout</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>About For Collab</h1>
+    <p>
+        For Collab is a premium digital collaboration platform built to connect creators and brands 
+        in a sophisticated, secure, and professional ecosystem. We provide a luxury user experience 
+        designed for meaningful partnerships and measurable growth.
+    </p>
+</section>
+
+<!-- CONTENT -->
+<section class="about-content">
+
+    <div class="content-box">
+        <h2>Our Vision</h2>
         <p>
-            BrandCollab is a modern collaboration platform built to transform the future of
-            influencer marketing and brand partnerships. In today’s digital economy, brands
-            require more than traditional advertising—they require authenticity, audience trust,
-            and meaningful engagement. Our platform connects forward-thinking brands with
-            high-performing creators to build powerful campaigns that drive real business results.
+            Our vision is to redefine modern brand collaborations by creating a trusted and high-end 
+            digital network. We focus on excellence, transparency, and long-term success through 
+            powerful creative partnerships.
         </p>
+    </div>
 
-        <h2>Who We Are</h2>
-        <p>
-            We are a technology-driven ecosystem designed to simplify and optimize
-            the collaboration journey between brands and creators. From discovery and
-            communication to campaign execution and performance tracking, BrandCollab
-            ensures smooth, transparent, and data-driven partnerships.
-        </p>
-
+    <div class="content-box">
         <h2>Our Mission</h2>
         <p>
-            Our mission is to empower brands to scale through strategic influencer collaborations
-            while giving creators opportunities to grow, monetize, and expand their reach.
-            We believe in long-term partnerships built on creativity, trust, and measurable outcomes.
+            Our mission is to empower creators with premium opportunities and enable brands to achieve 
+            authentic engagement through innovative collaboration strategies and advanced tools.
         </p>
-
-        <h2>Why Choose BrandCollab?</h2>
-        <p>
-            With advanced analytics, seamless communication tools, and a professional campaign
-            management system, BrandCollab delivers performance-focused marketing solutions.
-            We help brands achieve higher engagement, stronger brand authority, and sustainable
-            growth in competitive digital markets.
-        </p>
-
     </div>
+
+    <div class="content-box">
+        <h2>Why Choose Fir Collab?</h2>
+        <p>
+            For Collab offers a luxury interface, seamless functionality, and professional standards. 
+            We ensure that every collaboration reflects quality, trust, and sustainable digital growth.
+        </p>
+    </div>
+
 </section>
 
 <footer>
-    <p>© 2026 BrandCollab. All Rights Reserved.</p>
+    <p>© 2026 For Collab. All Rights Reserved.</p>
 </footer>
 
-    <script>
-function toggleMenu() {
-    document.getElementById("nav-links").classList.toggle("active");
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
 }
 
-function checkLogin() {
-    if(localStorage.getItem("userLoggedIn")) {
-        document.getElementById("loginNav").style.display = "none";
-        document.getElementById("registerNav").style.display = "none";
-        document.getElementById("logoutNav").style.display = "block";
-        document.getElementById("addCreatorNav").style.display = "block";
+function checkLoginStatus(){
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if(isLoggedIn === "true"){
+        document.getElementById("loginItem").style.display = "none";
+        document.getElementById("registerItem").style.display = "none";
+        document.getElementById("addCreatorItem").style.display = "block";
+        document.getElementById("logoutItem").style.display = "block";
     }
 }
 
-function logout() {
-    localStorage.removeItem("userLoggedIn");
-    location.reload();
+function logout(){
+    localStorage.setItem("isLoggedIn", "false");
+    window.location.href = "index.html";
 }
 
-checkLogin();
+checkLoginStatus();
 </script>
-    
 
 </body>
 </html>
