@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BrandCollab | Premium Brand Collaboration Platform</title>
+    <title>BrandCollab | Premium Brand & Creator Collaboration</title>
 
-    <!-- SEO -->
-    <meta name="description" content="BrandCollab is a premium platform connecting brands and creators for high quality collaborations and sponsorships.">
-    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship platform, creators, premium partnerships">
-    <meta name="author" content="BrandCollab">
+    <meta name="description" content="BrandCollab is a premium platform connecting brands and creators for professional collaborations and sponsorships.">
+    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, premium platform">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
 <header>
     <div class="logo">BrandCollab</div>
 
@@ -23,107 +20,79 @@
     <nav id="navMenu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Contact</a>
 
-        <a href="login.html" id="loginBtn">Login</a>
-        <a href="register.html" id="registerBtn">Register</a>
+        <a href="login.html" id="loginNav">Login</a>
+        <a href="register.html" id="registerNav">Register</a>
 
-        <a href="add-creator.html" id="addCreatorBtn" class="gold-btn" style="display:none;">Add Creator</a>
-        <a href="#" id="logoutBtn" class="logout-btn" style="display:none;">Logout</a>
+        <a href="add-creator.html" id="creatorNav" style="display:none;">Add Creator</a>
+        <a href="#" id="logoutNav" style="display:none;">Logout</a>
     </nav>
 </header>
 
-
-<!-- ===== HERO SECTION ===== -->
 <section class="hero">
     <div class="hero-content">
-
-        <h1>Luxury Collaboration Platform For Elite Brands & Creators</h1>
-
-        <p>
-            BrandCollab connects ambitious brands with powerful creators in a secure,
-            premium and performance-driven ecosystem designed for long-term growth.
-        </p>
+        <h1>Luxury Collaboration Platform</h1>
 
         <p>
-            We focus on professional communication, verified listings and meaningful
-            partnerships that elevate digital success to the next level.
+            BrandCollab connects ambitious brands and powerful creators
+            in a secure, premium ecosystem designed for long-term success.
         </p>
 
         <div class="hero-buttons">
-            <a href="login.html" id="heroLogin" class="btn gold-btn">Login</a>
-            <a href="register.html" id="heroRegister" class="btn outline-btn">Register</a>
-            <a href="add-creator.html" id="heroAddCreator" class="btn gold-btn" style="display:none;">Add Creator</a>
+            <a href="login.html" id="loginHero" class="btn gold-btn">Login</a>
+            <a href="register.html" id="registerHero" class="btn outline-btn">Register</a>
+            <a href="add-creator.html" id="creatorHero" class="btn gold-btn" style="display:none;">Add Creator</a>
         </div>
-
     </div>
 </section>
 
-
-<!-- ===== ABOUT PREVIEW ===== -->
-<section class="preview-section">
+<section class="preview">
     <h2>About BrandCollab</h2>
-    <p>
-        We provide a structured and premium collaboration environment where
-        brands and creators grow together with transparency and trust.
-    </p>
+    <p>We create structured, transparent and professional collaborations.</p>
     <a href="about.html" class="view-btn">View All</a>
 </section>
 
-
-<!-- ===== CONTACT PREVIEW ===== -->
-<section class="preview-section dark-section">
+<section class="preview dark">
     <h2>Contact & Support</h2>
-    <p>
-        For partnerships, sponsorships and business inquiries,
-        our team ensures professional assistance and quick response.
-    </p>
+    <p>Need help? Our team provides premium assistance.</p>
     <a href="contact.html" class="view-btn">View All</a>
 </section>
 
-
 <footer>
-    © 2026 BrandCollab | Premium Collaboration Network
+    © 2026 BrandCollab
 </footer>
 
-
-
-<!-- ===== SCRIPT ===== -->
 <script>
 
-function toggleMenu() {
+function toggleMenu(){
     document.getElementById("navMenu").classList.toggle("active");
 }
 
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function(){
 
-    var isLoggedIn = localStorage.getItem("isLoggedIn");
+    const loggedIn = localStorage.getItem("userLoggedIn");
 
-    if (isLoggedIn === "true") {
+    if(loggedIn === "yes"){
 
-        // Hide Login/Register (Navbar)
-        document.getElementById("loginBtn").style.display = "none";
-        document.getElementById("registerBtn").style.display = "none";
+        // Hide Login/Register everywhere
+        document.getElementById("loginNav").style.display="none";
+        document.getElementById("registerNav").style.display="none";
+        document.getElementById("loginHero").style.display="none";
+        document.getElementById("registerHero").style.display="none";
 
-        // Hide Login/Register (Hero)
-        document.getElementById("heroLogin").style.display = "none";
-        document.getElementById("heroRegister").style.display = "none";
-
-        // Show Add Creator
-        document.getElementById("addCreatorBtn").style.display = "inline-block";
-        document.getElementById("heroAddCreator").style.display = "inline-block";
-
-        // Show Logout
-        document.getElementById("logoutBtn").style.display = "inline-block";
+        // Show Creator + Logout
+        document.getElementById("creatorNav").style.display="inline-block";
+        document.getElementById("logoutNav").style.display="inline-block";
+        document.getElementById("creatorHero").style.display="inline-block";
     }
 
-    // Logout Click
-    document.getElementById("logoutBtn").onclick = function() {
-        localStorage.removeItem("isLoggedIn");
-        window.location.href = "index.html";
-    };
+    document.getElementById("logoutNav").addEventListener("click", function(){
+        localStorage.removeItem("userLoggedIn");
+        window.location.href="index.html";
+    });
 
-};
+});
 
 </script>
 
