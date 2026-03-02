@@ -10,7 +10,7 @@ body{
     color:white;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 header{
     display:flex;
     justify-content:space-between;
@@ -51,12 +51,18 @@ nav a:hover{
 
 .logout-btn{
     background:red;
+    color:white;
     padding:8px 16px;
     border-radius:4px;
-    color:white;
 }
 
-/* ===== HERO ===== */
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -95,7 +101,7 @@ nav a:hover{
     color:gold;
 }
 
-/* ===== PREVIEW ===== */
+/* PREVIEW */
 .preview-section{
     padding:80px 20px;
     text-align:center;
@@ -131,13 +137,7 @@ footer{
     background:black;
 }
 
-/* ===== MOBILE ===== */
-.menu-toggle{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-}
-
+/* MOBILE */
 @media(max-width:768px){
 
     nav{
