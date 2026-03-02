@@ -6,6 +6,22 @@
     <title>Login | For Collab - Exclusive Creator Network</title>
     <meta name="description" content="Secure login for For Collab members. Access your luxury collaboration dashboard.">
     <link rel="stylesheet" href="login.css">
+    <style>
+        /* Styling for the show password toggle */
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #D4AF37;
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
     <nav class="auth-nav">
@@ -16,9 +32,12 @@
     <main class="auth-container">
         <form id="loginForm" class="auth-form">
             <h2>Luxury Login</h2>
-            <input type="text" id="lName" placeholder="Full Name" required>
             <input type="email" id="lEmail" placeholder="Email Address" required>
-            <input type="password" id="lPass" placeholder="Password" required>
+            
+            <div class="password-container">
+                <input type="password" id="lPass" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
             
             <div class="captcha-box">
                 <span id="lCapTxt"></span>
@@ -35,6 +54,19 @@
         const code = Math.random().toString(36).substring(2, 7).toUpperCase();
         document.getElementById('lCapTxt').innerText = code;
 
+        // Toggle Password Visibility
+        function togglePassword() {
+            const passInput = document.getElementById('lPass');
+            const toggleIcon = document.querySelector('.toggle-password');
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                toggleIcon.innerText = "🙈";
+            } else {
+                passInput.type = "password";
+                toggleIcon.innerText = "👁️";
+            }
+        }
+
         document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
             
@@ -46,13 +78,13 @@
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let email = document.getElementById('lEmail').value.trim();
             let pass = document.getElementById('lPass').value;
-            let name = document.getElementById('lName').value.trim();
 
-            let user = users.find(u => u.email === email && u.pass === pass && u.name === name);
+            // Find user based only on email and password
+            let user = users.find(u => u.email === email && u.pass === pass);
 
             if(user) {
                 localStorage.setItem('userLoggedIn', 'true');
-                alert("Welcome back, " + name);
+                alert("Welcome back, " + user.name);
                 window.location.href = "index.html";
             } else {
                 alert("Invalid Credentials or User Not Registered!");
@@ -61,5 +93,3 @@
     </script>
 </body>
 </html>
-
-
