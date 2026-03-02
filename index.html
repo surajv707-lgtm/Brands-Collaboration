@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BrandCollab | Premium Brand & Creator Collaboration</title>
+<meta charset="UTF-8">
+<title>BrandCollab | Premium Brand Collaboration Platform</title>
 
-    <meta name="description" content="BrandCollab is a premium platform connecting brands and creators for professional collaborations and sponsorships.">
-    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, premium platform">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BrandCollab is a luxury platform connecting elite brands and powerful creators for premium collaborations and sponsorships.">
+<meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, premium platform">
+<meta name="author" content="BrandCollab">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
     <div class="logo">BrandCollab</div>
-
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
     <nav id="navMenu">
@@ -33,67 +33,73 @@
 <section class="hero">
     <div class="hero-content">
         <h1>Luxury Collaboration Platform</h1>
-
         <p>
-            BrandCollab connects ambitious brands and powerful creators
-            in a secure, premium ecosystem designed for long-term success.
+            BrandCollab connects ambitious brands with powerful creators in a secure,
+            transparent and premium collaboration ecosystem.
         </p>
 
         <div class="hero-buttons">
-            <a href="login.html" id="loginHero" class="btn gold-btn">Login</a>
-            <a href="register.html" id="registerHero" class="btn outline-btn">Register</a>
-            <a href="add-creator.html" id="creatorHero" class="btn gold-btn" style="display:none;">Add Creator</a>
+            <a href="login.html" id="loginHero" class="btn gold">Login</a>
+            <a href="register.html" id="registerHero" class="btn outline">Register</a>
+            <a href="add-creator.html" id="creatorHero" class="btn gold" style="display:none;">Add Creator</a>
         </div>
     </div>
 </section>
 
+<!-- ABOUT PREVIEW -->
 <section class="preview">
     <h2>About BrandCollab</h2>
-    <p>We create structured, transparent and professional collaborations.</p>
-    <a href="about.html" class="view-btn">View All</a>
+    <p>
+        We redefine influencer marketing by providing a structured, secure
+        and premium environment where brands and creators grow together.
+    </p>
+    <div class="view-container">
+        <a href="about.html" class="view-btn">View All</a>
+    </div>
 </section>
 
+<!-- CONTACT PREVIEW -->
 <section class="preview dark">
     <h2>Contact & Support</h2>
-    <p>Need help? Our team provides premium assistance.</p>
-    <a href="contact.html" class="view-btn">View All</a>
+    <p>
+        Have collaboration inquiries or sponsorship questions?
+        Our professional team is here to support you.
+    </p>
+    <div class="view-container">
+        <a href="contact.html" class="view-btn">View All</a>
+    </div>
 </section>
 
 <footer>
-    © 2026 BrandCollab
+    © 2026 BrandCollab | Premium Collaboration Network
 </footer>
 
 <script>
-
 function toggleMenu(){
     document.getElementById("navMenu").classList.toggle("active");
 }
 
 document.addEventListener("DOMContentLoaded", function(){
 
-    const loggedIn = localStorage.getItem("userLoggedIn");
+    const loggedIn = localStorage.getItem("brandUser");
 
-    if(loggedIn === "yes"){
-
-        // Hide Login/Register everywhere
+    if(loggedIn === "true"){
         document.getElementById("loginNav").style.display="none";
         document.getElementById("registerNav").style.display="none";
         document.getElementById("loginHero").style.display="none";
         document.getElementById("registerHero").style.display="none";
 
-        // Show Creator + Logout
         document.getElementById("creatorNav").style.display="inline-block";
-        document.getElementById("logoutNav").style.display="inline-block";
         document.getElementById("creatorHero").style.display="inline-block";
+        document.getElementById("logoutNav").style.display="inline-block";
     }
 
     document.getElementById("logoutNav").addEventListener("click", function(){
-        localStorage.removeItem("userLoggedIn");
+        localStorage.removeItem("brandUser");
         window.location.href="index.html";
     });
 
 });
-
 </script>
 
 </body>
