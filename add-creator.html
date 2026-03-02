@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Creator | For Collab - Join Our Elite Network</title>
+    <meta name="description" content="Creators, join the For Collab ecosystem. Submit your profile to connect with premium brands, resorts, and luxury stores.">
+    <link rel="stylesheet" href="add-creator.css">
+</head>
+<body>
+    <nav class="auth-nav">
+        <div class="logo">For Collab</div>
+        <a href="index.html" class="back-btn">← Back</a>
+    </nav>
+
+    <main class="form-wrapper">
+        <div class="form-container">
+            <header class="form-header">
+                <h1>Creator Application</h1>
+                <p>Register your profile for high-tier brand collaborations.</p>
+            </header>
+
+            <form id="addCreatorForm" class="professional-form">
+                <div class="form-section">
+                    <h3>Contact Information</h3>
+                    <input type="text" id="cName" placeholder="Full Name" required>
+                    <input type="email" id="cEmail" placeholder="Email Address" required>
+                    <input type="tel" id="cPhone" placeholder="Phone Number" required>
+                </div>
+
+                <div class="form-section">
+                    <h3>Social Handles</h3>
+                    <input type="text" id="cInsta" placeholder="Instagram ID (e.g., @username)" required>
+                    <input type="url" id="cYoutube" placeholder="YouTube Channel Link">
+                </div>
+
+                <div class="form-section">
+                    <h3>Content Details</h3>
+                    <input type="text" id="cType" placeholder="Content Type (e.g., Fashion, Tech, Travel)" required>
+                    <textarea id="cExpect" placeholder="Your Expectations from Brands" rows="3" required></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>Collaboration Interest</h3>
+                    <p class="label-hint">Select the primary industry you wish to work with:</p>
+                    <div class="custom-select-wrapper">
+                        <select id="collabType" required>
+                            <option value="" disabled selected>Select Collaboration Type</option>
+                            <option value="brand">Premium Brands</option>
+                            <option value="stores">Luxury Stores</option>
+                            <option value="restaurants">Fine Dining/Restaurants</option>
+                            <option value="resort">Hotels & Resorts</option>
+                            <option value="electronic">Electronic Stores</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Profile</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('addCreatorForm').onsubmit = function(e) {
+            e.preventDefault();
+            // You can add logic here to save this data to localStorage or an API
+            alert("Your application has been submitted for review!");
+            window.location.href = "index.html";
+        };
+    </script>
+</body>
+</html>
