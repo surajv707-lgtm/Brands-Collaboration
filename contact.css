@@ -46,7 +46,6 @@ color:#d4af37;
 font-size:28px;
 cursor:pointer;
 color:#d4af37;
-display:block;
 }
 
 /* MENU LIST */
@@ -102,7 +101,18 @@ text-align:justify;
 color:#e6e6e6;
 }
 
-/* ===== BUTTONS AT BOTTOM ===== */
+/* CONTACT DETAILS */
+.contact-details h2{
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.contact-details p{
+font-size:18px;
+margin-bottom:10px;
+}
+
+/* ===== BUTTONS ===== */
 .button-group{
 display:flex;
 justify-content:center;
@@ -157,7 +167,7 @@ padding:35px;
 }
 
 .contact-box h1{
-font-size:30px;
+font-size:32px;
 }
 
 .contact-box p{
