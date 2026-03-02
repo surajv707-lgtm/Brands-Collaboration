@@ -6,7 +6,7 @@
 
     <!-- SEO -->
     <meta name="description" content="BrandCollab is a premium influencer and brand collaboration platform connecting creators with top brands for sponsorships and partnerships.">
-    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, partnerships, premium collaboration">
+    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, partnerships">
     <meta name="author" content="BrandCollab">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,26 +29,24 @@
         <a href="register.html" id="registerBtn">Register</a>
 
         <a href="add-creator.html" id="addCreatorBtn" class="gold-btn" style="display:none;">Add Creator</a>
-        <a href="#" id="logoutBtn" class="logout-btn" style="display:none;" onclick="logout()">Logout</a>
+        <a href="#" id="logoutBtn" class="logout-btn" style="display:none;">Logout</a>
     </nav>
 </header>
 
 
-<!-- ===== HERO SECTION ===== -->
+<!-- ===== HERO ===== -->
 <section class="hero">
     <div class="hero-content">
-
         <h1>Luxury Collaboration Platform For Elite Brands & Creators</h1>
 
         <p>
-            BrandCollab is a premium ecosystem where high-quality brands meet serious digital creators.
-            We focus on trust, performance, growth and long-term strategic partnerships that elevate
-            both brand identity and creator influence.
+            BrandCollab connects serious creators with ambitious brands in a premium,
+            secure and performance-driven ecosystem designed for long-term success.
         </p>
 
         <p>
-            Our platform ensures professional communication, verified creator listings, transparent
-            collaboration processes and measurable campaign success. This is where ambition meets opportunity.
+            We ensure transparent communication, verified creators and trusted
+            partnerships that elevate digital growth to the next level.
         </p>
 
         <div class="hero-buttons">
@@ -56,7 +54,6 @@
             <a href="register.html" id="heroRegister" class="btn outline-btn">Register</a>
             <a href="add-creator.html" id="heroAddCreator" class="btn gold-btn" style="display:none;">Add Creator</a>
         </div>
-
     </div>
 </section>
 
@@ -65,9 +62,8 @@
 <section class="preview-section">
     <h2>About BrandCollab</h2>
     <p>
-        We are redefining influencer marketing by building a structured, secure and premium
-        collaboration platform. Our goal is to help creators monetize their audience while
-        enabling brands to connect with the right voices in the digital space.
+        We redefine influencer marketing by creating a structured and luxury
+        collaboration environment where both brands and creators grow together.
     </p>
     <a href="about.html" class="view-btn">View All</a>
 </section>
@@ -77,8 +73,8 @@
 <section class="preview-section dark-section">
     <h2>Contact & Support</h2>
     <p>
-        Need assistance with collaborations, sponsorship discussions or partnership queries?
-        Our premium support team ensures fast and professional communication.
+        For partnerships, sponsorship discussions and business queries,
+        our support team ensures professional assistance.
     </p>
     <a href="contact.html" class="view-btn">View All</a>
 </section>
@@ -90,16 +86,17 @@
 
 
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===== JAVASCRIPT (FIXED PROPERLY) ===== -->
 <script>
 
 function toggleMenu() {
     document.getElementById("navMenu").classList.toggle("active");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// ===== LOGIN STATE CHECK =====
+window.onload = function() {
 
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    var isLoggedIn = localStorage.getItem("isLoggedIn");
 
     if (isLoggedIn === "true") {
 
@@ -107,23 +104,24 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loginBtn").style.display = "none";
         document.getElementById("registerBtn").style.display = "none";
 
+        // Show Add Creator & Logout
+        document.getElementById("addCreatorBtn").style.display = "inline-block";
+        document.getElementById("logoutBtn").style.display = "inline-block";
+
         // Hide Hero Login/Register
         document.getElementById("heroLogin").style.display = "none";
         document.getElementById("heroRegister").style.display = "none";
 
-        // Show Add Creator
-        document.getElementById("addCreatorBtn").style.display = "inline-block";
+        // Show Hero Add Creator
         document.getElementById("heroAddCreator").style.display = "inline-block";
-
-        // Show Logout
-        document.getElementById("logoutBtn").style.display = "inline-block";
     }
-});
 
-function logout() {
-    localStorage.removeItem("isLoggedIn");
-    location.reload();
-}
+    // Logout Function
+    document.getElementById("logoutBtn").onclick = function() {
+        localStorage.removeItem("isLoggedIn");
+        location.reload();
+    };
+};
 
 </script>
 
