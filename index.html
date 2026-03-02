@@ -1,104 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>BrandCollab | Premium Brand & Creator Collaboration Platform</title>
 
-<title>For Collab | Creator & Brand Collaboration Platform</title>
-<meta name="description" content="For Collab is a professional platform connecting brands and creators for paid promotions and collaborations.">
-<meta name="keywords" content="For Collab, brand collaboration, influencer marketing">
-<meta name="author" content="For Collab">
+    <!-- SEO -->
+    <meta name="description" content="BrandCollab is a premium influencer and brand collaboration platform connecting creators with top brands for sponsorships and partnerships.">
+    <meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, partnerships, premium collaboration">
+    <meta name="author" content="BrandCollab">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+<!-- ===== NAVBAR ===== -->
 <header>
-    <div class="logo">For Collab</div>
+    <div class="logo">BrandCollab</div>
+
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <nav>
-        <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li id="loginNav"><a href="login.html">Login</a></li>
-            <li id="registerNav"><a href="register.html">Register</a></li>
-            <li id="addCreatorNav" style="display:none;">
-                <a href="add-creator.html">Add Creator</a>
-            </li>
-            <li id="logoutNav" style="display:none;">
-                <a href="#" class="logout-btn" onclick="logout()">Logout</a>
-            </li>
-        </ul>
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="register.html" id="registerBtn">Register</a>
+
+        <a href="add-creator.html" id="addCreatorBtn" class="gold-btn" style="display:none;">Add Creator</a>
+        <a href="#" id="logoutBtn" class="logout-btn" style="display:none;" onclick="logout()">Logout</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>Welcome to For Collab</h1>
-    <p>
-        India's fast-growing collaboration platform connecting brands and creators 
-        for powerful marketing partnerships.
-    </p>
 
-    <div class="auth-buttons">
-        <a href="login.html" id="loginBtn" class="btn btn-login">Login</a>
-        <a href="register.html" id="registerBtn" class="btn btn-register">Register</a>
-        <a href="add-creator.html" id="creatorBtn" class="btn btn-creator" style="display:none;">
-            Add Creator
-        </a>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-content">
+
+        <h1>Luxury Collaboration Platform For Elite Brands & Creators</h1>
+
+        <p>
+            BrandCollab is a premium ecosystem where high-quality brands meet serious digital creators.
+            We focus on trust, performance, growth and long-term strategic partnerships that elevate
+            both brand identity and creator influence.
+        </p>
+
+        <p>
+            Our platform ensures professional communication, verified creator listings, transparent
+            collaboration processes and measurable campaign success. This is where ambition meets opportunity.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="login.html" id="heroLogin" class="btn gold-btn">Login</a>
+            <a href="register.html" id="heroRegister" class="btn outline-btn">Register</a>
+            <a href="add-creator.html" id="heroAddCreator" class="btn gold-btn" style="display:none;">Add Creator</a>
+        </div>
+
     </div>
 </section>
 
-<section class="section">
-    <h2>About For Collab</h2>
+
+<!-- ===== ABOUT PREVIEW ===== -->
+<section class="preview-section">
+    <h2>About BrandCollab</h2>
     <p>
-        We provide a professional environment where brands and creators connect 
-        and build long-term collaborations.
+        We are redefining influencer marketing by building a structured, secure and premium
+        collaboration platform. Our goal is to help creators monetize their audience while
+        enabling brands to connect with the right voices in the digital space.
     </p>
-    <button onclick="location.href='about.html'" class="btn-small">View All</button>
+    <a href="about.html" class="view-btn">View All</a>
 </section>
 
-<section class="section">
-    <h2>Contact Information</h2>
-    <p>Email: abhinavvishwakarma36@gmail.com</p>
-    <p>Phone: +91 9172660105</p>
-    <p>Location: Mumbai, India</p>
-    <button onclick="location.href='contact.html'" class="btn-small">View All</button>
+
+<!-- ===== CONTACT PREVIEW ===== -->
+<section class="preview-section dark-section">
+    <h2>Contact & Support</h2>
+    <p>
+        Need assistance with collaborations, sponsorship discussions or partnership queries?
+        Our premium support team ensures fast and professional communication.
+    </p>
+    <a href="contact.html" class="view-btn">View All</a>
 </section>
+
 
 <footer>
-    <p>© 2026 For Collab. All Rights Reserved.</p>
+    © 2026 BrandCollab | Premium Collaboration Network
 </footer>
 
+
+
+<!-- ===== JAVASCRIPT ===== -->
 <script>
+
 function toggleMenu() {
-    document.getElementById("nav-links").classList.toggle("active");
+    document.getElementById("navMenu").classList.toggle("active");
 }
 
-function checkLogin() {
-    if(localStorage.getItem("userLoggedIn") === "true") {
+document.addEventListener("DOMContentLoaded", function () {
 
-        // Navbar
-        document.getElementById("loginNav").style.display = "none";
-        document.getElementById("registerNav").style.display = "none";
-        document.getElementById("logoutNav").style.display = "block";
-        document.getElementById("addCreatorNav").style.display = "block";
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-        // Hero Buttons
+    if (isLoggedIn === "true") {
+
+        // Hide Navbar Login/Register
         document.getElementById("loginBtn").style.display = "none";
         document.getElementById("registerBtn").style.display = "none";
-        document.getElementById("creatorBtn").style.display = "inline-block";
+
+        // Hide Hero Login/Register
+        document.getElementById("heroLogin").style.display = "none";
+        document.getElementById("heroRegister").style.display = "none";
+
+        // Show Add Creator
+        document.getElementById("addCreatorBtn").style.display = "inline-block";
+        document.getElementById("heroAddCreator").style.display = "inline-block";
+
+        // Show Logout
+        document.getElementById("logoutBtn").style.display = "inline-block";
     }
-}
+});
 
 function logout() {
-    localStorage.removeItem("userLoggedIn");
+    localStorage.removeItem("isLoggedIn");
     location.reload();
 }
 
-checkLogin();
 </script>
 
 </body>
