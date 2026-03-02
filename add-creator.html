@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Creator | For Collab - Join Our Elite Network</title>
-    <meta name="description" content="Creators, join the For Collab ecosystem. Submit your profile to connect with premium brands, resorts, and luxury stores.">
+    <title>Add Creator | For Collab</title>
+    <meta name="description" content="Submit your creator profile to For Collab.">
     <link rel="stylesheet" href="add-creator.css">
 </head>
 <body>
     <nav class="auth-nav">
         <div class="logo">For Collab</div>
-        <a href="index.html" class="back-btn">← Back</a>
-    </nav>
+        </nav>
 
     <main class="form-wrapper">
         <div class="form-container">
             <header class="form-header">
                 <h1>Creator Application</h1>
-                <p>Register your profile for high-tier brand collaborations.</p>
+                <p id="statusMsg">Register your profile for high-tier brand collaborations.</p>
             </header>
 
             <form id="addCreatorForm" class="professional-form">
@@ -30,32 +29,32 @@
 
                 <div class="form-section">
                     <h3>Social Handles</h3>
-                    <input type="text" id="cInsta" placeholder="Instagram ID (e.g., @username)" required>
+                    <input type="text" id="cInsta" placeholder="Instagram ID" required>
                     <input type="url" id="cYoutube" placeholder="YouTube Channel Link">
                 </div>
 
                 <div class="form-section">
                     <h3>Content Details</h3>
-                    <input type="text" id="cType" placeholder="Content Type (e.g., Fashion, Tech, Travel)" required>
-                    <textarea id="cExpect" placeholder="Your Expectations from Brands" rows="3" required></textarea>
+                    <input type="text" id="cType" placeholder="Content Type" required>
+                    <textarea id="cExpect" placeholder="Your Expectations" rows="3" required></textarea>
                 </div>
 
                 <div class="form-section">
                     <h3>Collaboration Interest</h3>
-                    <p class="label-hint">Select the primary industry you wish to work with:</p>
-                    <div class="custom-select-wrapper">
-                        <select id="collabType" required>
-                            <option value="" disabled selected>Select Collaboration Type</option>
-                            <option value="brand">Premium Brands</option>
-                            <option value="stores">Luxury Stores</option>
-                            <option value="restaurants">Fine Dining/Restaurants</option>
-                            <option value="resort">Hotels & Resorts</option>
-                            <option value="electronic">Electronic Stores</option>
-                        </select>
-                    </div>
+                    <select id="collabType" required>
+                        <option value="" disabled selected>Select Collaboration Type</option>
+                        <option value="Premium Brands">Premium Brands</option>
+                        <option value="Luxury Stores">Luxury Stores</option>
+                        <option value="Restaurants">Restaurants</option>
+                        <option value="Hotels & Resorts">Hotels & Resorts</option>
+                        <option value="Electronic Stores">Electronic Stores</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Profile</button>
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Submit Profile</button>
+                    <a href="index.html" class="back-btn-low">Back to Home</a>
+                </div>
             </form>
         </div>
     </main>
@@ -63,10 +62,43 @@
     <script>
         document.getElementById('addCreatorForm').onsubmit = function(e) {
             e.preventDefault();
-            // You can add logic here to save this data to localStorage or an API
-            alert("Your application has been submitted for review!");
-            window.location.href = "index.html";
+            
+            // Collect Values
+            const name = document.getElementById('cName').value;
+            const email = document.getElementById('cEmail').value;
+            const phone = document.getElementById('cPhone').value;
+            const insta = document.getElementById('cInsta').value;
+            const yt = document.getElementById('cYoutube').value;
+            const type = document.getElementById('cType').value;
+            const expect = document.getElementById('cExpect').value;
+            const collab = document.getElementById('collabType').value;
+
+            // Format WhatsApp Message
+            const msg = `*New Creator Application*%0A` +
+                        `*Name:* ${name}%0A` +
+                        `*Email:* ${email}%0A` +
+                        `*Phone:* ${phone}%0A` +
+                        `*Instagram:* ${insta}%0A` +
+                        `*YouTube:* ${yt}%0A` +
+                        `*Content:* ${type}%0A` +
+                        `*Expectations:* ${expect}%0A` +
+                        `*Collab Interest:* ${collab}`;
+
+            const wpUrl = `https://wa.me/9172660105?text=${msg}`;
+
+            // Show status and redirect
+            const status = document.getElementById('statusMsg');
+            status.innerHTML = "<b style='color: #D4AF37;'>Submission Completed! Redirecting in 5 seconds...</b>";
+            
+            // Open WhatsApp in new tab
+            window.open(wpUrl, '_blank');
+
+            // Redirect to home after 5 seconds
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 5000);
         };
     </script>
 </body>
 </html>
+
