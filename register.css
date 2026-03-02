@@ -1,4 +1,4 @@
-/* Ensure proper box sizing for mobile */
+/* Universal Fix for Mobile */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,14 +7,15 @@
 
 body {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80') center/cover;
-    height: 100vh; 
+    min-height: 100vh; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
+/* Nav: Logo Left, Back Right */
 .auth-nav { 
     position: absolute; 
     top: 0; 
@@ -23,55 +24,63 @@ body {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    color: #D4AF37; 
 }
 
-/* Nav Swapping: Logo Left, Back Right */
 .logo { 
-    order: 1; 
+    color: #D4AF37; 
     font-weight: bold; 
     font-size: 1.2rem;
+    letter-spacing: 1px;
 }
 
 .back-btn { 
-    order: 2;
     color: white; 
     text-decoration: none; 
-    font-size: 1rem; 
+    font-size: 0.9rem; 
     border: 1px solid #D4AF37; 
     padding: 5px 15px; 
 }
 
-/* Responsive Container */
+/* Responsive Form Box */
 .auth-container { 
     background: rgba(0,0,0,0.85); 
-    padding: 40px 20px; 
+    padding: 30px; 
     border: 1px solid #D4AF37; 
     width: 90%; 
     max-width: 400px; 
     text-align: center; 
-    color: white; 
+    color: white;
+    margin-top: 60px; /* Space for the absolute nav */
 }
 
-.auth-form h2 { margin-bottom: 20px; letter-spacing: 2px; }
+.auth-form h2 { 
+    margin-bottom: 15px; 
+    letter-spacing: 2px; 
+    color: #D4AF37;
+}
 
-/* 16px font-size prevents mobile browsers from zooming in automatically */
+/* 16px font prevents auto-zoom on mobile */
 .auth-form input { 
     width: 100%; 
-    padding: 12px; 
-    margin: 10px 0; 
+    padding: 10px; 
+    margin: 8px 0; 
     background: transparent; 
     border: 1px solid #444; 
     color: white; 
     font-size: 16px; 
 }
 
-.captcha-box { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.captcha-box { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 10px 0; 
+}
 
 #captchaTxt { 
     background: #D4AF37; 
     color: black; 
-    padding: 10px; 
+    padding: 8px; 
     font-weight: bold; 
     letter-spacing: 3px; 
     flex: 1;
@@ -86,11 +95,16 @@ body {
     cursor: pointer; 
     font-weight: bold; 
     margin-top: 10px; 
-    font-size: 1rem;
+    text-transform: uppercase;
 }
 
-/* Small adjustment for very small phones */
-@media (max-width: 360px) {
-    .auth-nav { padding: 20px 5%; }
-    .logo { font-size: 1rem; }
+/* Mobile Screen Adjustments */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 20px;
+    }
+    .auth-form h2 {
+        font-size: 1.4rem;
+    }
 }
+
