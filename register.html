@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Register | For Collab</title>
     <link rel="stylesheet" href="register.css">
+    <style>
+        /* Styling for the show password toggle */
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #D4AF37;
+            user-select: none;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body>
     <nav class="auth-nav">
@@ -17,7 +34,12 @@
             <h2>Create Account</h2>
             <input type="text" id="name" placeholder="Full Name" required>
             <input type="email" id="email" placeholder="Email Address" required>
-            <input type="password" id="pass" placeholder="Password" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            
+            <div class="password-container">
+                <input type="password" id="pass" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
             
             <div class="captcha-box">
                 <span id="captchaTxt"></span>
@@ -33,20 +55,44 @@
         const code = Math.random().toString(36).substring(2, 7).toUpperCase();
         document.getElementById('captchaTxt').innerText = code;
 
+        // Toggle Password Visibility
+        function togglePassword() {
+            const passInput = document.getElementById('pass');
+            const toggleIcon = document.querySelector('.toggle-password');
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                toggleIcon.innerText = "🙈";
+            } else {
+                passInput.type = "password";
+                toggleIcon.innerText = "👁️";
+            }
+        }
+
         document.getElementById('regForm').onsubmit = function(e) {
             e.preventDefault();
             if(document.getElementById('captchaIn').value.toUpperCase() !== code) return alert("Wrong Captcha");
 
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
 
-            if(users.find(u => u.email === email)) {
-                return alert("Email already registered!");
+            // --- ADDED VERIFICATION LOGIC ---
+            // List of allowed phone numbers
+            const allowedNumbers = ["9172660105", "1234567890"]; 
+            
+            if (!allowedNumbers.includes(phone)) {
+                return alert("This phone number is not authorized to register.");
+            }
+            // ---------------------------------
+
+            if(users.find(u => u.email === email || u.phone === phone)) {
+                return alert("Email or Phone already registered!");
             }
 
             users.push({
                 name: document.getElementById('name').value,
                 email: email,
+                phone: phone,
                 pass: document.getElementById('pass').value
             });
 
@@ -57,4 +103,3 @@
     </script>
 </body>
 </html>
-
