@@ -1,98 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Login to For Collab - Premium Brand Collaboration Platform">
-<meta name="keywords" content="For Collab Login, Influencer Login">
-<meta name="author" content="For Collab">
-<title>Login - For Collab</title>
-<link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <title>Login | For Collab</title>
+    <link rel="stylesheet" href="register.css">
 </head>
-
 <body>
+    <nav class="auth-nav">
+        <a href="index.html" class="back-btn">← Back</a>
+        <div class="logo">For Collab</div>
+    </nav>
 
-<nav>
-    <div class="logo">For Collab</div>
-    <a href="index.html" class="back-btn">← Back</a>
-</nav>
+    <div class="auth-container">
+        <form id="loginForm" class="auth-form">
+            <h2>Luxury Login</h2>
+            <input type="text" id="lName" placeholder="Name" required>
+            <input type="email" id="lEmail" placeholder="Email Address" required>
+            <input type="password" id="lPass" placeholder="Password" required>
+            <div class="captcha-box">
+                <span id="lCapTxt"></span>
+                <input type="text" id="lCapIn" placeholder="Captcha" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <p>New here? <a href="register.html">Register</a></p>
+        </form>
+    </div>
 
-<div class="form-container">
-    <h1>Welcome Back</h1>
+    <script>
+        const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+        document.getElementById('lCapTxt').innerText = code;
 
-    <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Email Address" required>
-        <input type="tel" id="loginPhone" placeholder="Phone Number" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            if(document.getElementById('lCapIn').value !== code) return alert("Wrong Captcha");
 
-        <div class="captcha-box">
-            <span id="loginCaptchaText"></span>
-            <button type="button" onclick="generateLoginCaptcha()">↻</button>
-        </div>
+            let users = JSON.parse(localStorage.getItem('users') || "[]");
+            let email = document.getElementById('lEmail').value;
+            let pass = document.getElementById('lPass').value;
+            let name = document.getElementById('lName').value;
 
-        <input type="text" id="loginCaptchaInput" placeholder="Enter Captcha" required>
+            let user = users.find(u => u.email === email && u.pass === pass && u.name === name);
 
-        <button type="submit">Login</button>
-    </form>
-
-    <p class="bottom-text">
-        Don’t have an account? <a href="register.html">Register Here</a>
-    </p>
-</div>
-
-<script>
-function generateLoginCaptcha() {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let captcha = "";
-    for (let i = 0; i < 6; i++) {
-        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    document.getElementById("loginCaptchaText").innerText = captcha;
-}
-
-generateLoginCaptcha();
-
-document.getElementById("loginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const email = document.getElementById("loginEmail").value;
-    const phone = document.getElementById("loginPhone").value;
-    const password = document.getElementById("loginPassword").value;
-    const captchaInput = document.getElementById("loginCaptchaInput").value;
-    const captchaText = document.getElementById("loginCaptchaText").innerText;
-
-    const storedEmail = localStorage.getItem("userEmail");
-    const storedPhone = localStorage.getItem("userPhone");
-    const storedPassword = localStorage.getItem("userPassword");
-
-    if(!storedEmail){
-        alert("You must register first.");
-        window.location.href = "register.html";
-        return;
-    }
-
-    if(captchaInput !== captchaText){
-        alert("Captcha Incorrect!");
-        generateLoginCaptcha();
-        return;
-    }
-
-    if(email === storedEmail && phone === storedPhone && password === storedPassword){
-        localStorage.setItem("isLoggedIn", "true");
-        alert("Login Successful!");
-        window.location.href = "index.html";
-    } else {
-        alert("Invalid Details!");
-    }
-});
-</script>
-
-<script>
-function loginUser(){
-localStorage.setItem("userLoggedIn","true");
-window.location.href="index.html";
-}
-</script>
-
+            if(user) {
+                localStorage.setItem('userLoggedIn', 'true');
+                alert("Welcome back, " + name);
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid Credentials or User Not Registered!");
+            }
+        };
+    </script>
 </body>
 </html>
+
