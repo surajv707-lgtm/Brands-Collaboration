@@ -13,7 +13,7 @@ body { background-color: var(--gray); color: var(--dark); line-height: 1.6; }
 /* Navbar */
 .auth-nav {
     display: flex;
-    justify-content: center; /* Just name in center */
+    justify-content: center;
     padding: 20px;
     background: var(--dark);
     color: var(--gold);
@@ -55,7 +55,7 @@ input, select {
     margin-bottom: 15px;
     border: 1px solid var(--border);
     font-size: 0.95rem;
-    font-family: sans-serif; /* Cleaner font for inputs */
+    font-family: sans-serif;
 }
 
 input:focus, select:focus { outline: none; border-color: var(--gold); }
