@@ -1,13 +1,140 @@
-body {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80') center/cover;
-    height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.auth-nav { position: absolute; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; color: #D4AF37; }
-.back-btn { color: white; text-decoration: none; font-size: 1rem; border: 1px solid #D4AF37; padding: 5px 15px; }
-.auth-container { background: rgba(0,0,0,0.85); padding: 40px; border: 1px solid #D4AF37; width: 400px; text-align: center; color: white; }
-.auth-form h2 { margin-bottom: 20px; letter-spacing: 2px; }
-.auth-form input { width: 100%; padding: 12px; margin: 10px 0; background: transparent; border: 1px solid #444; color: white; }
-.captcha-box { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
-#captchaTxt { background: #D4AF37; color: black; padding: 5px 10px; font-weight: bold; letter-spacing: 3px; }
-.btn { width: 100%; background: #D4AF37; color: black; border: none; padding: 12px; cursor: pointer; font-weight: bold; margin-top: 10px; }
 
+body {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80') center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navigation: Logo Left, Back Button Right */
+.auth-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #D4AF37;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid #D4AF37;
+    padding: 8px 18px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #D4AF37;
+    color: black;
+}
+
+/* Form Container */
+.auth-container {
+    background: rgba(0,0,0,0.85);
+    padding: 40px;
+    border: 1px solid #D4AF37;
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Desktop limit */
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.auth-form h2 {
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+    color: #D4AF37;
+    text-transform: uppercase;
+}
+
+/* Input Fields - 16px font prevents auto-zoom on iOS */
+.auth-form input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #444;
+    color: white;
+    font-size: 16px; 
+}
+
+.auth-form input:focus {
+    border-color: #D4AF37;
+    outline: none;
+}
+
+/* Captcha Section */
+.captcha-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+#lCapTxt {
+    background: #D4AF37;
+    color: black;
+    padding: 10px 15px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    min-width: 100px;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    background: #D4AF37;
+    color: black;
+    border: none;
+    padding: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 15px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #fff;
+}
+
+/* MOBILE FIXES */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 30px 20px;
+    }
+    
+    .auth-nav {
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .back-btn {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+}
