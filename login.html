@@ -1,108 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login | For Collab - Creator & Brand Platform</title>
-
-    <meta name="description" content="Login to For Collab to access brand collaborations and influencer marketing opportunities.">
-    <meta name="keywords" content="For Collab login, influencer login, brand collaboration platform login">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="login.css">
+<meta charset="UTF-8">
+<title>Login | BrandCollab</title>
+<meta name="description" content="Login to BrandCollab premium collaboration platform.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="login.css">
 </head>
 <body>
 
 <header>
-    <div class="logo">For Collab</div>
-    <div class="back-btn" onclick="goBack()">&#8592;</div>
+<a href="index.html" class="back-btn">← Back</a>
 </header>
 
-<section class="login-section">
-    <div class="login-box">
+<div class="form-box">
+<h2>Login</h2>
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="loginUser()">Login</button>
+</div>
 
-        <h1>Login To Your Account</h1>
-
-        <form onsubmit="return validateLogin()">
-
-            <label>Email Address</label>
-            <input type="email" id="loginEmail" required>
-
-            <label>Phone Number</label>
-            <input type="tel" id="loginPhone" required>
-
-            <label>Password</label>
-            <input type="password" id="loginPassword" required>
-
-            <label id="captchaQuestion"></label>
-            <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
-
-            <button type="submit" class="login-btn">Login</button>
-
-        </form>
-
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 For Collab. All Rights Reserved.</p>
-</footer>
-
-<script>
-let num1, num2, correctAnswer;
-
-function goBack() {
-    window.location.href = "index.html";
-}
-
-function generateCaptcha() {
-    num1 = Math.floor(Math.random() * 10) + 1;
-    num2 = Math.floor(Math.random() * 10) + 1;
-    correctAnswer = num1 + num2;
-
-    document.getElementById("captchaQuestion").innerText =
-        "CAPTCHA: What is " + num1 + " + " + num2 + " ?";
-}
-
-function validateLogin() {
-
-    let email = document.getElementById("loginEmail").value;
-    let phone = document.getElementById("loginPhone").value;
-    let password = document.getElementById("loginPassword").value;
-    let userAnswer = document.getElementById("captchaInput").value;
-
-    let storedEmail = localStorage.getItem("userEmail");
-    let storedPhone = localStorage.getItem("userPhone");
-    let storedPassword = localStorage.getItem("userPassword");
-
-    if(userAnswer != correctAnswer) {
-        alert("Incorrect CAPTCHA.");
-        generateCaptcha();
-        return false;
-    }
-
-    if(email === storedEmail && phone === storedPhone && password === storedPassword) {
-        localStorage.setItem("userLoggedIn", "true");
-        alert("Login Successful!");
-        window.location.href = "index.html";
-        return false;
-    } else {
-        alert("Invalid login details. Please register first.");
-        return false;
-    }
-}
-
-generateCaptcha();
-</script>
-
-    
 <script>
 function loginUser(){
-    localStorage.setItem("userLoggedIn","yes");
-    window.location.href="index.html";
+localStorage.setItem("brandUser","true");
+window.location.href="index.html";
 }
 </script>
-
-<button onclick="loginUser()">Login</button>
 
 </body>
 </html>
