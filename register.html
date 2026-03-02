@@ -17,7 +17,7 @@
             <h2>Create Account</h2>
             <input type="text" id="name" placeholder="Full Name" required>
             <input type="email" id="email" placeholder="Email Address" required>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
             <input type="password" id="pass" placeholder="Password" required>
             
             <div class="captcha-box">
@@ -42,12 +42,15 @@
             let email = document.getElementById('email').value;
             let phone = document.getElementById('phone').value;
 
-            // --- ADDED VERIFICATION LOGIC ---
-            // List of allowed phone numbers
+            // --- UPDATED VERIFICATION LOGIC ---
+            // 1. Check if it's only numbers
+            const isOnlyNumbers = /^\d+$/.test(phone);
+            
+            // 2. Allowed list
             const allowedNumbers = ["9172660105", "1234567890"]; 
             
-            if (!allowedNumbers.includes(phone)) {
-                return alert("This phone number is not authorized to register.");
+            if (!isOnlyNumbers || !allowedNumbers.includes(phone)) {
+                return alert("Invalid or unauthorized phone number.");
             }
             // ---------------------------------
 
@@ -69,10 +72,4 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
