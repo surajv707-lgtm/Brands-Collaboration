@@ -19,17 +19,19 @@
             <input type="email" id="email" placeholder="Email Address" required>
             <input type="tel" id="phone" placeholder="Phone Number" required>
             <input type="password" id="pass" placeholder="Password" required>
+            
             <div class="captcha-box">
                 <span id="captchaTxt"></span>
                 <input type="text" id="captchaIn" placeholder="Enter Captcha" required>
             </div>
+            
             <button type="submit" class="btn">Register Now</button>
             <p style="margin-top: 15px;">Already have an account? <a href="login.html" style="color: #D4AF37; text-decoration: none;">Login</a></p>
         </form>
     </div>
 
     <script>
-        // Captcha Gen
+        // Captcha Generation
         const code = Math.random().toString(36).substring(2, 7).toUpperCase();
         document.getElementById('captchaTxt').innerText = code;
 
@@ -59,5 +61,6 @@
     </script>
 </body>
 </html>
+
 
 
