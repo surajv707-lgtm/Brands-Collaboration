@@ -1,189 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>For Collab | Premium Brand Collaboration Platform</title>
-
-<meta name="description" content="For Collab is a premium brand collaboration platform connecting creators and brands with luxury professional tools.">
-<meta name="keywords" content="For Collab, Brand Collaboration, Influencer Platform, Creator Network, Premium Collaboration">
-<meta name="author" content="For Collab">
-<meta name="robots" content="index, follow">
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Collab | Premium Brand Collaboration Platform</title>
+    <meta name="description" content="For Collab is a premium brand collaboration platform connecting creators and brands.">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
 <header>
-<nav class="navbar">
-
-<div class="logo">For Collab</div>
-
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-<ul class="nav-links" id="navLinks">
-
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-
-<li id="loginNav"><a href="login.html">Login</a></li>
-<li id="registerNav"><a href="register.html">Register</a></li>
-
-<li id="creatorNav" style="display:none;">
-<a href="add-creator.html">Add Creator</a>
-</li>
-
-<li id="logoutNav" style="display:none;">
-<a href="#" onclick="logout()" style="color:red;">Logout</a>
-</li>
-
-</ul>
-
-</nav>
+    <nav class="navbar">
+        <div class="logo">For Collab</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            
+            <li class="guest-only"><a href="login.html">Login</a></li>
+            <li class="guest-only"><a href="register.html">Register</a></li>
+            
+            <li class="auth-only" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+            <li class="auth-only" style="display:none;"><a href="#" onclick="logout()" class="logout-link">Logout</a></li>
+        </ul>
+    </nav>
 </header>
 
-<!-- ================= HERO ================= -->
 <section class="hero">
-
-<h1>Premium Brand & Creator Collaboration</h1>
-
-<p>
-For Collab connects powerful brands with talented creators in a secure,
-professional and luxury digital ecosystem built for growth and success.
-</p>
-
-<div class="hero-buttons">
-
-<a href="login.html" id="heroLogin" class="btn">Login</a>
-<a href="register.html" id="heroRegister" class="btn">Register</a>
-
-<a href="add-creator.html" id="heroCreator" class="btn" style="display:none;">
-Add Creator
-</a>
-
-</div>
-
+    <div class="hero-content">
+        <h1>Premium Brand & Creator Collaboration</h1>
+        <p>For Collab connects powerful brands with talented creators in a secure, professional and luxury digital ecosystem.</p>
+        
+        <div class="hero-buttons">
+            <a href="login.html" class="btn guest-only">Login</a>
+            <a href="register.html" class="btn btn-outline guest-only">Register</a>
+            
+            <a href="add-creator.html" class="btn auth-only" style="display:none;">Add Creator</a>
+        </div>
+    </div>
 </section>
 
-<!-- ================= ABOUT PREVIEW ================= -->
 <section class="preview">
-
-<h2>About Preview</h2>
-
-<p>
-For Collab is designed to build strong collaboration between brands and creators.
-We provide transparency, professional communication and premium partnership tools.
-</p>
-
-<a href="about.html" class="view-btn">View All</a>
-
+    <h2>About Our Network</h2>
+    <p>We provide transparency, professional communication and premium partnership tools.</p>
+    <a href="about.html" class="view-btn">View All</a>
 </section>
 
-<!-- ================= CONTACT PREVIEW ================= -->
 <section class="preview dark">
-
-<h2>Contact Preview</h2>
-
-<p>
-Need support or collaboration details? Reach our team quickly for brand deals,
-sponsorship inquiries and creator partnerships.
-</p>
-
-<a href="contact.html" class="view-btn">View All</a>
-
+    <h2>Contact Support</h2>
+    <p>Reach our team quickly for brand deals, sponsorship inquiries and creator partnerships.</p>
+    <a href="contact.html" class="view-btn">View All</a>
 </section>
 
 <footer>
-<p>© 2026 For Collab | All Rights Reserved</p>
+    <p>© 2026 For Collab | All Rights Reserved</p>
 </footer>
 
-<!-- ================= SCRIPT ================= -->
 <script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
+    }
 
-/* Toggle Menu FIX */
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("show");
-}
+    function updateUI() {
+        const isLoggedIn = localStorage.getItem("userLoggedIn") === "true";
+        const guestElements = document.querySelectorAll('.guest-only');
+        const authElements = document.querySelectorAll('.auth-only');
 
-/* Update Navbar After Login */
-function updateUI(){
+        if (isLoggedIn) {
+            guestElements.forEach(el => el.style.display = 'none');
+            authElements.forEach(el => el.style.display = 'inline-block');
+        } else {
+            guestElements.forEach(el => el.style.display = 'inline-block');
+            authElements.forEach(el => el.style.display = 'none');
+        }
+    }
 
-if(localStorage.getItem("userLoggedIn") === "true"){
+    function logout() {
+        localStorage.removeItem("userLoggedIn");
+        window.location.reload();
+    }
 
-// Hide Login & Register
-document.getElementById("loginNav").style.display="none";
-document.getElementById("registerNav").style.display="none";
-
-// Show Creator + Logout
-document.getElementById("creatorNav").style.display="block";
-document.getElementById("logoutNav").style.display="block";
-
-// Hero Buttons
-document.getElementById("heroLogin").style.display="none";
-document.getElementById("heroRegister").style.display="none";
-document.getElementById("heroCreator").style.display="inline-block";
-
-}
-}
-
-/* Logout Function */
-function logout(){
-localStorage.removeItem("userLoggedIn");
-window.location.reload();
-}
-
-updateUI();
-
+    // Run on load
+    updateUI();
 </script>
 
-<script>
-
-/* ===== UPDATE NAVBAR AFTER LOGIN ===== */
-function updateNavbar(){
-
-if(localStorage.getItem("userLoggedIn") === "true"){
-
-// Hide login & register
-let login = document.getElementById("loginNav");
-let register = document.getElementById("registerNav");
-
-if(login) login.style.display = "none";
-if(register) register.style.display = "none";
-
-// Show add creator & logout
-let creator = document.getElementById("creatorNav");
-let logout = document.getElementById("logoutNav");
-
-if(creator) creator.style.display = "block";
-if(logout) logout.style.display = "block";
-
-// Hero buttons (if exist)
-let heroLogin = document.getElementById("heroLogin");
-let heroRegister = document.getElementById("heroRegister");
-let heroCreator = document.getElementById("heroCreator");
-
-if(heroLogin) heroLogin.style.display = "none";
-if(heroRegister) heroRegister.style.display = "none";
-if(heroCreator) heroCreator.style.display = "inline-block";
-
-}
-}
-
-/* ===== LOGOUT FUNCTION ===== */
-function logout(){
-localStorage.removeItem("userLoggedIn");
-window.location.reload();
-}
-
-/* Run when page loads */
-updateNavbar();
-
-</script>
-
-  
 </body>
 </html>
+
