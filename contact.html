@@ -1,96 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact For Collab | Brand & Influencer Collaboration Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Contact For Collab for brand partnerships, influencer collaborations, and business inquiries. Connect with India's growing digital collaboration platform.">
-    <meta name="keywords" content="For Collab contact, influencer marketing contact, brand collaboration India">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO -->
+<title>Contact For Collab | Premium Brand Collaboration Support</title>
+<meta name="description" content="Contact For Collab premium support team for brand collaborations, sponsorship inquiries and creator partnerships.">
+<meta name="keywords" content="For Collab Contact, Brand Collaboration Support, Creator Support, WhatsApp Support, Premium Collaboration">
+<meta name="author" content="For Collab">
+<meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="contact.css">
+<link rel="stylesheet" href="contact.css">
 </head>
+
 <body>
 
+<!-- NAVBAR -->
 <header>
+<nav class="navbar">
     <div class="logo">For Collab</div>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <nav>
-        <ul id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li id="loginNav"><a href="login.html">Login</a></li>
-            <li id="registerNav"><a href="register.html">Register</a></li>
-            <li id="logoutNav" style="display:none;">
-                <a href="#" class="logout-btn" onclick="logout()">Logout</a>
-            </li>
-        </ul>
-    </nav>
+    <ul class="nav-links" id="navLinks">
+
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+
+        <li id="loginOption"><a href="login.html">Login</a></li>
+        <li id="registerOption"><a href="register.html">Register</a></li>
+
+        <li id="addCreatorOption" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+        <li id="logoutOption" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+
+    </ul>
+</nav>
 </header>
 
+<!-- CONTACT CONTENT -->
 <section class="contact-section">
-    <div class="contact-content">
 
-        <h1>Contact For Collab</h1>
+<div class="contact-box">
 
-        <p>
-            At For Collab, we believe that powerful brand growth begins with meaningful
-            communication. Whether you are a brand looking to scale your digital presence
-            through influencer marketing or a content creator seeking professional
-            collaboration opportunities, we are here to support you at every step.
-        </p>
+<h1>Contact For Collab</h1>
 
-        <p>
-            Our platform is designed to simplify brand partnerships, ensure transparent
-            communication, and create long-term growth opportunities. If you have
-            business inquiries, partnership proposals, collaboration requests,
-            or technical support questions, feel free to reach out to us directly.
-        </p>
+<p>
+For Collab provides premium professional support for creators and brands looking to build meaningful collaborations.
+Our dedicated team ensures fast response time and high-quality assistance for partnership discussions, sponsorship deals,
+and creator brand connections.
+</p>
 
-        <p>
-            We are committed to responding quickly and helping you build
-            strong, result-driven collaborations in today’s competitive digital market.
-        </p>
+<p>
+If you are a brand searching for authentic influencers or a creator looking for premium collaboration opportunities,
+our support team is ready to guide you step-by-step through the process.
+We believe in transparency, professionalism, and long-term partnership growth.
+</p>
 
-        <h2>Get In Touch</h2>
+<p>
+You can reach us anytime for inquiries regarding campaigns, paid promotions, brand listings, verification,
+or platform support. Our goal is to provide a smooth and luxury communication experience for every user.
+</p>
 
-        <p><strong>Phone:</strong> +91 9172660105</p>
-        <p><strong>Email:</strong> abhinavvishwakarma36@gmail.com</p>
+<!-- BUTTONS -->
+<div class="button-group">
+<a href="tel:+91XXXXXXXXXX" class="btn call-btn">📞 Call Now</a>
 
-        <div class="contact-buttons">
-            <a href="tel:+919172660105" class="call-btn">Call Now</a>
-            <a href="https://wa.me/919172660105" target="_blank" class="whatsapp-btn">WhatsApp</a>
-        </div>
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn whatsapp-btn">
+💬 WhatsApp
+</a>
+</div>
 
-    </div>
+</div>
+
 </section>
 
 <footer>
-    <p>© 2026 For Collab. All Rights Reserved.</p>
+<p>© 2026 For Collab. All Rights Reserved.</p>
 </footer>
 
+<!-- SCRIPT -->
 <script>
-function toggleMenu() {
-    document.getElementById("nav-links").classList.toggle("active");
+
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("show");
 }
 
-function checkLogin() {
-    if(localStorage.getItem("userLoggedIn")) {
-        document.getElementById("loginNav").style.display = "none";
-        document.getElementById("registerNav").style.display = "none";
-        document.getElementById("logoutNav").style.display = "block";
-    }
+function checkLogin(){
+if(localStorage.getItem("userLoggedIn") === "true"){
+
+document.getElementById("loginOption").style.display="none";
+document.getElementById("registerOption").style.display="none";
+
+document.getElementById("addCreatorOption").style.display="block";
+document.getElementById("logoutOption").style.display="block";
+}
 }
 
-function logout() {
-    localStorage.removeItem("userLoggedIn");
-    location.reload();
+function logout(){
+localStorage.removeItem("userLoggedIn");
+window.location.href="index.html";
 }
 
 checkLogin();
+
 </script>
 
 </body>
