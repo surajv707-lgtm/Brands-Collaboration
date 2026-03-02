@@ -131,3 +131,18 @@ padding:20px;
 nav.active{display:flex;}
 .menu-toggle{display:block;}
 }
+
+.btn{
+padding:12px 25px;
+background:linear-gradient(45deg,#d4af37,#ffcc00);
+color:black;
+font-weight:bold;
+border-radius:8px;
+transition:0.3s;
+text-decoration:none;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px #d4af37;
+}
