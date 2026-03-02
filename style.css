@@ -50,7 +50,7 @@ body { background: var(--light); color: var(--dark); overflow-x: hidden; }
 
 footer { background: #000; color: #555; text-align: center; padding: 40px; font-size: 0.8rem; border-top: 1px solid var(--gray); }
 
-/* ===== MOBILE NAVIGATION ===== */
+/* ===== MOBILE NAVIGATION FIX ===== */
 @media(max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -58,8 +58,9 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
 
     .nav-links {
         position: absolute;
-        /* Changed top from 80px to 100% to remove the gap */
-        top: 100%; 
+        /* Closing the gap: 71px usually matches your navbar height */
+        /* If 71px still has a tiny gap, try 70px or 100% */
+        top: 71px; 
         right: 0;
         background: black;
         flex-direction: column;
@@ -67,9 +68,8 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
         padding: 20px;
         display: none; 
         z-index: 1000;
-        /* Borders removed as per previous request */
-        border-left: none;
-        border-bottom: none;
+        /* Borders removed as requested previously */
+        border: none;
     }
 
     .nav-links.show {
@@ -80,10 +80,10 @@ footer { background: #000; color: #555; text-align: center; padding: 40px; font-
         margin: 15px 0;
         margin-left: 0; 
         text-align: left;
+        width: 100%;
     }
 
-    /* Adjust Hero for Mobile */
+    /* Adjust Hero for Mobile to prevent overlap */
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
 }
-
