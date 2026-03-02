@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
-<meta name="description" content="About Fir Collab - A premium luxury brand collaboration platform connecting creators and brands.">
-<meta name="keywords" content="Fir Collab, Brand Collaboration Platform, Influencer Marketing, Premium Creator Network">
-<meta name="author" content="Fir Collab">
+    <!-- SEO Optimized -->
+    <title>About For Collab | Premium Brand & Creator Collaboration Platform</title>
+    <meta name="description" content="For Collab is a luxury brand collaboration platform connecting creators and brands professionally. Discover our mission, vision, and premium collaboration system.">
+    <meta name="keywords" content="For Collab, Brand Collaboration Platform, Influencer Marketing India, Creator Brand Deals, Premium Collaboration Website">
+    <meta name="author" content="For Collab">
+    <meta name="robots" content="index, follow">
 
-<title>About Us - For Collab</title>
-<link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="about.css">
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav>
-    <div class="logo">Fir Collab</div>
+<header>
+    <div class="navbar">
+        <div class="logo">For Collab</div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
 
-        <!-- Dynamic Items -->
-        <li id="loginItem"><a href="login.html">Login</a></li>
-        <li id="registerItem"><a href="register.html">Register</a></li>
+            <li id="loginOption"><a href="login.html">Login</a></li>
+            <li id="registerOption"><a href="register.html">Register</a></li>
 
-        <li id="addCreatorItem" style="display:none;">
-            <a href="add-creator.html">Add Creator</a>
-        </li>
-
-        <li id="logoutItem" style="display:none;">
-            <a href="#" onclick="logout()" class="logout-btn">Logout</a>
-        </li>
-    </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-    <h1>About For Collab</h1>
-    <p>
-        For Collab is a premium digital collaboration platform built to connect creators and brands 
-        in a sophisticated, secure, and professional ecosystem. We provide a luxury user experience 
-        designed for meaningful partnerships and measurable growth.
-    </p>
-</section>
-
-<!-- CONTENT -->
-<section class="about-content">
-
-    <div class="content-box">
-        <h2>Our Vision</h2>
-        <p>
-            Our vision is to redefine modern brand collaborations by creating a trusted and high-end 
-            digital network. We focus on excellence, transparency, and long-term success through 
-            powerful creative partnerships.
-        </p>
+            <li id="addCreatorOption" style="display:none;"><a href="add-creator.html">Add Creator</a></li>
+            <li id="logoutOption" style="display:none;"><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
     </div>
+</header>
 
-    <div class="content-box">
-        <h2>Our Mission</h2>
+<section class="about-section">
+    <div class="about-content">
+
+        <h1>About For Collab</h1>
+
         <p>
-            Our mission is to empower creators with premium opportunities and enable brands to achieve 
-            authentic engagement through innovative collaboration strategies and advanced tools.
+            For Collab is a premium and professionally structured brand collaboration platform 
+            designed to connect ambitious digital creators with high-quality and growth-focused brands. 
+            In today’s fast-moving digital ecosystem, collaboration is no longer limited to simple 
+            promotional exchanges — it has evolved into a strategic partnership model that drives 
+            trust, authenticity, visibility, and long-term brand value.
         </p>
-    </div>
 
-    <div class="content-box">
-        <h2>Why Choose Fir Collab?</h2>
         <p>
-            For Collab offers a luxury interface, seamless functionality, and professional standards. 
-            We ensure that every collaboration reflects quality, trust, and sustainable digital growth.
+            Our platform is built with a vision to provide a luxury and secure environment where 
+            creators can showcase their influence professionally while brands can discover reliable 
+            partners who align with their identity and market positioning. We understand that 
+            genuine collaborations require transparency, clarity, and professionalism. 
+            That is why For Collab is designed with simplicity, structure, and premium user experience in mind.
         </p>
-    </div>
 
+        <p>
+            At For Collab, we focus on quality over quantity. Every creator and every brand 
+            represents a unique story, audience, and purpose. Our system encourages meaningful 
+            partnerships that help brands reach targeted audiences while empowering creators 
+            to monetize their skills, creativity, and digital presence in a respectful and 
+            growth-oriented manner.
+        </p>
+
+        <p>
+            We believe that successful collaborations are built on trust, communication, and 
+            shared goals. For Collab ensures that both sides benefit equally by promoting 
+            ethical marketing practices, transparent expectations, and professional engagement. 
+            Our goal is to become a trusted bridge between innovative brands and passionate creators.
+        </p>
+
+        <p>
+            Whether you are an emerging influencer looking to establish your presence 
+            or an established brand aiming to expand your digital footprint, 
+            For Collab provides a premium ecosystem where growth is structured, 
+            partnerships are valuable, and success is sustainable.
+        </p>
+
+    </div>
 </section>
 
 <footer>
@@ -84,27 +86,25 @@
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("navLinks").classList.toggle("active");
-}
-
-function checkLoginStatus(){
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-    if(isLoggedIn === "true"){
-        document.getElementById("loginItem").style.display = "none";
-        document.getElementById("registerItem").style.display = "none";
-        document.getElementById("addCreatorItem").style.display = "block";
-        document.getElementById("logoutItem").style.display = "block";
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
     }
-}
 
-function logout(){
-    localStorage.setItem("isLoggedIn", "false");
-    window.location.href = "index.html";
-}
+    function checkLogin() {
+        if (localStorage.getItem("userLoggedIn") === "true") {
+            document.getElementById("loginOption").style.display = "none";
+            document.getElementById("registerOption").style.display = "none";
+            document.getElementById("addCreatorOption").style.display = "block";
+            document.getElementById("logoutOption").style.display = "block";
+        }
+    }
 
-checkLoginStatus();
+    function logout() {
+        localStorage.removeItem("userLoggedIn");
+        window.location.href = "index.html";
+    }
+
+    checkLogin();
 </script>
 
 </body>
