@@ -107,5 +107,49 @@
     checkLogin();
 </script>
 
+    <script>
+
+/* ===== UPDATE NAVBAR AFTER LOGIN ===== */
+function updateNavbar(){
+
+if(localStorage.getItem("userLoggedIn") === "true"){
+
+// Hide login & register
+let login = document.getElementById("loginNav");
+let register = document.getElementById("registerNav");
+
+if(login) login.style.display = "none";
+if(register) register.style.display = "none";
+
+// Show add creator & logout
+let creator = document.getElementById("creatorNav");
+let logout = document.getElementById("logoutNav");
+
+if(creator) creator.style.display = "block";
+if(logout) logout.style.display = "block";
+
+// Hero buttons (if exist)
+let heroLogin = document.getElementById("heroLogin");
+let heroRegister = document.getElementById("heroRegister");
+let heroCreator = document.getElementById("heroCreator");
+
+if(heroLogin) heroLogin.style.display = "none";
+if(heroRegister) heroRegister.style.display = "none";
+if(heroCreator) heroCreator.style.display = "inline-block";
+
+}
+}
+
+/* ===== LOGOUT FUNCTION ===== */
+function logout(){
+localStorage.removeItem("userLoggedIn");
+window.location.reload();
+}
+
+/* Run when page loads */
+updateNavbar();
+
+</script>
+
 </body>
 </html>
