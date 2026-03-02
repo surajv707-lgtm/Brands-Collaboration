@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>BrandCollab | Premium Brand Collaboration Platform</title>
-
-<meta name="description" content="BrandCollab is a luxury platform connecting elite brands and powerful creators for premium collaborations and sponsorships.">
-<meta name="keywords" content="brand collaboration, influencer marketing, sponsorship, creators, premium platform">
-<meta name="author" content="BrandCollab">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Collab | Premium Brand Collaboration Platform</title>
+
+<meta name="description" content="For Collab is a premium brand collaboration platform connecting creators and brands with luxury professional tools.">
+<meta name="keywords" content="For Collab, Brand Collaboration, Influencer Platform, Creator Network, Premium Collaboration">
+<meta name="author" content="For Collab">
+<meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<!-- ================= NAVBAR ================= -->
 <header>
-    <div class="logo">BrandCollab</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav class="navbar">
 
-    <nav id="navMenu">
-     <ul class="nav-links" id="navLinks">
+<div class="logo">For Collab</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-links" id="navLinks">
 
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
@@ -35,105 +41,104 @@
 <a href="#" onclick="logout()" style="color:red;">Logout</a>
 </li>
 
-     </ul>
-    </nav>
+</ul>
+
+</nav>
 </header>
 
+<!-- ================= HERO ================= -->
 <section class="hero">
-    <div class="hero-content">
-        <h1>Luxury Collaboration Platform</h1>
-        <p>
-            BrandCollab connects ambitious brands with powerful creators in a secure,
-            transparent and premium collaboration ecosystem.
-        </p>
 
-        <br>
-        <div class="hero-buttons">
+<h1>Premium Brand & Creator Collaboration</h1>
+
+<p>
+For Collab connects powerful brands with talented creators in a secure,
+professional and luxury digital ecosystem built for growth and success.
+</p>
+
+<div class="hero-buttons">
 
 <a href="login.html" id="heroLogin" class="btn">Login</a>
-
 <a href="register.html" id="heroRegister" class="btn">Register</a>
 
 <a href="add-creator.html" id="heroCreator" class="btn" style="display:none;">
 Add Creator
 </a>
 
-        </div>
-    </div>
+</div>
+
 </section>
 
-<!-- ABOUT PREVIEW -->
+<!-- ================= ABOUT PREVIEW ================= -->
 <section class="preview">
-    <h2>About BrandCollab</h2>
-    <p>
-        We redefine influencer marketing by providing a structured, secure
-        and premium environment where brands and creators grow together.
-    </p>
-    <div class="view-container">
-        <a href="about.html" class="view-btn">View All</a>
-    </div>
+
+<h2>About Preview</h2>
+
+<p>
+For Collab is designed to build strong collaboration between brands and creators.
+We provide transparency, professional communication and premium partnership tools.
+</p>
+
+<a href="about.html" class="view-btn">View All</a>
+
 </section>
 
-<!-- CONTACT PREVIEW -->
+<!-- ================= CONTACT PREVIEW ================= -->
 <section class="preview dark">
-    <h2>Contact & Support</h2>
-    <p>
-        Have collaboration inquiries or sponsorship questions?
-        Our professional team is here to support you.
-    </p>
-    <div class="view-container">
-        <a href="contact.html" class="view-btn">View All</a>
-    </div>
+
+<h2>Contact Preview</h2>
+
+<p>
+Need support or collaboration details? Reach our team quickly for brand deals,
+sponsorship inquiries and creator partnerships.
+</p>
+
+<a href="contact.html" class="view-btn">View All</a>
+
 </section>
 
 <footer>
-    © 2026 BrandCollab | Premium Collaboration Network
+<p>© 2026 For Collab | All Rights Reserved</p>
 </footer>
 
+<!-- ================= SCRIPT ================= -->
 <script>
+
+/* Toggle Menu FIX */
 function toggleMenu(){
-    document.getElementById("navMenu").classList.toggle("active");
+document.getElementById("navLinks").classList.toggle("show");
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-
-    
-    });
-
-});
-</script>
-
-
-<script>
-
-function updateNavbar(){
+/* Update Navbar After Login */
+function updateUI(){
 
 if(localStorage.getItem("userLoggedIn") === "true"){
 
+// Hide Login & Register
 document.getElementById("loginNav").style.display="none";
 document.getElementById("registerNav").style.display="none";
 
+// Show Creator + Logout
 document.getElementById("creatorNav").style.display="block";
 document.getElementById("logoutNav").style.display="block";
 
+// Hero Buttons
 document.getElementById("heroLogin").style.display="none";
 document.getElementById("heroRegister").style.display="none";
 document.getElementById("heroCreator").style.display="inline-block";
-    
+
 }
 }
 
+/* Logout Function */
 function logout(){
 localStorage.removeItem("userLoggedIn");
 window.location.reload();
 }
 
-updateNavbar();
+updateUI();
 
 </script>
-
-    
-    
 
 </body>
 </html>
