@@ -179,3 +179,23 @@ flex-direction:column;
 }
 
 }
+
+/* ===== WHO AM I SECTION ===== */
+.about-me{
+margin-top:40px;
+padding:20px;
+background:rgba(212,175,55,0.1);
+border-left:4px solid #d4af37;
+border-radius:10px;
+}
+
+.about-me h2{
+color:#d4af37;
+margin-bottom:15px;
+font-size:24px;
+}
+
+.about-me p{
+font-size:18px;
+margin-bottom:10px;
+}
