@@ -3,57 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Creator | For Collab</title>
-    <meta name="description" content="Submit your creator profile to For Collab.">
+    <title>Creator Application | For Collab</title>
+    <meta name="description" content="Join For Collab's elite network of creators.">
     <link rel="stylesheet" href="add-creator.css">
 </head>
 <body>
     <nav class="auth-nav">
         <div class="logo">For Collab</div>
-        </nav>
+    </nav>
 
     <main class="form-wrapper">
         <div class="form-container">
             <header class="form-header">
                 <h1>Creator Application</h1>
-                <p id="statusMsg">Register your profile for high-tier brand collaborations.</p>
+                <p>Fill out the form below to join our premium network.</p>
             </header>
 
             <form id="addCreatorForm" class="professional-form">
                 <div class="form-section">
-                    <h3>Contact Information</h3>
+                    <h3>Personal Details</h3>
                     <input type="text" id="cName" placeholder="Full Name" required>
                     <input type="email" id="cEmail" placeholder="Email Address" required>
                     <input type="tel" id="cPhone" placeholder="Phone Number" required>
                 </div>
 
                 <div class="form-section">
-                    <h3>Social Handles</h3>
-                    <input type="text" id="cInsta" placeholder="Instagram ID" required>
+                    <h3>Social Profiles</h3>
+                    <input type="text" id="cInsta" placeholder="Instagram ID (e.g., @username)" required>
                     <input type="url" id="cYoutube" placeholder="YouTube Channel Link">
                 </div>
 
                 <div class="form-section">
-                    <h3>Content Details</h3>
-                    <input type="text" id="cType" placeholder="Content Type" required>
-                    <textarea id="cExpect" placeholder="Your Expectations" rows="3" required></textarea>
-                </div>
-
-                <div class="form-section">
-                    <h3>Collaboration Interest</h3>
+                    <h3>Collaboration Details</h3>
+                    <input type="text" id="cType" placeholder="Content Type (e.g., Fashion, Travel)" required>
+                    <input type="text" id="cExpect" placeholder="Expected Money for Promotion (INR)" required>
+                    
                     <select id="collabType" required>
                         <option value="" disabled selected>Select Collaboration Type</option>
-                        <option value="Premium Brands">Premium Brands</option>
-                        <option value="Luxury Stores">Luxury Stores</option>
-                        <option value="Restaurants">Restaurants</option>
-                        <option value="Hotels & Resorts">Hotels & Resorts</option>
-                        <option value="Electronic Stores">Electronic Stores</option>
+                        <option value="Brands">Brands</option>
+                        <option value="Stores">Stores</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Restaurant">Restaurant</option>
+                        <option value="All Of These">All Of These</option>
                     </select>
                 </div>
 
                 <div class="button-group">
-                    <button type="submit" class="submit-btn">Submit Profile</button>
                     <a href="index.html" class="back-btn-low">Back to Home</a>
+                    <button type="submit" class="submit-btn">Submit Application</button>
                 </div>
             </form>
         </div>
@@ -75,30 +72,27 @@
 
             // Format WhatsApp Message
             const msg = `*New Creator Application*%0A` +
+                        `---------------------%0A` +
                         `*Name:* ${name}%0A` +
                         `*Email:* ${email}%0A` +
                         `*Phone:* ${phone}%0A` +
                         `*Instagram:* ${insta}%0A` +
                         `*YouTube:* ${yt}%0A` +
-                        `*Content:* ${type}%0A` +
-                        `*Expectations:* ${expect}%0A` +
-                        `*Collab Interest:* ${collab}`;
+                        `*Content Type:* ${type}%0A` +
+                        `*Expected Pay:* ${expect}%0A` +
+                        `*Collab Type:* ${collab}%0A` +
+                        `---------------------`;
 
             const wpUrl = `https://wa.me/9172660105?text=${msg}`;
 
-            // Show status and redirect
-            const status = document.getElementById('statusMsg');
-            status.innerHTML = "<b style='color: #D4AF37;'>Submission Completed! Redirecting in 5 seconds...</b>";
-            
-            // Open WhatsApp in new tab
+            // 1. Open WhatsApp in new tab
             window.open(wpUrl, '_blank');
 
-            // Redirect to home after 5 seconds
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 5000);
+            // 2. Redirect to Thank You Page
+            window.location.href = "thank-you.html";
         };
     </script>
 </body>
 </html>
+
 
