@@ -1,4 +1,3 @@
-/* ===== GLOBAL ===== */
 *{
     margin:0;
     padding:0;
@@ -6,8 +5,8 @@
 }
 
 body{
-    font-family: 'Segoe UI', sans-serif;
-    background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
+    font-family:'Segoe UI', sans-serif;
+    background:url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
     color:white;
 }
 
@@ -17,7 +16,7 @@ header{
     justify-content:space-between;
     align-items:center;
     padding:20px 40px;
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.9);
     position:fixed;
     width:100%;
     z-index:1000;
@@ -44,10 +43,17 @@ nav a:hover{
     color:gold;
 }
 
-.menu-toggle{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
+.gold-btn{
+    background:gold;
+    color:black;
+    padding:8px 16px;
+}
+
+.logout-btn{
+    background:red;
+    padding:8px 16px;
+    border-radius:4px;
+    color:white;
 }
 
 /* ===== HERO ===== */
@@ -84,20 +90,9 @@ nav a:hover{
     font-weight:bold;
 }
 
-.gold-btn{
-    background:gold;
-    color:black;
-}
-
 .outline-btn{
     border:2px solid gold;
     color:gold;
-}
-
-.logout-btn{
-    background:red;
-    padding:6px 12px;
-    border-radius:4px;
 }
 
 /* ===== PREVIEW ===== */
@@ -137,6 +132,12 @@ footer{
 }
 
 /* ===== MOBILE ===== */
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
 @media(max-width:768px){
 
     nav{
