@@ -21,6 +21,15 @@
             color: #D4AF37;
             user-select: none;
         }
+        /* Style for Forgot Password link */
+        .forgot-pass {
+            display: block;
+            text-align: right;
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -38,6 +47,8 @@
                 <input type="password" id="lPass" placeholder="Password" required>
                 <span class="toggle-password" onclick="togglePassword()">👁️</span>
             </div>
+            
+            <a href="#" class="forgot-pass">Forgot Password?</a>
             
             <div class="captcha-box">
                 <span id="lCapTxt"></span>
@@ -93,3 +104,4 @@
     </script>
 </body>
 </html>
+
