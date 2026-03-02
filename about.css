@@ -63,6 +63,11 @@ body::before {
     color: #d4af37;
 }
 
+.logout-btn{
+color:red !important;
+font-weight:bold;
+}
+
 /* ===== ABOUT SECTION ===== */
 .about-section {
     padding: 100px 20px;
