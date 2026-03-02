@@ -1,117 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Register | For Collab - Creator & Brand Platform</title>
-
-    <meta name="description" content="Register on For Collab to connect with brands and creators for professional influencer marketing collaborations.">
-    <meta name="keywords" content="For Collab register, influencer signup, brand collaboration registration">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="register.css">
+<meta charset="UTF-8">
+<title>Register | BrandCollab</title>
+<meta name="description" content="Register on BrandCollab premium collaboration platform.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="register.css">
 </head>
 <body>
 
 <header>
-    <div class="logo">For Collab</div>
-    <div class="back-btn" onclick="goBack()">&#8592;</div>
+<a href="index.html" class="back-btn">← Back</a>
 </header>
 
-<section class="register-section">
-    <div class="register-box">
-
-        <h1>Create Your Account</h1>
-
-        <form onsubmit="return validateForm()">
-
-    <label>Full Name</label>
-    <input type="text" required>
-
-    <label>Email Address</label>
-    <input type="email" required>
-
-    <label>Phone Number</label>
-    <input type="tel" required>
-
-    <label>Password</label>
-    <input type="password" id="password" required minlength="6">
-    
-   
-    <label>Confirm Password</label>
-    <input type="password" id="confirmPassword" required minlength="6">
-    
-            
-    <label id="captchaQuestion"></label>
-    <input type="text" id="captchaInput" placeholder="Enter CAPTCHA Answer" required>
-
-    <button type="submit" class="register-btn">Register</button>
-
-        </form>
-
-        <p id="message"></p>
-
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 For Collab. All Rights Reserved.</p>
-</footer>
-
-
-
+<div class="form-box">
+<h2>Register</h2>
+<input type="text" placeholder="Full Name">
+<input type="email" placeholder="Email">
+<input type="password" placeholder="Password">
+<button onclick="registerUser()">Register</button>
+</div>
 
 <script>
-let num1, num2, correctAnswer;
-
-function goBack() {
-    window.location.href = "index.html";
+function registerUser(){
+localStorage.setItem("brandUser","true");
+window.location.href="index.html";
 }
-
-function generateCaptcha() {
-    num1 = Math.floor(Math.random() * 10) + 1;
-    num2 = Math.floor(Math.random() * 10) + 1;
-    correctAnswer = num1 + num2;
-
-    document.getElementById("captchaQuestion").innerText =
-        "CAPTCHA: What is " + num1 + " + " + num2 + " ?";
-}
-
-function validateForm() {
-
-    let name = document.querySelector("input[type='text']").value;
-    let email = document.querySelector("input[type='email']").value;
-    let phone = document.querySelector("input[type='tel']").value;
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
-    let userAnswer = document.getElementById("captchaInput").value;
-
-    if(password !== confirmPassword) {
-        alert("Passwords do not match.");
-        return false;
-    }
-
-    if(userAnswer != correctAnswer) {
-        alert("Incorrect CAPTCHA.");
-        generateCaptcha();
-        return false;
-    }
-
-    // Save user data
-    localStorage.setItem("userName", name);
-    localStorage.setItem("userEmail", email);
-    localStorage.setItem("userPhone", phone);
-    localStorage.setItem("userPassword", password);
-    localStorage.setItem("userLoggedIn", "true");
-
-    alert("Registration Successful!");
-    window.location.href = "index.html";
-    return false;
-}
-
-generateCaptcha();
 </script>
-    
-    
 
 </body>
 </html>
