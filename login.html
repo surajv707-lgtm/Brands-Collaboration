@@ -2,29 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login | BrandCollab</title>
-<meta name="description" content="Login to BrandCollab premium collaboration platform.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Login to For Collab - Premium Brand Collaboration Platform">
+<meta name="keywords" content="For Collab Login, Influencer Login">
+<meta name="author" content="For Collab">
+<title>Login - For Collab</title>
 <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
 
-<header>
-<a href="index.html" class="back-btn">← Back</a>
-</header>
+<nav>
+    <div class="logo">For Collab</div>
+    <a href="index.html" class="back-btn">← Back</a>
+</nav>
 
-<div class="form-box">
-<h2>Login</h2>
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
-<button onclick="loginUser()">Login</button>
+<div class="form-container">
+    <h1>Welcome Back</h1>
+
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <input type="tel" id="loginPhone" placeholder="Phone Number" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+
+        <div class="captcha-box">
+            <span id="loginCaptchaText"></span>
+            <button type="button" onclick="generateLoginCaptcha()">↻</button>
+        </div>
+
+        <input type="text" id="loginCaptchaInput" placeholder="Enter Captcha" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="bottom-text">
+        Don’t have an account? <a href="register.html">Register Here</a>
+    </p>
 </div>
 
 <script>
-function loginUser(){
-localStorage.setItem("brandUser","true");
-window.location.href="index.html";
+function generateLoginCaptcha() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let captcha = "";
+    for (let i = 0; i < 6; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    document.getElementById("loginCaptchaText").innerText = captcha;
 }
+
+generateLoginCaptcha();
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value;
+    const phone = document.getElementById("loginPhone").value;
+    const password = document.getElementById("loginPassword").value;
+    const captchaInput = document.getElementById("loginCaptchaInput").value;
+    const captchaText = document.getElementById("loginCaptchaText").innerText;
+
+    const storedEmail = localStorage.getItem("userEmail");
+    const storedPhone = localStorage.getItem("userPhone");
+    const storedPassword = localStorage.getItem("userPassword");
+
+    if(!storedEmail){
+        alert("You must register first.");
+        window.location.href = "register.html";
+        return;
+    }
+
+    if(captchaInput !== captchaText){
+        alert("Captcha Incorrect!");
+        generateLoginCaptcha();
+        return;
+    }
+
+    if(email === storedEmail && phone === storedPhone && password === storedPassword){
+        localStorage.setItem("isLoggedIn", "true");
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid Details!");
+    }
+});
 </script>
 
 </body>
