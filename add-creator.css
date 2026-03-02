@@ -2,58 +2,65 @@
     --gold: #D4AF37;
     --dark: #0a0a0a;
     --white: #ffffff;
-    --gray: #f9f9f9;
-    --border: #e0e0e0;
+    --gray: #f4f4f4;
+    --border: #ddd;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Playfair Display', serif; }
 
 body { background-color: var(--gray); color: var(--dark); line-height: 1.6; }
 
+/* Navbar */
 .auth-nav {
     display: flex;
-    justify-content: center; /* Centered since back button is gone */
-    padding: 20px 8%;
+    justify-content: center; /* Just name in center */
+    padding: 20px;
     background: var(--dark);
     color: var(--gold);
+    border-bottom: 2px solid var(--gold);
 }
 
-.logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+.logo { font-size: 1.6rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
-.form-wrapper { display: flex; justify-content: center; padding: 40px 20px; }
+/* Form Layout */
+.form-wrapper { display: flex; justify-content: center; padding: 50px 20px; }
 
 .form-container {
     background: var(--white);
     width: 100%;
-    max-width: 600px;
+    max-width: 550px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .form-header { text-align: center; margin-bottom: 30px; }
-.form-header h1 { font-size: 1.8rem; color: var(--dark); letter-spacing: 1px; }
+.form-header h1 { font-size: 2rem; color: var(--dark); margin-bottom: 10px; }
+.form-header p { color: #666; font-size: 0.9rem; }
 
 .form-section { margin-bottom: 25px; }
 .form-section h3 {
     font-size: 1rem;
-    border-bottom: 2px solid var(--gold);
+    color: var(--gold);
     margin-bottom: 15px;
-    padding-bottom: 5px;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
 }
 
-input, textarea, select {
+input, select {
     width: 100%;
     padding: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     border: 1px solid var(--border);
-    font-size: 1rem;
-    outline: none;
+    font-size: 0.95rem;
+    font-family: sans-serif; /* Cleaner font for inputs */
 }
 
-input:focus, textarea:focus, select:focus { border-color: var(--gold); }
+input:focus, select:focus { outline: none; border-color: var(--gold); }
 
-/* Button Group Side by Side */
+/* Buttons */
 .button-group {
     display: flex;
     gap: 15px;
@@ -61,39 +68,40 @@ input:focus, textarea:focus, select:focus { border-color: var(--gold); }
 }
 
 .submit-btn {
-    flex: 2;
+    flex: 1;
     padding: 15px;
     background: var(--dark);
     color: var(--gold);
-    border: 1px solid var(--gold);
+    border: 1px solid var(--dark);
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.3s;
 }
 
+.submit-btn:hover { background: var(--gold); color: black; border-color: var(--gold); }
+
 .back-btn-low {
     flex: 1;
     padding: 15px;
     background: transparent;
-    color: #444;
+    color: #555;
     border: 1px solid #ccc;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.3s;
 }
 
-.submit-btn:hover { background: var(--gold); color: black; }
-.back-btn-low:hover { background: #eee; }
+.back-btn-low:hover { background: #f0f0f0; }
 
 @media (max-width: 600px) {
-    .button-group { flex-direction: column; }
     .form-container { padding: 25px; }
+    .button-group { flex-direction: column-reverse; }
 }
 
