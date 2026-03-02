@@ -1,111 +1,43 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+font-family:Segoe UI;
+background:url('https://images.unsplash.com/photo-1492724441997-5dc865305da7') no-repeat center center fixed;
+background-size:cover;
+display:flex;
+flex-direction:column;
+align-items:center;
+color:white;
 }
 
-body {
-    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-    url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
-    color: white;
+header{
+width:100%;
+padding:20px;
+background:rgba(0,0,0,0.9);
 }
 
-/* HEADER */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: rgba(0,0,0,0.9);
+.back-btn{
+color:gold;
+text-decoration:none;
+font-weight:bold;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+.form-box{
+margin-top:120px;
+background:rgba(0,0,0,0.8);
+padding:40px;
+text-align:center;
+border-radius:8px;
 }
 
-.back-btn {
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-    transition: 0.3s;
+input{
+display:block;
+margin:15px auto;
+padding:10px;
+width:250px;
 }
 
-.back-btn:hover {
-    color: orange;
-}
-
-/* REGISTER SECTION */
-.register-section {
-    padding: 100px 20px;
-}
-
-.register-box {
-    max-width: 400px;
-    margin: auto;
-    background: rgba(0,0,0,0.85);
-    padding: 40px;
-    border-radius: 10px;
-}
-
-.register-box h1 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.register-box label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.register-box input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.otp-btn {
-    width: 100%;
-    padding: 10px;
-    background: orange;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
-
-.register-btn {
-    width: 100%;
-    padding: 10px;
-    background: green;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.otp-btn:hover {
-    background: darkorange;
-}
-
-.register-btn:hover {
-    background: darkgreen;
-}
-
-#message {
-    margin-top: 10px;
-    text-align: center;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: black;
-    margin-top: 50px;
+button{
+background:gold;
+padding:10px 20px;
+border:none;
+cursor:pointer;
 }
