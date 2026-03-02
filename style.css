@@ -5,12 +5,11 @@
 }
 
 body{
-    font-family:'Segoe UI', sans-serif;
+    font-family:Segoe UI, sans-serif;
     background:url('https://images.unsplash.com/photo-1508780709619-79562169bc64') no-repeat center center/cover;
     color:white;
 }
 
-/* NAVBAR */
 header{
     display:flex;
     justify-content:space-between;
@@ -19,7 +18,6 @@ header{
     background:rgba(0,0,0,0.9);
     position:fixed;
     width:100%;
-    z-index:1000;
 }
 
 .logo{
@@ -36,57 +34,30 @@ nav{
 nav a{
     text-decoration:none;
     color:white;
-    transition:0.3s;
 }
 
 nav a:hover{
     color:gold;
 }
 
-.gold-btn{
-    background:gold;
-    color:black;
-    padding:8px 16px;
-}
-
-.logout-btn{
-    background:red;
-    color:white;
-    padding:8px 16px;
-    border-radius:4px;
-}
-
-.menu-toggle{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-}
-
-/* HERO */
 .hero{
     height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     padding:120px 20px;
     background:rgba(0,0,0,0.75);
 }
 
 .hero-content{
-    max-width:900px;
+    max-width:800px;
 }
 
 .hero h1{
-    font-size:48px;
     color:gold;
+    font-size:45px;
     margin-bottom:20px;
-}
-
-.hero p{
-    line-height:1.7;
-    margin-bottom:20px;
-    font-size:18px;
 }
 
 .btn{
@@ -96,32 +67,29 @@ nav a:hover{
     font-weight:bold;
 }
 
+.gold-btn{
+    background:gold;
+    color:black;
+}
+
 .outline-btn{
     border:2px solid gold;
     color:gold;
 }
 
-/* PREVIEW */
-.preview-section{
+.preview{
     padding:80px 20px;
     text-align:center;
     background:#111;
 }
 
-.dark-section{
+.preview.dark{
     background:#000;
 }
 
-.preview-section h2{
+.preview h2{
     color:gold;
     margin-bottom:20px;
-}
-
-.preview-section p{
-    max-width:800px;
-    margin:auto;
-    margin-bottom:20px;
-    line-height:1.6;
 }
 
 .view-btn{
@@ -137,17 +105,18 @@ footer{
     background:black;
 }
 
-/* MOBILE */
-@media(max-width:768px){
+.menu-toggle{
+    display:none;
+}
 
+@media(max-width:768px){
     nav{
-        position:absolute;
-        top:70px;
-        right:0;
-        background:black;
-        flex-direction:column;
-        width:200px;
         display:none;
+        flex-direction:column;
+        position:absolute;
+        right:0;
+        top:70px;
+        background:black;
         padding:20px;
     }
 
@@ -157,5 +126,7 @@ footer{
 
     .menu-toggle{
         display:block;
+        font-size:28px;
+        cursor:pointer;
     }
 }
