@@ -69,11 +69,11 @@
         <form id="resetSection" class="auth-form hidden">
             <h2>New Password</h2>
             <div class="password-container">
-                <input type="password" id="nPass" placeholder="New Password" required oninput="checkMatch()">
+                <input type="password" id="nPass" placeholder="New Password" required oninput="checkInputStatus()">
                 <span class="toggle-password" onclick="togglePassword('nPass', this)">👁️</span>
             </div>
             <div class="password-container">
-                <input type="password" id="cPass" placeholder="Confirm Password" required oninput="checkMatch()">
+                <input type="password" id="cPass" placeholder="Confirm Password" required oninput="checkInputStatus()">
                 <span class="toggle-password" onclick="togglePassword('cPass', this)">👁️</span>
             </div>
             <button type="submit" id="changePassBtn" class="btn" disabled>Change Password</button>
@@ -160,7 +160,6 @@
 
         // 2. Verification Logic
         function resetVerification() {
-            // If user types/deletes anything, show verify button again and block next
             document.getElementById('vBtn').style.display = 'block';
             document.getElementById('nextBtn').disabled = true;
             document.getElementById('wrongIcon').style.display = 'none';
@@ -189,14 +188,14 @@
             }
         }
 
-        // 3. Reset Password Real-time Check
-        function checkMatch() {
+        // 3. Reset Password Logic
+        function checkInputStatus() {
             const nPass = document.getElementById('nPass').value;
             const cPass = document.getElementById('cPass').value;
             const changeBtn = document.getElementById('changePassBtn');
             
-            // Activate button only if both match and aren't empty
-            if (nPass === cPass && nPass !== "") {
+            // Active button if at least one character is entered in both boxes
+            if (nPass.length > 0 && cPass.length > 0) {
                 changeBtn.disabled = false;
             } else {
                 changeBtn.disabled = true;
@@ -217,7 +216,7 @@
             let userIndex = users.findIndex(u => u.email === currentResetEmail);
 
             if (userIndex !== -1) {
-                users[userIndex].pass = nPass; // Updating with New Password
+                users[userIndex].pass = nPass;
                 localStorage.setItem('users', JSON.stringify(users));
                 showCenterMessage("Password Changed Successfully!", false);
                 setTimeout(() => { window.location.reload(); }, 2500);
