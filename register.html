@@ -23,13 +23,19 @@
         /* Style for the two points */
         .password-requirements {
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin: 5px 0 15px 5px;
             color: #ccc;
         }
         .requirement-item {
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        /* Class for when requirements are met */
+        .met {
+            color: #2ecc71 !important; /* Premium Green */
+            font-weight: bold;
         }
     </style>
 </head>
@@ -51,8 +57,8 @@
             </div>
 
             <div class="password-requirements" id="passReqs">
-                <span id="reqLen" class="requirement-item">1st. Minimum 10 character required</span>
-                <span id="reqNum" class="requirement-item">2nd. Minimum 4 numbers required</span>
+                <span id="reqLen" class="requirement-item">• (minimum 10 character required)</span>
+                <span id="reqNum" class="requirement-item">• (minimum 4 number required)</span>
             </div>
             
             <div class="captcha-box">
@@ -75,16 +81,28 @@
             const reqNum = document.getElementById('reqNum');
             const regBtn = document.getElementById('regBtn');
 
-            // Check 10 characters
+            // Requirement 1: 10 characters
             const isLongEnough = pass.length >= 10;
-            reqLen.style.display = isLongEnough ? 'none' : 'block';
+            if (isLongEnough) {
+                reqLen.innerHTML = "✅ (minimum 10 character required)";
+                reqLen.classList.add('met');
+            } else {
+                reqLen.innerHTML = "• (minimum 10 character required)";
+                reqLen.classList.remove('met');
+            }
 
-            // Check 4 numbers
+            // Requirement 2: 4 numbers
             const numCount = (pass.match(/\d/g) || []).length;
             const hasFourNums = numCount >= 4;
-            reqNum.style.display = hasFourNums ? 'none' : 'block';
+            if (hasFourNums) {
+                reqNum.innerHTML = "✅ (minimum 4 number required)";
+                reqNum.classList.add('met');
+            } else {
+                reqNum.innerHTML = "• (minimum 4 number required)";
+                reqNum.classList.remove('met');
+            }
 
-            // Active button only if both points are gone
+            // Button activation
             regBtn.disabled = !(isLongEnough && hasFourNums);
         }
 
