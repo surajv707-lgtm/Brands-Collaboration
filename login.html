@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | For Collab - Exclusive Creator Network</title>
-    <meta name="description" content="Secure login for For Collab members. Access your luxury collaboration dashboard.">
+    <title>Access Control | For Collab</title>
     <link rel="stylesheet" href="login.css">
     <style>
-        /* Styling for the show password toggle */
-        .password-container {
-            position: relative;
-            width: 100%;
-        }
+        /* Shared Luxury Styles */
+        .password-container { position: relative; width: 100%; }
         .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #D4AF37;
-            user-select: none;
+            position: absolute; right: 10px; top: 50%;
+            transform: translateY(-50%); cursor: pointer;
+            color: #D4AF37; user-select: none;
         }
+        .hidden { display: none; }
+        .input-group { position: relative; display: flex; align-items: center; width: 100%; }
+        .verify-btn { 
+            position: absolute; right: 10px; background: #D4AF37; 
+            border: none; padding: 5px 12px; cursor: pointer; 
+            font-weight: bold; font-size: 0.7rem; color: black;
+            border-radius: 2px;
+        }
+        .status-icon { position: absolute; right: 12px; display: none; font-size: 1rem; }
+        .btn:disabled { background: #444; cursor: not-allowed; color: #777; border: none; }
+        .flex-btns { display: flex; gap: 10px; margin-top: 20px; width: 100%; }
+        .flex-btns .btn { margin-top: 0; }
     </style>
 </head>
 <body>
@@ -33,98 +37,111 @@
         <form id="loginForm" class="auth-form">
             <h2>Login</h2>
             <input type="email" id="lEmail" placeholder="Email Address" required>
-            
             <div class="password-container">
                 <input type="password" id="lPass" placeholder="Password" required>
-                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                <span class="toggle-password" onclick="togglePassword('lPass', this)">👁️</span>
             </div>
-            
+            <div style="text-align: right; margin: 5px 0 15px 0;">
+                <a href="#" onclick="showSection('verifySection')" style="color: #D4AF37; font-size: 0.8rem; text-decoration: none;">Forgot Password?</a>
+            </div>
             <div class="captcha-box">
                 <span id="lCapTxt"></span>
                 <input type="text" id="lCapIn" placeholder="Enter Captcha" required>
             </div>
-            
             <button type="submit" class="btn">Login</button>
-            <p>New here? <a href="register.html" style="color: #D4AF37; text-decoration: none;">Register</a></p>
+            <p style="margin-top: 15px;">New here? <a href="register.html" style="color: #D4AF37; text-decoration: none;">Register</a></p>
+        </form>
+
+        <div id="verifySection" class="auth-form hidden">
+            <h2>Verify Email</h2>
+            <p style="margin-bottom: 20px; font-size: 0.9rem; color: #ccc;">Enter your registered email.</p>
+            <div class="input-group">
+                <input type="email" id="resetEmail" placeholder="Email Address">
+                <button type="button" id="vBtn" class="verify-btn" onclick="verifyEmailAction()">Verify</button>
+                <span id="wrongIcon" class="status-icon">❌</span>
+            </div>
+            <div class="flex-btns">
+                <button onclick="showSection('loginForm')" class="btn" style="background: transparent; border: 1px solid #D4AF37; color: white;">Back</button>
+                <button id="nextBtn" class="btn" onclick="showSection('resetSection')" disabled>Next</button>
+            </div>
+        </div>
+
+        <form id="resetSection" class="auth-form hidden">
+            <h2>New Password</h2>
+            <div class="password-container">
+                <input type="password" id="nPass" placeholder="New Password" required>
+                <span class="toggle-password" onclick="togglePassword('nPass', this)">👁️</span>
+            </div>
+            <div class="password-container">
+                <input type="password" id="cPass" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePassword('cPass', this)">👁️</span>
+            </div>
+            <button type="submit" class="btn">Change Password</button>
         </form>
     </main>
 
     <script>
-        // Generate Captcha
-        const code = Math.random().toString(36).substring(2, 7).toUpperCase();
-        document.getElementById('lCapTxt').innerText = code;
+        let currentResetEmail = "";
+        let captchaCode = Math.random().toString(36).substring(2, 7).toUpperCase();
+        document.getElementById('lCapTxt').innerText = captchaCode;
 
-        // Toggle Password Visibility
-        function togglePassword() {
-            const passInput = document.getElementById('lPass');
-            const toggleIcon = document.querySelector('.toggle-password');
-            if (passInput.type === "password") {
-                passInput.type = "text";
-                toggleIcon.innerText = "🙈";
+        // --- UI TOGGLES ---
+        function showSection(sectionId) {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('verifySection').classList.add('hidden');
+            document.getElementById('resetSection').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function togglePassword(inputId, el) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                el.innerText = "🙈";
             } else {
-                passInput.type = "password";
-                toggleIcon.innerText = "👁️";
+                input.type = "password";
+                el.innerText = "👁️";
             }
         }
 
-        // Helper function for the professional centered messages
+        // --- LUXURY NOTIFICATION ---
         function showCenterMessage(text, isError) {
             const msg = document.createElement('div');
             msg.innerText = text;
-            
             const styles = {
-                position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                color: '#ffffff',
-                padding: '20px 40px',
-                borderRadius: '8px',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
-                fontFamily: 'Arial, sans-serif',
-                fontWeight: 'bold',
-                fontSize: '1.2rem',
-                letterSpacing: '1px',
-                zIndex: '9999',
-                textAlign: 'center',
-                opacity: '0',
-                transition: 'opacity 0.4s ease-in-out'
+                position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                color: '#ffffff', padding: '20px 40px', borderRadius: '8px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.6)', fontFamily: 'Arial, sans-serif',
+                fontWeight: 'bold', fontSize: '1.2rem', zIndex: '9999', textAlign: 'center',
+                opacity: '0', transition: 'opacity 0.4s ease-in-out'
             };
-
             if (isError) {
-                // Urgent/Alert Red Texture
                 styles.background = 'linear-gradient(135deg, #8b0000, #b22222)';
                 styles.border = '1px solid #ff4d4d';
             } else {
-                // Trust/Professional Emerald Texture
                 styles.background = 'linear-gradient(135deg, #0f3e28, #18603e)';
                 styles.border = '1px solid #D4AF37';
             }
-            
             Object.assign(msg.style, styles);
             document.body.appendChild(msg);
-            
             setTimeout(() => { msg.style.opacity = '1'; }, 10);
-            
-            // Remove message after delay (except on successful login redirect)
-            if (text !== "Login Successful!") {
+            if (text !== "Login Successful!" && text !== "Password Changed Successfully!") {
                 setTimeout(() => {
                     msg.style.opacity = '0';
                     setTimeout(() => msg.remove(), 400);
                 }, 2000);
             }
-            return msg;
         }
 
+        // --- CORE LOGIC ---
+        // 1. Login Logic
         document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
-            
             const enteredCaptcha = document.getElementById('lCapIn').value.toUpperCase();
-            if(enteredCaptcha !== code) {
+            if(enteredCaptcha !== captchaCode) {
                 showCenterMessage("Error! Captcha", true);
                 return;
             }
-
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let email = document.getElementById('lEmail').value.trim();
             let pass = document.getElementById('lPass').value;
@@ -139,12 +156,55 @@
             } else {
                 localStorage.setItem('userLoggedIn', 'true');
                 showCenterMessage("Login Successful!", false);
-                
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 2500);
+                setTimeout(() => { window.location.href = "index.html"; }, 2500);
+            }
+        };
+
+        // 2. Verification Logic
+        function verifyEmailAction() {
+            const emailInput = document.getElementById('resetEmail');
+            const email = emailInput.value.trim();
+            const users = JSON.parse(localStorage.getItem('users') || "[]");
+            const vBtn = document.getElementById('vBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const wrongIcon = document.getElementById('wrongIcon');
+
+            const user = users.find(u => u.email === email);
+            if (user) {
+                currentResetEmail = email;
+                vBtn.style.display = 'none';
+                wrongIcon.style.display = 'none';
+                nextBtn.disabled = false;
+                emailInput.style.borderColor = "#D4AF37";
+            } else {
+                wrongIcon.style.display = 'block';
+                nextBtn.disabled = true;
+                emailInput.style.borderColor = "red";
+            }
+        }
+
+        // 3. Password Reset Logic
+        document.getElementById('resetSection').onsubmit = function(e) {
+            e.preventDefault();
+            const nPass = document.getElementById('nPass').value;
+            const cPass = document.getElementById('cPass').value;
+
+            if (nPass !== cPass) {
+                showCenterMessage("Passwords do not match", true);
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users') || "[]");
+            let userIndex = users.findIndex(u => u.email === currentResetEmail);
+
+            if (userIndex !== -1) {
+                users[userIndex].pass = nPass;
+                localStorage.setItem('users', JSON.stringify(users));
+                showCenterMessage("Password Changed Successfully!", false);
+                setTimeout(() => { window.location.reload(); }, 2500);
             }
         };
     </script>
 </body>
 </html>
+
