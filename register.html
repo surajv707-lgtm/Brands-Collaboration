@@ -6,7 +6,6 @@
     <title>Register | For Collab</title>
     <link rel="stylesheet" href="register.css">
     <style>
-        /* Styling for the show password toggle */
         .password-container {
             position: relative;
             width: 100%;
@@ -20,6 +19,17 @@
             color: #D4AF37;
             user-select: none;
             z-index: 10;
+        }
+        /* Style for the two points */
+        .password-requirements {
+            text-align: left;
+            font-size: 0.8rem;
+            margin: 5px 0 15px 5px;
+            color: #ccc;
+        }
+        .requirement-item {
+            display: block;
+            margin-bottom: 3px;
         }
     </style>
 </head>
@@ -36,8 +46,13 @@
             <input type="email" id="email" placeholder="Email Address" required>
             
             <div class="password-container">
-                <input type="password" id="pass" placeholder="Password" required>
+                <input type="password" id="pass" placeholder="Password" required oninput="validatePassword()">
                 <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <div class="password-requirements" id="passReqs">
+                <span id="reqLen" class="requirement-item">1st. Minimum 10 character required</span>
+                <span id="reqNum" class="requirement-item">2nd. Minimum 4 numbers required</span>
             </div>
             
             <div class="captcha-box">
@@ -45,7 +60,7 @@
                 <input type="text" id="captchaIn" placeholder="Captcha" required>
             </div>
             
-            <button type="submit" class="btn">Register Now</button>
+            <button type="submit" id="regBtn" class="btn" disabled>Register Now</button>
             <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
         </form>
     </div>
@@ -54,7 +69,25 @@
         const code = Math.random().toString(36).substring(2, 7).toUpperCase();
         document.getElementById('captchaTxt').innerText = code;
 
-        // Toggle Password Visibility
+        function validatePassword() {
+            const pass = document.getElementById('pass').value;
+            const reqLen = document.getElementById('reqLen');
+            const reqNum = document.getElementById('reqNum');
+            const regBtn = document.getElementById('regBtn');
+
+            // Check 10 characters
+            const isLongEnough = pass.length >= 10;
+            reqLen.style.display = isLongEnough ? 'none' : 'block';
+
+            // Check 4 numbers
+            const numCount = (pass.match(/\d/g) || []).length;
+            const hasFourNums = numCount >= 4;
+            reqNum.style.display = hasFourNums ? 'none' : 'block';
+
+            // Active button only if both points are gone
+            regBtn.disabled = !(isLongEnough && hasFourNums);
+        }
+
         function togglePassword() {
             const passInput = document.getElementById('pass');
             const toggleIcon = document.querySelector('.toggle-password');
@@ -67,53 +100,26 @@
             }
         }
 
-        // Helper function to show professional messages
         function showMessage(text, type) {
             const msg = document.createElement('div');
             msg.innerText = text;
-            
-            // Base styles for all center messages
             const baseStyles = {
-                position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                color: '#ffffff',
-                padding: '20px 40px',
-                borderRadius: '8px',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
-                fontFamily: 'Arial, sans-serif',
-                fontWeight: 'bold',
-                fontSize: '1.2rem',
-                letterSpacing: '1px',
-                zIndex: '9999',
-                textAlign: 'center',
-                opacity: '0',
-                transition: 'opacity 0.4s ease-in-out'
+                position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                color: '#ffffff', padding: '20px 40px', borderRadius: '8px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.6)', fontFamily: 'Arial, sans-serif',
+                fontWeight: 'bold', fontSize: '1.2rem', zIndex: '9999', textAlign: 'center',
+                opacity: '0', transition: 'opacity 0.4s ease-in-out'
             };
 
-            // Specific styles based on message type
             if (type === 'success' || type === 'info') {
-                // Trust/Professional emerald texture
-                Object.assign(baseStyles, {
-                    background: 'linear-gradient(135deg, #0f3e28, #18603e)',
-                    border: '1px solid #D4AF37'
-                });
+                Object.assign(baseStyles, { background: 'linear-gradient(135deg, #0f3e28, #18603e)', border: '1px solid #D4AF37' });
             } else if (type === 'error') {
-                // Alert/Emergency red texture
-                Object.assign(baseStyles, {
-                    background: 'linear-gradient(135deg, #8b0000, #b22222)',
-                    border: '1px solid #ff4d4d'
-                });
+                Object.assign(baseStyles, { background: 'linear-gradient(135deg, #8b0000, #b22222)', border: '1px solid #ff4d4d' });
             }
             
             Object.assign(msg.style, baseStyles);
             document.body.appendChild(msg);
-            
-            // Fade in
             setTimeout(() => { msg.style.opacity = '1'; }, 10);
-            
-            // Remove after 2.5 seconds
             setTimeout(() => {
                 msg.style.opacity = '0';
                 setTimeout(() => msg.remove(), 400);
@@ -122,37 +128,24 @@
 
         document.getElementById('regForm').onsubmit = function(e) {
             e.preventDefault();
-            
-            // Captcha Validation
             if(document.getElementById('captchaIn').value.toUpperCase() !== code) {
                 showMessage("Error! Captcha", "error");
                 return;
             }
-
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let email = document.getElementById('email').value;
-
-            // Duplicate Email Check
             if(users.find(u => u.email === email)) {
                 showMessage("Email already registered", "info");
                 return;
             }
-
-            // Save User
             users.push({
                 name: document.getElementById('name').value,
                 email: email,
                 pass: document.getElementById('pass').value
             });
-
             localStorage.setItem('users', JSON.stringify(users));
-
-            // Success Message and Redirect
             showMessage("Registration Successful!", "success");
-            
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 2000);
+            setTimeout(() => { window.location.href = "login.html"; }, 2000);
         };
     </script>
 </body>
