@@ -31,7 +31,7 @@
 
     <main class="auth-container">
         <form id="loginForm" class="auth-form">
-            <h2>Luxury Login</h2>
+            <h2>Login</h2>
             <input type="email" id="lEmail" placeholder="Email Address" required>
             
             <div class="password-container">
@@ -67,65 +67,84 @@
             }
         }
 
+        // Helper function for the professional centered messages
+        function showCenterMessage(text, isError) {
+            const msg = document.createElement('div');
+            msg.innerText = text;
+            
+            const styles = {
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                color: '#ffffff',
+                padding: '20px 40px',
+                borderRadius: '8px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
+                fontFamily: 'Arial, sans-serif',
+                fontWeight: 'bold',
+                fontSize: '1.2rem',
+                letterSpacing: '1px',
+                zIndex: '9999',
+                textAlign: 'center',
+                opacity: '0',
+                transition: 'opacity 0.4s ease-in-out'
+            };
+
+            if (isError) {
+                // Urgent/Alert Red Texture
+                styles.background = 'linear-gradient(135deg, #8b0000, #b22222)';
+                styles.border = '1px solid #ff4d4d';
+            } else {
+                // Trust/Professional Emerald Texture
+                styles.background = 'linear-gradient(135deg, #0f3e28, #18603e)';
+                styles.border = '1px solid #D4AF37';
+            }
+            
+            Object.assign(msg.style, styles);
+            document.body.appendChild(msg);
+            
+            setTimeout(() => { msg.style.opacity = '1'; }, 10);
+            
+            // Remove message after delay (except on successful login redirect)
+            if (text !== "Login Successful!") {
+                setTimeout(() => {
+                    msg.style.opacity = '0';
+                    setTimeout(() => msg.remove(), 400);
+                }, 2000);
+            }
+            return msg;
+        }
+
         document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
             
             const enteredCaptcha = document.getElementById('lCapIn').value.toUpperCase();
             if(enteredCaptcha !== code) {
-                return alert("Incorrect Captcha. Please try again.");
+                showCenterMessage("Error! Captcha", true);
+                return;
             }
 
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let email = document.getElementById('lEmail').value.trim();
             let pass = document.getElementById('lPass').value;
 
-            // Find user based only on email and password
-            let user = users.find(u => u.email === email && u.pass === pass);
+            let userExists = users.find(u => u.email === email);
+            let correctUser = users.find(u => u.email === email && u.pass === pass);
 
-            if(user) {
+            if (!userExists) {
+                showCenterMessage("Email doesn't register", false);
+            } else if (!correctUser) {
+                showCenterMessage("Wrong Password", true);
+            } else {
                 localStorage.setItem('userLoggedIn', 'true');
+                showCenterMessage("Login Successful!", false);
                 
-                // Create a neat, professional notification instead of the default alert
-                const successMsg = document.createElement('div');
-                successMsg.innerText = "Login Successful!";
-                
-                // Styling the notification for a professional/trust feel with texture
-                Object.assign(successMsg.style, {
-                    position: 'fixed',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    background: 'linear-gradient(135deg, #0f3e28, #18603e)', /* Deep professional green gradient for texture */
-                    color: '#ffffff',
-                    padding: '20px 40px',
-                    borderRadius: '8px',
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
-                    border: '1px solid #D4AF37', /* Keeps the luxury theme */
-                    fontFamily: 'Arial, sans-serif',
-                    fontWeight: 'bold',
-                    fontSize: '1.2rem',
-                    letterSpacing: '1px',
-                    zIndex: '9999',
-                    textAlign: 'center',
-                    opacity: '0',
-                    transition: 'opacity 0.4s ease-in-out'
-                });
-                
-                document.body.appendChild(successMsg);
-                
-                // Fade in
-                setTimeout(() => { successMsg.style.opacity = '1'; }, 10);
-
-                // Wait 2.5 seconds, then redirect
                 setTimeout(() => {
                     window.location.href = "index.html";
                 }, 2500);
-
-            } else {
-                alert("Invalid Credentials or User Not Registered!");
             }
         };
     </script>
 </body>
 </html>
-
