@@ -20,7 +20,7 @@
             user-select: none;
             z-index: 10;
         }
-        /* Style for the two points */
+        /* Style for the requirement points */
         .password-requirements {
             text-align: left;
             font-size: 0.85rem;
@@ -30,7 +30,7 @@
         .requirement-item {
             display: block;
             margin-bottom: 5px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
         /* Class for when requirements are met */
         .met {
@@ -57,6 +57,7 @@
             </div>
 
             <div class="password-requirements" id="passReqs">
+                <span id="reqCap" class="requirement-item">• (one capital alphabet)</span>
                 <span id="reqLen" class="requirement-item">• (minimum 10 character required)</span>
                 <span id="reqNum" class="requirement-item">• (minimum 4 number required)</span>
             </div>
@@ -77,11 +78,22 @@
 
         function validatePassword() {
             const pass = document.getElementById('pass').value;
+            const reqCap = document.getElementById('reqCap');
             const reqLen = document.getElementById('reqLen');
             const reqNum = document.getElementById('reqNum');
             const regBtn = document.getElementById('regBtn');
 
-            // Requirement 1: 10 characters
+            // 1. One Capital Alphabet Check
+            const hasCapital = /[A-Z]/.test(pass);
+            if (hasCapital) {
+                reqCap.innerHTML = "✅ (one capital alphabet)";
+                reqCap.classList.add('met');
+            } else {
+                reqCap.innerHTML = "• (one capital alphabet)";
+                reqCap.classList.remove('met');
+            }
+
+            // 2. Minimum 10 Characters Check
             const isLongEnough = pass.length >= 10;
             if (isLongEnough) {
                 reqLen.innerHTML = "✅ (minimum 10 character required)";
@@ -91,7 +103,7 @@
                 reqLen.classList.remove('met');
             }
 
-            // Requirement 2: 4 numbers
+            // 3. Minimum 4 Numbers Check
             const numCount = (pass.match(/\d/g) || []).length;
             const hasFourNums = numCount >= 4;
             if (hasFourNums) {
@@ -102,8 +114,8 @@
                 reqNum.classList.remove('met');
             }
 
-            // Button activation
-            regBtn.disabled = !(isLongEnough && hasFourNums);
+            // Button state: Enable only if ALL are met
+            regBtn.disabled = !(hasCapital && isLongEnough && hasFourNums);
         }
 
         function togglePassword() {
