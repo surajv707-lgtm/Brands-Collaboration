@@ -67,40 +67,21 @@
             }
         }
 
-        document.getElementById('regForm').onsubmit = function(e) {
-            e.preventDefault();
-            if(document.getElementById('captchaIn').value.toUpperCase() !== code) return alert("Wrong Captcha");
-
-            let users = JSON.parse(localStorage.getItem('users') || "[]");
-            let email = document.getElementById('email').value;
-
-            if(users.find(u => u.email === email)) {
-                return alert("Email already registered!");
-            }
-
-            users.push({
-                name: document.getElementById('name').value,
-                email: email,
-                pass: document.getElementById('pass').value
-            });
-
-            localStorage.setItem('users', JSON.stringify(users));
-
-            // Professional Centered Success Message
-            const successMsg = document.createElement('div');
-            successMsg.innerText = "Registration Successful!";
+        // Helper function to show professional messages
+        function showMessage(text, type) {
+            const msg = document.createElement('div');
+            msg.innerText = text;
             
-            Object.assign(successMsg.style, {
+            // Base styles for all center messages
+            const baseStyles = {
                 position: 'fixed',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                background: 'linear-gradient(135deg, #0f3e28, #18603e)', /* Trust/Professional emerald texture */
                 color: '#ffffff',
                 padding: '20px 40px',
                 borderRadius: '8px',
                 boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
-                border: '1px solid #D4AF37', /* Gold luxury border */
                 fontFamily: 'Arial, sans-serif',
                 fontWeight: 'bold',
                 fontSize: '1.2rem',
@@ -109,14 +90,66 @@
                 textAlign: 'center',
                 opacity: '0',
                 transition: 'opacity 0.4s ease-in-out'
-            });
+            };
+
+            // Specific styles based on message type
+            if (type === 'success' || type === 'info') {
+                // Trust/Professional emerald texture
+                Object.assign(baseStyles, {
+                    background: 'linear-gradient(135deg, #0f3e28, #18603e)',
+                    border: '1px solid #D4AF37'
+                });
+            } else if (type === 'error') {
+                // Alert/Emergency red texture
+                Object.assign(baseStyles, {
+                    background: 'linear-gradient(135deg, #8b0000, #b22222)',
+                    border: '1px solid #ff4d4d'
+                });
+            }
             
-            document.body.appendChild(successMsg);
+            Object.assign(msg.style, baseStyles);
+            document.body.appendChild(msg);
             
             // Fade in
-            setTimeout(() => { successMsg.style.opacity = '1'; }, 10);
+            setTimeout(() => { msg.style.opacity = '1'; }, 10);
+            
+            // Remove after 2.5 seconds
+            setTimeout(() => {
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 400);
+            }, 2500);
+        }
 
-            // Wait 2 seconds, then redirect
+        document.getElementById('regForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            // Captcha Validation
+            if(document.getElementById('captchaIn').value.toUpperCase() !== code) {
+                showMessage("Error! Captcha", "error");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('users') || "[]");
+            let email = document.getElementById('email').value;
+
+            // Duplicate Email Check
+            if(users.find(u => u.email === email)) {
+                showMessage("Email already registered", "info");
+                return;
+            }
+
+            // Save User
+            users.push({
+                name: document.getElementById('name').value,
+                email: email,
+                pass: document.getElementById('pass').value
+            });
+
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Success Message and Redirect
+            showMessage("Registration Successful!", "success");
+            
             setTimeout(() => {
                 window.location.href = "login.html";
             }, 2000);
@@ -124,3 +157,4 @@
     </script>
 </body>
 </html>
+
