@@ -22,7 +22,7 @@
             border-radius: 2px;
         }
         .status-icon { position: absolute; right: 12px; display: none; font-size: 1rem; }
-        .btn:disabled { background: #444; cursor: not-allowed; color: #777; border: none; }
+        .btn:disabled { background: #444; cursor: not-allowed; color: #777; border: none; opacity: 0.6; }
         .flex-btns { display: flex; gap: 10px; margin-top: 20px; width: 100%; }
         .flex-btns .btn { margin-top: 0; }
     </style>
@@ -56,7 +56,7 @@
             <h2>Verify Email</h2>
             <p style="margin-bottom: 20px; font-size: 0.9rem; color: #ccc;">Enter your registered email.</p>
             <div class="input-group">
-                <input type="email" id="resetEmail" placeholder="Email Address">
+                <input type="email" id="resetEmail" placeholder="Email Address" oninput="resetVerification()">
                 <button type="button" id="vBtn" class="verify-btn" onclick="verifyEmailAction()">Verify</button>
                 <span id="wrongIcon" class="status-icon">❌</span>
             </div>
@@ -69,14 +69,14 @@
         <form id="resetSection" class="auth-form hidden">
             <h2>New Password</h2>
             <div class="password-container">
-                <input type="password" id="nPass" placeholder="New Password" required>
+                <input type="password" id="nPass" placeholder="New Password" required oninput="checkMatch()">
                 <span class="toggle-password" onclick="togglePassword('nPass', this)">👁️</span>
             </div>
             <div class="password-container">
-                <input type="password" id="cPass" placeholder="Confirm Password" required>
+                <input type="password" id="cPass" placeholder="Confirm Password" required oninput="checkMatch()">
                 <span class="toggle-password" onclick="togglePassword('cPass', this)">👁️</span>
             </div>
-            <button type="submit" class="btn">Change Password</button>
+            <button type="submit" id="changePassBtn" class="btn" disabled>Change Password</button>
         </form>
     </main>
 
@@ -85,7 +85,6 @@
         let captchaCode = Math.random().toString(36).substring(2, 7).toUpperCase();
         document.getElementById('lCapTxt').innerText = captchaCode;
 
-        // --- UI TOGGLES ---
         function showSection(sectionId) {
             document.getElementById('loginForm').classList.add('hidden');
             document.getElementById('verifySection').classList.add('hidden');
@@ -104,7 +103,6 @@
             }
         }
 
-        // --- LUXURY NOTIFICATION ---
         function showCenterMessage(text, isError) {
             const msg = document.createElement('div');
             msg.innerText = text;
@@ -125,6 +123,7 @@
             Object.assign(msg.style, styles);
             document.body.appendChild(msg);
             setTimeout(() => { msg.style.opacity = '1'; }, 10);
+            
             if (text !== "Login Successful!" && text !== "Password Changed Successfully!") {
                 setTimeout(() => {
                     msg.style.opacity = '0';
@@ -133,7 +132,6 @@
             }
         }
 
-        // --- CORE LOGIC ---
         // 1. Login Logic
         document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
@@ -161,6 +159,14 @@
         };
 
         // 2. Verification Logic
+        function resetVerification() {
+            // If user types/deletes anything, show verify button again and block next
+            document.getElementById('vBtn').style.display = 'block';
+            document.getElementById('nextBtn').disabled = true;
+            document.getElementById('wrongIcon').style.display = 'none';
+            document.getElementById('resetEmail').style.borderColor = "#444";
+        }
+
         function verifyEmailAction() {
             const emailInput = document.getElementById('resetEmail');
             const email = emailInput.value.trim();
@@ -183,14 +189,27 @@
             }
         }
 
-        // 3. Password Reset Logic
+        // 3. Reset Password Real-time Check
+        function checkMatch() {
+            const nPass = document.getElementById('nPass').value;
+            const cPass = document.getElementById('cPass').value;
+            const changeBtn = document.getElementById('changePassBtn');
+            
+            // Activate button only if both match and aren't empty
+            if (nPass === cPass && nPass !== "") {
+                changeBtn.disabled = false;
+            } else {
+                changeBtn.disabled = true;
+            }
+        }
+
         document.getElementById('resetSection').onsubmit = function(e) {
             e.preventDefault();
             const nPass = document.getElementById('nPass').value;
             const cPass = document.getElementById('cPass').value;
 
             if (nPass !== cPass) {
-                showCenterMessage("Passwords do not match", true);
+                showCenterMessage("Password doesn't matched", true);
                 return;
             }
 
@@ -198,7 +217,7 @@
             let userIndex = users.findIndex(u => u.email === currentResetEmail);
 
             if (userIndex !== -1) {
-                users[userIndex].pass = nPass;
+                users[userIndex].pass = nPass; // Updating with New Password
                 localStorage.setItem('users', JSON.stringify(users));
                 showCenterMessage("Password Changed Successfully!", false);
                 setTimeout(() => { window.location.reload(); }, 2500);
@@ -207,4 +226,3 @@
     </script>
 </body>
 </html>
-
