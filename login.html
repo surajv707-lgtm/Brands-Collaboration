@@ -87,28 +87,28 @@
                 
                 // Create a neat, professional notification instead of the default alert
                 const successMsg = document.createElement('div');
-                successMsg.innerText = "Login Successful! Redirecting...";
+                successMsg.innerText = "Login Successful!";
                 
                 // Styling the notification for a professional/trust feel with texture
                 Object.assign(successMsg.style, {
                     position: 'fixed',
-                    top: '20px',
+                    top: '50%',
                     left: '50%',
-                    transform: 'translateX(-50%)',
+                    transform: 'translate(-50%, -50%)',
                     background: 'linear-gradient(135deg, #0f3e28, #18603e)', /* Deep professional green gradient for texture */
                     color: '#ffffff',
-                    padding: '16px 32px',
+                    padding: '20px 40px',
                     borderRadius: '8px',
                     boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
                     border: '1px solid #D4AF37', /* Keeps the luxury theme */
                     fontFamily: 'Arial, sans-serif',
                     fontWeight: 'bold',
-                    fontSize: '1.1rem',
+                    fontSize: '1.2rem',
                     letterSpacing: '1px',
                     zIndex: '9999',
                     textAlign: 'center',
                     opacity: '0',
-                    transition: 'opacity 0.5s ease-in-out'
+                    transition: 'opacity 0.4s ease-in-out'
                 });
                 
                 document.body.appendChild(successMsg);
@@ -116,10 +116,10 @@
                 // Fade in
                 setTimeout(() => { successMsg.style.opacity = '1'; }, 10);
 
-                // Wait 4 seconds, then redirect
+                // Wait 2.5 seconds, then redirect
                 setTimeout(() => {
                     window.location.href = "index.html";
-                }, 4000);
+                }, 2500);
 
             } else {
                 alert("Invalid Credentials or User Not Registered!");
@@ -128,3 +128,4 @@
     </script>
 </body>
 </html>
+
