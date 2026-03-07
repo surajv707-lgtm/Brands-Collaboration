@@ -222,13 +222,23 @@
             e.preventDefault();
             const nPass = document.getElementById('nPass').value;
             const cPass = document.getElementById('cPass').value;
+
+            // Password mismatch check
             if (nPass !== cPass) {
                 showCenterMessage("Password doesn't matched", true);
                 return;
             }
+
             let users = JSON.parse(localStorage.getItem('users') || "[]");
             let idx = users.findIndex(u => u.email === currentResetEmail);
+
             if (idx !== -1) {
+                // Check if the new password is the same as the current (recent) password
+                if (users[idx].pass === nPass) {
+                    showCenterMessage("Don't write old password", true);
+                    return;
+                }
+
                 users[idx].pass = nPass;
                 localStorage.setItem('users', JSON.stringify(users));
                 showCenterMessage("Password Changed Successfully!", false);
@@ -238,4 +248,5 @@
     </script>
 </body>
 </html>
+
 
