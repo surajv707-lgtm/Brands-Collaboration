@@ -85,10 +85,42 @@
             });
 
             localStorage.setItem('users', JSON.stringify(users));
-            alert("Registration Successful!");
-            window.location.href = "login.html";
+
+            // Professional Centered Success Message
+            const successMsg = document.createElement('div');
+            successMsg.innerText = "Registration Successful!";
+            
+            Object.assign(successMsg.style, {
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                background: 'linear-gradient(135deg, #0f3e28, #18603e)', /* Trust/Professional emerald texture */
+                color: '#ffffff',
+                padding: '20px 40px',
+                borderRadius: '8px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
+                border: '1px solid #D4AF37', /* Gold luxury border */
+                fontFamily: 'Arial, sans-serif',
+                fontWeight: 'bold',
+                fontSize: '1.2rem',
+                letterSpacing: '1px',
+                zIndex: '9999',
+                textAlign: 'center',
+                opacity: '0',
+                transition: 'opacity 0.4s ease-in-out'
+            });
+            
+            document.body.appendChild(successMsg);
+            
+            // Fade in
+            setTimeout(() => { successMsg.style.opacity = '1'; }, 10);
+
+            // Wait 2 seconds, then redirect
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
         };
     </script>
 </body>
 </html>
-
