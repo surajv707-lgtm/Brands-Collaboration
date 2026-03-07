@@ -84,8 +84,43 @@
 
             if(user) {
                 localStorage.setItem('userLoggedIn', 'true');
-                alert("Welcome back, " + user.name);
-                window.location.href = "index.html";
+                
+                // Create a neat, professional notification instead of the default alert
+                const successMsg = document.createElement('div');
+                successMsg.innerText = "Login Successful! Redirecting...";
+                
+                // Styling the notification for a professional/trust feel with texture
+                Object.assign(successMsg.style, {
+                    position: 'fixed',
+                    top: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    background: 'linear-gradient(135deg, #0f3e28, #18603e)', /* Deep professional green gradient for texture */
+                    color: '#ffffff',
+                    padding: '16px 32px',
+                    borderRadius: '8px',
+                    boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
+                    border: '1px solid #D4AF37', /* Keeps the luxury theme */
+                    fontFamily: 'Arial, sans-serif',
+                    fontWeight: 'bold',
+                    fontSize: '1.1rem',
+                    letterSpacing: '1px',
+                    zIndex: '9999',
+                    textAlign: 'center',
+                    opacity: '0',
+                    transition: 'opacity 0.5s ease-in-out'
+                });
+                
+                document.body.appendChild(successMsg);
+                
+                // Fade in
+                setTimeout(() => { successMsg.style.opacity = '1'; }, 10);
+
+                // Wait 4 seconds, then redirect
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 4000);
+
             } else {
                 alert("Invalid Credentials or User Not Registered!");
             }
@@ -93,4 +128,3 @@
     </script>
 </body>
 </html>
-
